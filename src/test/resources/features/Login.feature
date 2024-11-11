@@ -14,7 +14,7 @@ Funcionalidade: Login
   Cenario:03 Recuperação de senha com CPF bloqueado
     Dado que acesso a opção esqueci minha senha na área não logada
     Quando informo um CPF bloqueado
-    Entao visualizo o modal de usuário bloqueado na tela de esqueci minha senha
+    Entao visualizo o modal de usuário bloqueado
 
 
   Cenario:04 Recuperação de senha com CPF inválido
@@ -33,7 +33,7 @@ Funcionalidade: Login
     E insiro a senha "Devires@1234"
     E confirmo a nova senha "Devires@1234"
     E clico em confirmar redefinir senha
-    Entao acesso a tela home do aplicativo
+    Entao acesso a home do aplicativo
 
   Cenario:06 Login com senha antiga
     Dado que estou na área não logada do app
@@ -73,7 +73,7 @@ Funcionalidade: Login
 
   Cenario:11 Login com as credenciais validas
     Dado que estou na área não logada do app
-    Quando submeto minhas credenciais válidas para login, cpf '13715099054' e senha 'Devires@123'
+    Quando submeto minhas credenciais válidas para login, cpf '13715099054' e senha 'Devires@1234'
     Entao acesso a home do aplicativo
 
 #  Cenario: Atendimento usuário bloqueado

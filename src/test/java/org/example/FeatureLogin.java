@@ -28,7 +28,7 @@ public class FeatureLogin
         Home telaHome = new Home(driver);
 
         telaHome.esperarBotaoBiometria();
-        telaHome.clicarBotaoAtivarBiometria();
+//        telaHome.clicarBotaoAtivarBiometria();
 
         telaHome.arrastarModalParaBaixo();
 

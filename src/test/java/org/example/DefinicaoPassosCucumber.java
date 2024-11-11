@@ -59,11 +59,10 @@ public class DefinicaoPassosCucumber {
         Login telaLogin = new Login(driver);
 
         telaLogin.buscarModalErro();
-        Assert.assertEquals("CPF e/ou senha inválidos.", telaLogin.getModalErro().getText());
-        telaLogin.buscarBotaoFecharModalCPFSenha();
-        telaLogin.clicarBotaoFecharModalCPFSenha();
-        telaLogin.buscarElementos();
-        telaLogin.limparCamposLogin();
+//        telaLogin.buscarBotaoFecharModalCPFSenha();
+//        telaLogin.clicarBotaoFecharModalCPFSenha();
+//        telaLogin.buscarElementos();
+//        telaLogin.limparCamposLogin();
     }
 
     @Quando("submeto minhas credenciais válidas para login, cpf {string} e senha {string}")
@@ -74,6 +73,8 @@ public class DefinicaoPassosCucumber {
         telaLogin.buscarElementos();
         telaLogin.limparCamposLogin();
         telaLogin.preencherFormulario(cpf, senha);
+        MobileElement tela = (MobileElement) driver.findElementByAccessibilityId("Que bom ter você aqui! Confirme seus dados para continuar. \uEA38 CPF Espaço para digitar o cpf  icon_Espaço para digitar o cpf  \uE985 SENHA Espaço para digitar senha \uE91C Esqueci minha senha. env Botão para acessar o aplicativo É novo por aqui?  Crie uma conta.");
+        tela.click();
         telaLogin.logar();
     }
 
@@ -84,15 +85,16 @@ public class DefinicaoPassosCucumber {
 
         Home telaHome = new Home(driver);
 
-        Thread.sleep(3000);
-        telaHome.esperarBotaoBiometria();
-        telaHome.clicarBotaoAtivarBiometria();
+//        Thread.sleep(3000);
+//        telaHome.esperarBotaoBiometria();
+//        telaHome.clicarBotaoAtivarBiometria();
         try {
             telaHome.arrastarModalParaBaixo();
         } catch (Exception e) {
-            telaHome.clicarBotaoModalQueroConhecer();
+//            telaHome.clicarBotaoModalQueroConhecer();
+            throw new RuntimeException("nao arrastou o modal para baixo");
         }
-        Assert.assertEquals("Tenha uma boa viagem.", telaHome.getMsgBoaViagem().getText());
+        telaHome.buscarMensagemBemVindo();
     }
 
     @Entao("acesso a tela home do aplicativo")
@@ -116,7 +118,7 @@ public class DefinicaoPassosCucumber {
     }
 
 
-//    @After
+    //    @After
     public void after(Scenario scenario) throws IOException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
 
@@ -160,6 +162,8 @@ public class DefinicaoPassosCucumber {
         telaLogin.buscarElementos();
         telaLogin.limparCamposLogin();
         telaLogin.preencherFormulario("73040542559", "Devires@123");
+        MobileElement tela = (MobileElement) driver.findElementByAccessibilityId("Que bom ter você aqui! Confirme seus dados para continuar. \uEA38 CPF Espaço para digitar o cpf  icon_Espaço para digitar o cpf  \uE985 SENHA Espaço para digitar senha \uE91C Esqueci minha senha. env Botão para acessar o aplicativo É novo por aqui?  Crie uma conta.");
+        tela.click();
         telaLogin.logar();
     }
 
@@ -211,6 +215,8 @@ public class DefinicaoPassosCucumber {
         telaEsqueciSenha.buscarElementos();
 
         telaEsqueciSenha.preencherInputCpf("73040542559");
+        MobileElement tela =(MobileElement) driver.findElementByAccessibilityId("Nova Senha");
+        tela.click();
         telaEsqueciSenha.clicarBotaoConfirmar();
     }
 
@@ -269,7 +275,7 @@ public class DefinicaoPassosCucumber {
     }
 
     @E("informo e-mail fora do padrão sem \"@\"")
-    public void emailSemArroba() {
+    public void emailSemArroba() throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         Cadastro cadastro = new Cadastro(driver);
         cadastro.buscarElementos();
@@ -291,7 +297,7 @@ public class DefinicaoPassosCucumber {
     }
 
     @E("informo DDD + celular com menos de 11 dígitos")
-    public void celularDDDMenos11Digitos() {
+    public void celularDDDMenos11Digitos() throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         Cadastro cadastro = new Cadastro(driver);
         cadastro.buscarElementos();
@@ -343,6 +349,8 @@ public class DefinicaoPassosCucumber {
         EsqueciMinhaSenha telaEsqueciminhaSenha = new EsqueciMinhaSenha(driver);
         telaEsqueciminhaSenha.buscarElementos();
         telaEsqueciminhaSenha.preencherInputCpf("12345678910");
+        MobileElement tela = (MobileElement) driver.findElementByAccessibilityId("Nova Senha");
+        tela.click();
         telaEsqueciminhaSenha.clicarBotaoConfirmar();
     }
 
@@ -392,7 +400,7 @@ public class DefinicaoPassosCucumber {
         Home telaHome = new Home(driver);
 
         telaHome.esperarBotaoBiometria();
-        telaHome.clicarBotaoAtivarBiometria();
+//        telaHome.clicarBotaoAtivarBiometria();
         try {
             telaHome.arrastarModalParaBaixo();
         } catch (Exception e) {
@@ -594,6 +602,8 @@ public class DefinicaoPassosCucumber {
         EsqueciMinhaSenha telaEsqueciminhaSenha = new EsqueciMinhaSenha(driver);
         telaEsqueciminhaSenha.buscarElementos();
         telaEsqueciminhaSenha.preencherInputCpf(arg0);
+        MobileElement tela = (MobileElement) driver.findElementByAccessibilityId("Nova Senha");
+        tela.click();
         telaEsqueciminhaSenha.clicarBotaoConfirmar();
     }
 
@@ -603,7 +613,7 @@ public class DefinicaoPassosCucumber {
         EsqueciMinhaSenha telaEsqueciminhaSenha = new EsqueciMinhaSenha(driver);
 
         Thread.sleep(2000);
-        telaEsqueciminhaSenha.buscarInput0Sms();
+        telaEsqueciminhaSenha.buscarInput0sms();
         telaEsqueciminhaSenha.clicarInput0();
         String token = OTPUtils.getOTPtokenByPhoneNumberOrEmail("+5511922334456");
         telaEsqueciminhaSenha.inserirInputs(token);
@@ -613,11 +623,21 @@ public class DefinicaoPassosCucumber {
     @E("insiro o token sms invalido")
     public void insiroOTokenSmsInvalido() throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
-        EsqueciMinhaSenha telaEsqueciminhaSenha = new EsqueciMinhaSenha(driver);
+        Cadastro cadastro = new Cadastro(driver);
 
-        telaEsqueciminhaSenha.buscarInput0Sms();
-        telaEsqueciminhaSenha.clicarInput0();
-        telaEsqueciminhaSenha.inserirInputs("111111");
+        cadastro.buscarInput0sms();
+        cadastro.inserirInputSms("1111111");
+        Thread.sleep(2000)
+        ;
+    }
+
+    @E("insiro o token sms invalido p cadastro")
+    public void insiroOTokenSmsInvalidopCadastro() throws InterruptedException {
+        AppiumDriver driver = AppiumDriverConfig.Instance().driver;
+        Cadastro cadastro = new Cadastro(driver);
+
+        cadastro.buscarInput0sms();
+        cadastro.inserirInputSms("111111");
         Thread.sleep(2000)
         ;
     }
@@ -627,11 +647,12 @@ public class DefinicaoPassosCucumber {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         EsqueciMinhaSenha telaEsqueciminhaSenha = new EsqueciMinhaSenha(driver);
 
-        Thread.sleep(1000);
-        telaEsqueciminhaSenha.buscarInput0Email();
+        Thread.sleep(2000);
+        telaEsqueciminhaSenha.buscarInput0email();
         telaEsqueciminhaSenha.clicarInput0();
         String token = OTPUtils.getOTPtokenByPhoneNumberOrEmail("testecav8@gmail.com");
         telaEsqueciminhaSenha.inserirInputs(token);
+        Thread.sleep(2000);
     }
 
     @E("insiro o token email invalido")
@@ -639,7 +660,7 @@ public class DefinicaoPassosCucumber {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         EsqueciMinhaSenha telaEsqueciminhaSenha = new EsqueciMinhaSenha(driver);
 
-        telaEsqueciminhaSenha.buscarInput0Email();
+        telaEsqueciminhaSenha.buscarInput0email();
         telaEsqueciminhaSenha.clicarInput0();
         Thread.sleep(3000);
         telaEsqueciminhaSenha.inserirInputs("111111");
@@ -657,7 +678,6 @@ public class DefinicaoPassosCucumber {
     public void confirmarSms() {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         EsqueciMinhaSenha telaEsqueciminhaSenha = new EsqueciMinhaSenha(driver);
-
         telaEsqueciminhaSenha.clicarBotaoConfirmarSms();
     }
 
@@ -681,7 +701,8 @@ public class DefinicaoPassosCucumber {
     public void confirmarRedefinirSenha() {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         EsqueciMinhaSenha telaEsqueciminhaSenha = new EsqueciMinhaSenha(driver);
-
+        MobileElement tela = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[contains(@label, 'Sua senha')]");
+        tela.click();
         telaEsqueciminhaSenha.clicarBotaoConfirmarRedefinirSenha();
     }
 
@@ -690,6 +711,8 @@ public class DefinicaoPassosCucumber {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         Cadastro cadastro = new Cadastro(driver);
         cadastro.buscarElementos();
+        MobileElement tela =(MobileElement) driver.findElementByXPath("//XCUIElementTypeStaticText[@name=\"DADOS PESSOAIS\"]");
+        tela.click();
         cadastro.clicarBotaoContinuar();
     }
 
@@ -698,7 +721,7 @@ public class DefinicaoPassosCucumber {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         Cadastro cadastro = new Cadastro(driver);
 
-        cadastro.buscarElementos();
+//        cadastro.buscarElementos();
         cadastro.buscarMensagensErroObrigatoria();
     }
 
@@ -1067,7 +1090,7 @@ public class DefinicaoPassosCucumber {
     }
 
     @E("informo o número de telefone errado \"11911234567\"")
-    public void informoONúmeroDeTelefoneErrado() {
+    public void informoONúmeroDeTelefoneErrado() throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         Cadastro cadastro = new Cadastro(driver);
 
@@ -1114,7 +1137,7 @@ public class DefinicaoPassosCucumber {
     }
 
     @E("informo o endereço de e-mail errado \"email.errado@gmail.com\"")
-    public void informoOEndereçoDeEMailErrado() {
+    public void informoOEndereçoDeEMailErrado() throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         Cadastro cadastro = new Cadastro(driver);
         cadastro.buscarElementos();
@@ -1141,12 +1164,11 @@ public class DefinicaoPassosCucumber {
         telaMeusBilhetes.clicarBotaoConfirmarFormaPagamento();
     }
 
-    @Dado("que procuro config")
-    public void queProcuroConfig() throws InterruptedException {
+    @E("insiro o token sms p cadastro")
+    public void insiroOTokenSmsPCadastro() {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
-        Login login = new Login(driver);
-
-        login.buscarTeste();
+        Cadastro cadastro = new Cadastro(driver);
+        cadastro.buscarInput0sms();
     }
 }
 

@@ -26,7 +26,7 @@ public class Hooks {
     private static StringBuilder relatorio = new StringBuilder();
 
 
-//    @AfterStep
+    @AfterStep
     public void verificarErro(Scenario scenario) {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         // Verifica se o driver foi inicializado corretamente
