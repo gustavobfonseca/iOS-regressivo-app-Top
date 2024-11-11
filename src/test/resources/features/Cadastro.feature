@@ -119,9 +119,9 @@ Funcionalidade: Cadastro
     Quando acesso a opção "Criar uma conta"
     E informo um CPF válido ainda não cadastrado
     E submeto os demais dados corretamente até a finalização do formulário
-    E insiro o token sms
+    E insiro o token sms p cadastro
     E clico em confirmar sms
-    E insiro o token email
+    E insiro o token email p cadastro
     E clico em confirmar email
     Entao verifico os criterios de aceite do campo "Sua senha" validando o estado do botão "Confirmar" e visualizando os checks nos requisítos da senha
 
@@ -130,6 +130,3 @@ Funcionalidade: Cadastro
     Quando acesso a opção "Criar uma conta"
     E informo um CPF já cadastrado
     Entao visualizo o modal de "CPF já cadastrado".
-
-    Cenário: teste ip
-      Dado que procuro config

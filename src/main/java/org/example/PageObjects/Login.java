@@ -1,3 +1,8 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
 package org.example.PageObjects;
 
 import com.google.common.collect.ImmutableMap;
@@ -28,131 +33,127 @@ public class Login {
     }
 
     public void buscarElementos() throws InterruptedException {
-        WebDriverWait espera = new WebDriverWait(driver, 30);
+        WebDriverWait espera = new WebDriverWait(this.driver, 30L);
+        this.campoUsuario = (MobileElement)espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeTextField[@name=\"cpf_login_input\"]")));
+        this.campoSenha = (MobileElement)this.driver.findElementById("password_login_input");
+        this.botaoLogin = (MobileElement)this.driver.findElementById("signin_button");
+        this.criarConta = (MobileElement)this.driver.findElementById("É novo por aqui?  Crie uma conta.");
+        this.linkEsqueciMinhaSenha = (MobileElement)this.driver.findElementByAccessibilityId("Esqueci minha senha.");
 
-        // Localizar o campo CPF
-        campoUsuario = (MobileElement) espera.until(
-                ExpectedConditions.presenceOfElementLocated(By.id("cpf_login_input")));
-
-        // Localizar o campo Senha
-        campoSenha = (MobileElement) driver.findElementById("password_login_input");
-
-        // Localizar o botão Entrar
-        botaoLogin = (MobileElement) driver.findElementById("signin_button");
     }
 
-
     public void preencherFormulario(String usuario, String senha) throws InterruptedException {
-        campoUsuario.sendKeys(usuario);
-        campoSenha.sendKeys(senha);
+        char[] var3 = usuario.toCharArray();
+        int var4 = var3.length;
+
+        for(int var5 = 0; var5 < var4; ++var5) {
+            char digito = var3[var5];
+            this.campoUsuario.sendKeys(new CharSequence[]{String.valueOf(digito)});
+        }
+
+        this.campoSenha.sendKeys(new CharSequence[]{senha});
     }
 
     public void preencherFormularioUsuario(String usuario) {
-        campoUsuario.sendKeys(usuario);
+        this.campoUsuario.sendKeys(new CharSequence[]{usuario});
     }
 
     public void preencherFormularioSenha(String senha) {
-        campoSenha.sendKeys(senha);
+        this.campoSenha.sendKeys(new CharSequence[]{senha});
     }
 
     public void logar() {
-        botaoLogin.click();
+        this.botaoLogin.click();
     }
 
     public void buscarModalErro() {
-        WebDriverWait espera = new WebDriverWait(driver, 10);
-       MobileElement modalErro =(MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[@name='CPF e/ou senha inválidos.']")));
-
+        WebDriverWait espera = new WebDriverWait(this.driver, 10L);
+        MobileElement modalErro = (MobileElement)espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//XCUIElementTypeOther[@name=\"Ícone times-circle Erro CPF e/ou senha inválidos. Fechar\"])[1]")));
     }
 
-    public void clicarEsqueciMinhaSenha(){
-        linkEsqueciMinhaSenha.click();
+    public void clicarEsqueciMinhaSenha() {
+        this.linkEsqueciMinhaSenha.click();
     }
 
-    public void buscarModalContaBloqueada(){
-        WebDriverWait espera = new WebDriverWait(driver, 10);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.id("modal_bloqueio")));
+    public void buscarModalContaBloqueada() {
+        WebDriverWait espera = new WebDriverWait(this.driver, 10L);
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//XCUIElementTypeOther[@name=\"Para sua segurança o acesso ao Aplicativo foi\n" +
+                "temporariamente bloqueado.\n" +
+                "Te ajudamos a desbloquear através da nossa\n" +
+                "Central de Atendimento.\n" +
+                "\n" +
+                "Ligue para (11) 3888-2200 ou chame-nos no WhatsApp. SOLICITAR ATENDIMENTO VIA WHATSAPP \"])[1]")));
     }
 
-    public void buscarMensagemContaBloqueada(){
-        WebDriverWait espera = new WebDriverWait(driver, 10);
+    public void buscarMensagemContaBloqueada() {
+        WebDriverWait espera = new WebDriverWait(this.driver, 10L);
         espera.until(ExpectedConditions.presenceOfElementLocated(By.id("Para sua segurança o acesso ao Aplicativo foi bloqueado temporariamente.")));
-
-        textoModalContaBloqueada = (MobileElement) driver.findElementByAccessibilityId("Para sua segurança o acesso ao Aplicativo foi bloqueado temporariamente.");
+        this.textoModalContaBloqueada = (MobileElement)this.driver.findElementByAccessibilityId("Para sua segurança o acesso ao Aplicativo foi bloqueado temporariamente.");
     }
 
-    public void arrastarModalContaBloqueadaBaixo(){
-        buscarMensagemContaBloqueada();
-
-        Dimension tamanhoTela = driver.manage().window().getSize();
+    public void arrastarModalContaBloqueadaBaixo() {
+        this.buscarMensagemContaBloqueada();
+        Dimension tamanhoTela = this.driver.manage().window().getSize();
         int alturaTela = tamanhoTela.getHeight();
         int alturaModal = alturaTela * 2 / 3;
         int larguraModal = tamanhoTela.getWidth() / 2;
-
-        driver.executeScript("mobile: flingGesture", ImmutableMap.of("elementId", textoModalContaBloqueada.getId(),
-                "percentage", 100,
-                "direction", "down",
-                "speed", 500));
+        this.driver.executeScript("mobile: flingGesture", new Object[]{ImmutableMap.of("elementId", this.textoModalContaBloqueada.getId(), "percentage", 100, "direction", "down", "speed", 500)});
     }
 
-    public void buscarBotaoFecharModalCPFSenha(){
-        WebDriverWait espera = new WebDriverWait(driver, 10);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.id("Fechar")));
-
-        botaoFecharModalErroCPFSenha = (MobileElement) driver.findElementByAccessibilityId("Fechar");
+    public void buscarBotaoFecharModalCPFSenha() {
+        WebDriverWait espera = new WebDriverWait(driver, 10L);
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//XCUIElementTypeOther[@name=\"Ícone times-circle Erro CPF e/ou senha inválidos. Fechar\"])[4]")));
+        botaoFecharModalErroCPFSenha = (MobileElement)driver.findElementByXPath("(//XCUIElementTypeOther[@name=\"Ícone times-circle Erro CPF e/ou senha inválidos. Fechar\"])[4]");
     }
 
-    public void clicarBotaoFecharModalCPFSenha(){
+    public void clicarBotaoFecharModalCPFSenha() {
+        System.out.println("click fechar modal");
         botaoFecharModalErroCPFSenha.click();
     }
 
     public void clicarBotaoAtendimentoWhatsApp() throws InterruptedException {
-        WebDriverWait espera = new WebDriverWait(driver, 10);
+        WebDriverWait espera = new WebDriverWait(this.driver, 10L);
         espera.until(ExpectedConditions.elementToBeClickable(By.id("botao_modal_bloqueio")));
-
-        botaoAtendimentoViaWhatsApp = (MobileElement) driver.findElementByAccessibilityId("botao_modal_bloqueio");
-        botaoAtendimentoViaWhatsApp.click();
+        this.botaoAtendimentoViaWhatsApp = (MobileElement)this.driver.findElementByAccessibilityId("botao_modal_bloqueio");
+        this.botaoAtendimentoViaWhatsApp.click();
     }
 
     public void clicarCentralDeAjuda() {
-        centralDeAjuda = (MobileElement) driver.findElementByAccessibilityId("Central de Ajuda");
-        centralDeAjuda.click();
+        this.centralDeAjuda = (MobileElement)this.driver.findElementByAccessibilityId("Central de Ajuda");
+        this.centralDeAjuda.click();
     }
 
     public void clicarCriarConta() {
-        criarConta.click();
+        this.criarConta.click();
     }
 
     public void clicarEnviarMensagem() {
-        WebDriverWait espera = new WebDriverWait(driver, 10);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.id("ENVIAR MENSAGEM")));
-
-        enviarMensagem = (MobileElement) driver.findElementByAccessibilityId("ENVIAR MENSAGEM");
-        enviarMensagem.click();
+        WebDriverWait espera = new WebDriverWait(this.driver, 10L);
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.id("Abrir suporte via WhatsApp")));
+        this.enviarMensagem = (MobileElement)this.driver.findElementByAccessibilityId("Abrir suporte via WhatsApp");
+        this.enviarMensagem.click();
     }
 
-    public void verificarRedirecionamentoWhatsapp() throws InterruptedException {
-        WebDriverWait espera = new WebDriverWait(driver, 15);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.id("Autopass")));
-
-        MobileElement elemento = (MobileElement) driver.findElementByAccessibilityId("Autopass");
-
-        if (elemento.getText().equals("Autopass")) {
-            System.out.println(elemento.getText());
-        } else {
-            throw new AssertionError("Nome do contato não é Autopass.");
+    public void verificarRedirecionamentoWhatsapp() {
+        WebDriverWait espera = new WebDriverWait(this.driver, 15L);
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.id("TabBarItemTitle")));
+        MobileElement elemento = (MobileElement)this.driver.findElementByAccessibilityId("TabBarItemTitle");
+        System.out.println(elemento.getText());
+        if (!elemento.getText().contains("api.whatsapp.com")) {
+            throw new AssertionError("A url não é do whatsapp");
         }
     }
 
     public void limparCamposLogin() {
-        if (!campoUsuario.getText().equals("***.***.***-**")) {
-            campoUsuario.clear();
-            campoSenha.clear();
+        if (!this.campoUsuario.getText().equals("***.***.***-**")) {
+            this.campoUsuario.clear();
+            this.campoSenha.clear();
         }
+
     }
 
     public MobileElement getCampoUsuario() {
-        return campoUsuario;
+        return this.campoUsuario;
     }
 
     public void setCampoUsuario(MobileElement campoUsuario) {
@@ -160,7 +161,7 @@ public class Login {
     }
 
     public MobileElement getCampoSenha() {
-        return campoSenha;
+        return this.campoSenha;
     }
 
     public void setCampoSenha(MobileElement campoSenha) {
@@ -168,7 +169,7 @@ public class Login {
     }
 
     public MobileElement getBotaoLogin() {
-        return botaoLogin;
+        return this.botaoLogin;
     }
 
     public void setBotaoLogin(MobileElement botaoLogin) {
@@ -176,7 +177,7 @@ public class Login {
     }
 
     public MobileElement getModalErro() {
-        return modalErro;
+        return this.modalErro;
     }
 
     public void setModalErro(MobileElement modalErro) {
@@ -184,13 +185,6 @@ public class Login {
     }
 
     public MobileElement getTextoModalContaBloqueada() {
-        return textoModalContaBloqueada;
-    }
-
-    public void buscarTeste() throws InterruptedException {
-        WebDriverWait espera = new WebDriverWait(driver, 10);
-        MobileElement config = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.id("General")));
-        config.click();
-        Thread.sleep(4000);
+        return this.textoModalContaBloqueada;
     }
 }
