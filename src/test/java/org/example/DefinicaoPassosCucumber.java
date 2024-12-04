@@ -88,12 +88,12 @@ public class DefinicaoPassosCucumber {
 //        Thread.sleep(3000);
 //        telaHome.esperarBotaoBiometria();
 //        telaHome.clicarBotaoAtivarBiometria();
-        try {
-            telaHome.arrastarModalParaBaixo();
-        } catch (Exception e) {
-//            telaHome.clicarBotaoModalQueroConhecer();
-            throw new RuntimeException("nao arrastou o modal para baixo");
-        }
+//        try {
+//            telaHome.arrastarModalParaBaixo();
+//        } catch (Exception e) {
+////            telaHome.clicarBotaoModalQueroConhecer();
+//            throw new RuntimeException("nao arrastou o modal para baixo");
+//        }
         telaHome.buscarMensagemBemVindo();
     }
 
@@ -432,7 +432,7 @@ public class DefinicaoPassosCucumber {
 
         //Celular.resetApp(driver);
 
-        telaHome.buscarBotaoBilhetes();
+//        telaHome.buscarBotaoBilhetes();
         telaHome.clicarBotaoBilhetes();
     }
 
@@ -452,7 +452,7 @@ public class DefinicaoPassosCucumber {
 
         Thread.sleep(10000);
 //        paginaMeusBilhetes.buscarElementosTentativasMaximas();
-        paginaMeusBilhetes.buscarElementos();
+//        paginaMeusBilhetes.buscarElementos();
         //paginaMeusBilhetes.clicarFormasDePgto();
         paginaMeusBilhetes.clicarBotaoComprarBilhetes();
     }
@@ -515,9 +515,6 @@ public class DefinicaoPassosCucumber {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         Cadastro cadastro = new Cadastro(driver);
         cadastro.visualizarModalCadastrado();
-
-        Login login = new Login(driver);
-        login.buscarElementos();
     }
 
     @E("submeto os demais dados corretamente até a finalização do formulário")
@@ -554,12 +551,13 @@ public class DefinicaoPassosCucumber {
     }
 
     @E("confirmo Cartão de crédito como forma de pagamento")
-    public void confirmoCartãoDeCréditoComoFormaDePagamento() {
+    public void confirmoCartãoDeCréditoComoFormaDePagamento() throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         MeusBilhetes telaMeusBilhetes = new MeusBilhetes(driver);
 
         telaMeusBilhetes.buscarOpcaoCartaoDeCredito();
         telaMeusBilhetes.clicarOpcaoCartaoDeCredito();
+        Thread.sleep(500);
         telaMeusBilhetes.clicarBotaoConfirmarFormaPagamento();
     }
 
@@ -653,17 +651,30 @@ public class DefinicaoPassosCucumber {
         String token = OTPUtils.getOTPtokenByPhoneNumberOrEmail("testecav8@gmail.com");
         telaEsqueciminhaSenha.inserirInputs(token);
         Thread.sleep(2000);
+
+    }@E("insiro o token email invalido p cadastro")
+    public void insiroOTokenEmailinvalidocadastro() throws InterruptedException {
+        AppiumDriver driver = AppiumDriverConfig.Instance().driver;
+        Cadastro cadastro = new Cadastro(driver);
+
+        Thread.sleep(2000);
+        MobileElement tela =(MobileElement) driver.findElementByXPath("//XCUIElementTypeStaticText[@name=\"Por favor, informe o código recebido para prosseguir com seu cadastro:\"]");
+        tela.click();
+
+        cadastro.buscarInput0email();
+        cadastro.inserirInputEmail("1111111");
+        Thread.sleep(2000);
     }
 
     @E("insiro o token email invalido")
     public void insiroOTokenEmailInvalido() throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
-        EsqueciMinhaSenha telaEsqueciminhaSenha = new EsqueciMinhaSenha(driver);
+        EsqueciMinhaSenha esqueciMinhaSenha = new EsqueciMinhaSenha(driver);
 
-        telaEsqueciminhaSenha.buscarInput0email();
-        telaEsqueciminhaSenha.clicarInput0();
+        esqueciMinhaSenha.buscarInput0email();
+        esqueciMinhaSenha.clicarInput0();
         Thread.sleep(3000);
-        telaEsqueciminhaSenha.inserirInputs("111111");
+        esqueciMinhaSenha.inserirInputs("111111");
     }
 
     @E("clico em confirmar")
@@ -780,11 +791,13 @@ public class DefinicaoPassosCucumber {
     }
 
     @E("clico na opção Formas de Pagamento")
-    public void clicoNaOpçãoFormasDePagamento() {
+    public void clicoNaOpçãoFormasDePagamento() throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         MeusBilhetes paginaMeusBilhetes = new MeusBilhetes(driver);
 
-        paginaMeusBilhetes.buscarBotaoFormasDePagamento();
+//        paginaMeusBilhetes.buscarBotaoFormasDePagamento();
+
+        Thread.sleep(10000);
         paginaMeusBilhetes.clicarFormasDePgto();
     }
 
@@ -825,21 +838,22 @@ public class DefinicaoPassosCucumber {
         esqueciMinhaSenha.novaSenhaTesteCriterioDeAceite();
     }
 
-    @E("clico na opção excluir cartão")
-    public void clicoNaOpçãoExcluirCartão() {
+    @E("clico na opção excluir cartão {string}")
+    public void clicoNaOpçãoExcluirCartão(String tipo) throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         MeusBilhetes paginaMeusBilhetes = new MeusBilhetes(driver);
 
-        paginaMeusBilhetes.buscarLixeiraExcluirCartao();
-        paginaMeusBilhetes.clicarLixeiraExcluirCartao();
+//        paginaMeusBilhetes.buscarLixeiraExcluirCartao();
+        Thread.sleep(1000);
+        paginaMeusBilhetes.clicarLixeiraExcluirCartao(tipo);
     }
 
     @E("confirmo a exclusão")
-    public void confirmoAExclusão() {
+    public void confirmoAExclusão() throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         MeusBilhetes paginaMeusBilhetes = new MeusBilhetes(driver);
 
-        paginaMeusBilhetes.buscarBotaoConfirmarExclusaoCartao();
+//        paginaMeusBilhetes.buscarBotaoConfirmarExclusaoCartao();
         paginaMeusBilhetes.clicarBotaoConfirmarExclusaoCartao();
     }
 
@@ -848,7 +862,7 @@ public class DefinicaoPassosCucumber {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         //Thread.sleep(10000);
         WebDriverWait espera = new WebDriverWait(driver, 50);
-        espera.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.TextView[@text=\"ADICIONAR CARTÃO\"]")));
+        espera.until(ExpectedConditions.elementToBeClickable(By.xpath("//XCUIElementTypeOther[@name=\"\uE98E ADICIONAR CARTÃO\"]")));
 
     }
 
@@ -906,6 +920,8 @@ public class DefinicaoPassosCucumber {
         telaLogin.buscarElementos();
         telaLogin.limparCamposLogin();
         telaLogin.preencherFormulario(arg0, arg1);
+        MobileElement tela = (MobileElement) driver.findElementByAccessibilityId("Que bom ter você aqui! Confirme seus dados para continuar. \uEA38 CPF Espaço para digitar o cpf  icon_Espaço para digitar o cpf  \uE985 SENHA Espaço para digitar senha \uE91C Esqueci minha senha. env Botão para acessar o aplicativo É novo por aqui?  Crie uma conta.");
+        tela.click();
         telaLogin.logar();
     }
 
@@ -968,16 +984,19 @@ public class DefinicaoPassosCucumber {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         Home telaHome = new Home(driver);
 
-        telaHome.buscarFotoDePerfil();
+//        telaHome.buscarFotoDePerfil();
+        Thread.sleep(3000);
         telaHome.clicarFotoDePerfil();
         telaHome.scrolAteOpcaoMock();
         telaHome.clicarBotaoMockTokenGemalto();
         Thread.sleep(1000);
-        driver.navigate().back();
+        PerfilDoUsuario perfilDoUsuario = new PerfilDoUsuario(driver);
+        perfilDoUsuario.voltarHome();
+        Thread.sleep(2000);
     }
 
     @E("confirmo saldo disponível como forma de pagamento")
-    public void confirmoSaldoDisponívelComoFormaDePagamento() {
+    public void confirmoSaldoDisponívelComoFormaDePagamento() throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         MeusBilhetes telaMeusBilhetes = new MeusBilhetes(driver);
 
@@ -1033,7 +1052,7 @@ public class DefinicaoPassosCucumber {
         Cadastro cadastro = new Cadastro(driver);
         String token = OTPUtils.getOTPtokenByPhoneNumberOrEmail("+5514996237865");
         System.out.println("primeiro código sms: " + token);
-        cadastro.esperarReenviarCodigo("//android.widget.TextView[@content-desc=\"REENVIAR CÓDIGO\"]");
+        cadastro.esperarReenviarCodigo("//XCUIElementTypeOther[@name=\"resend_button_sms_verification\"]");
     }
 
     @E("clico em \"REENVIAR CÓDIGO\" após término do contador e-mail")
@@ -1043,7 +1062,8 @@ public class DefinicaoPassosCucumber {
         Thread.sleep(2000);
         String token = OTPUtils.getOTPtokenByPhoneNumberOrEmail("testecav8@gmail.com");
         System.out.println("primeiro código e-mail: " + token);
-        cadastro.esperarReenviarCodigo("//android.widget.TextView[@content-desc=\"REENVIAR CÓDIGO\"]");
+
+        cadastro.esperarReenviarCodigo("//XCUIElementTypeOther[@name=\"resend_button_email_verification\"]");
     }
 
     @Então("recebo um novo código atualizado via SMS")
@@ -1059,7 +1079,7 @@ public class DefinicaoPassosCucumber {
 
             WebDriverWait esperarSumir = new WebDriverWait(driver, 10);
 
-            esperarSumir.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//android.widget.TextView[@content-desc=\"REENVIAR CÓDIGO\"]")));
+            esperarSumir.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//XCUIElementTypeOther[@name=\"resend_button_sms_verification\"]")));
             Thread.sleep(1500);
         }
     }
@@ -1076,7 +1096,7 @@ public class DefinicaoPassosCucumber {
 
             WebDriverWait esperarSumir = new WebDriverWait(driver, 10);
 
-            esperarSumir.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//android.widget.TextView[@content-desc=\"REENVIAR CÓDIGO\"]")));
+            esperarSumir.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//XCUIElementTypeOther[@name=\"resend_button_sms_verification\"]")));
             Thread.sleep(1500);
         }
 
@@ -1169,6 +1189,20 @@ public class DefinicaoPassosCucumber {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         Cadastro cadastro = new Cadastro(driver);
         cadastro.buscarInput0sms();
+       String codigo=  OTPUtils.getOTPtokenByPhoneNumberOrEmail("+5511922334456");
+        cadastro.inserirInputSms(codigo);
+    }
+
+    @E("insiro o token email p cadastro")
+    public void insiroOTokenEmailPCadastro() {
+        AppiumDriver driver = AppiumDriverConfig.Instance().driver;
+        Cadastro cadastro = new Cadastro(driver);
+        String codigo=  OTPUtils.getOTPtokenByPhoneNumberOrEmail("testecav8@gmail.com");
+        MobileElement tela =(MobileElement) driver.findElementByXPath("//XCUIElementTypeStaticText[@name=\"Por favor, informe o código recebido para prosseguir com seu cadastro:\"]");
+        tela.click();
+
+        cadastro.buscarInput0email();
+        cadastro.inserirInputEmail(codigo);
     }
 }
 
