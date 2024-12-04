@@ -156,4 +156,5 @@ public class StepDefinitionCartaoTop {
         telaMeusBilhetes.buscarFormaDePagamentoTelaConfirmacaoPix();
         assertTrue(telaMeusBilhetes.getTextoPixCopiaECola().isDisplayed());
     }
+
 }

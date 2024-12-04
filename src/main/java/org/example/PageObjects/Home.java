@@ -8,6 +8,7 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.TapOptions;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
+import org.example.ClickCordenadas;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
@@ -116,7 +117,8 @@ public class Home {
     }
 
     public void clicarFotoDePerfil() {
-        fotoDePerfil.click();
+        ClickCordenadas.clickCoordenada(280,170);
+//        fotoDePerfil.click();
     }
 
     public void buscarModal() {
@@ -191,14 +193,22 @@ public class Home {
         Thread.sleep(500);
     }
 
-    public void scrolAteOpcaoMock() {
-        WebDriverWait espera = new WebDriverWait(driver, 10);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@text=\"DADOS PESSOAIS\"]")));
+    public void scrolAteOpcaoMock() throws InterruptedException {
+        try {
+            WebDriverWait espera = new WebDriverWait(driver, 10);
+            espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[@name=\"DADOS PESSOAIS\"]")));
+        }catch (TimeoutException e){
+            System.out.println("nao carregou a página");
+//            MobileElement tentarNovamente = (MobileElement) driver.findElementById("TENTAR NOVAMENTE");
+//            tentarNovamente.click();
+            ClickCordenadas.clickCoordenada(200,700);
+            WebDriverWait espera = new WebDriverWait(driver, 20);
+            espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[@name=\"DADOS PESSOAIS\"]")));
+        }
+//        textoMockTokenGemalto = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true))" + ".scrollIntoView(new UiSelector().text(\"Mock gemalto token\"));"));
+            ClickCordenadas.rolarTelaVertical("//XCUIElementTypeOther[@name=\"Mock gemalto token\"]");
 
-        textoMockTokenGemalto = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true))" + ".scrollIntoView(new UiSelector().text(\"Mock gemalto token\"));"));
-
-        botaoTogleMockTokenGemalto = (MobileElement) driver.findElementByXPath("//android.view.ViewGroup[@content-desc=\"Mock gemalto token\"]/android.view.ViewGroup");
-
+            botaoTogleMockTokenGemalto = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[@name=\"Mock gemalto token\"]");
     }
 
     public void clicarBotaoMockTokenGemalto() {
@@ -211,16 +221,16 @@ public class Home {
 
     public void buscarBotaoBilhetes() {
         WebDriverWait espera = new WebDriverWait(driver, 20);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@text=\"Bilhetes\n" + "QR Code\"]")));
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[@name=\"Bilhetes\\nQR Code\"]")));
 
-        botaoBilhetes = (MobileElement) driver.findElementByXPath("//android.widget.TextView[@text=\"Bilhetes\n" + "QR Code\"]");
+        botaoBilhetes = (MobileElement) driver.findElementByXPath("//XCUIElementTypeStaticText[@name=\"Bilhetes\\nQR Code\"]");
     }
 
     public void buscarBotaoCartaoTop() {
         WebDriverWait espera = new WebDriverWait(driver, 20);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@text=\"Cartão\n" + "TOP\"]")));
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[@name=\"Bilhetes\\nQR Code\"]\n")));
 
-        botaoCartaoTop = (MobileElement) driver.findElementByXPath("//android.widget.TextView[@text=\"Cartão\n" + "TOP\"]");
+        botaoCartaoTop = (MobileElement) driver.findElementByXPath("//XCUIElementTypeStaticText[@name=\"Bilhetes\\nQR Code\"]\n");
     }
 
     public void clicarBotaoCartaoTop() {
@@ -228,7 +238,7 @@ public class Home {
     }
 
     public void clicarBotaoBilhetes() {
-        botaoBilhetes.click();
+        ClickCordenadas.clickCoordenada(40,540);
     }
 
     public void clicarIconePerfil() {

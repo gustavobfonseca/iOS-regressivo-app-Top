@@ -8,6 +8,7 @@ package org.example.PageObjects;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.util.Assert;
@@ -67,7 +68,9 @@ public class EsqueciMinhaSenha {
             inputSuaSenha.sendKeys(new CharSequence[]{
                     String.valueOf(digito)
             });
+
         }
+        inputSuaSenha.sendKeys(Keys.RETURN);
     }
 
     public void preencherInputConfirmarSenha(String confirmarSenha) {
@@ -80,7 +83,9 @@ public class EsqueciMinhaSenha {
             inputConfirmarSenha.sendKeys(new CharSequence[]{
                     String.valueOf(digito)
             });
+
         }
+        inputConfirmarSenha.sendKeys(Keys.RETURN);
     }
 
     public void clicarBotaoConfirmar() {

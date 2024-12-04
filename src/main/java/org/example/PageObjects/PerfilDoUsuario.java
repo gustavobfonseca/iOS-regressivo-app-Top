@@ -89,9 +89,9 @@ public class PerfilDoUsuario {
     }
 
     public void voltarHome() {
-//        voltarHome = (MobileElement) driver.findElementByXPath("//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup[1]");
-//        voltarHome.click();
-        driver.navigate().back();
+        voltarHome = (MobileElement) driver.findElementByXPath("(//XCUIElementTypeOther[@name=\"\uE82F\"])[2]");
+        voltarHome.click();
+//        driver.navigate().back();
     }
 
 
