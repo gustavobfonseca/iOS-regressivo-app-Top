@@ -92,7 +92,7 @@ Funcionalidade: BilhetesQrCode
     E acesso a home do aplicativo
     Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo tendo cartão de crédito cadastrado
     E clico na opção Formas de Pagamento
-    E clico na opção excluir cartão
+    E clico na opção excluir cartão "crédito"
     E confirmo a exclusão
     Entao o cartão não deverá estar listado
 
@@ -128,7 +128,7 @@ Funcionalidade: BilhetesQrCode
     E acesso a home do aplicativo
     Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo tendo cartão de crédito cadastrado
     E clico na opção Formas de Pagamento
-    E clico na opção excluir cartão "crédito"
+    E clico na opção excluir cartão "débito"
     E confirmo a exclusão
     Entao o cartão não deverá estar listado
 
@@ -147,23 +147,23 @@ Funcionalidade: BilhetesQrCode
     Entao visualizo a tela de Cartão cadastrado com sucesso
 
   Cenario:13 Cadastro de cartão de débito inválido
-#    Dado que estou na área não logada do app
-#    E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Devires@123"
-#    E vou para a minha home do aplicativo
+    Dado que estou na área não logada do app
+    E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Devires@123"
+    E acesso a home do aplicativo
     Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo tendo cartão de crédito cadastrado
     E clico na opção Formas de Pagamento
     E clico em Adicionar forma de pagamento
     E clico na opção Cartão de débito
     E submeto as informações corretas do cartão
       | NomeCartao     | numeroCartao        | dtVal | cvv | numCelular  |
-      | Teste Cadastro | 4001 7482 7831 6091 | 01/28 | 123 | 327.721.478-86 |
+      | Teste Cadastro | 1234 5678 9101 1123 | 03/30 | 111 | 327.721.478-86 |
     Entao visualizo a tela de falha no cadastro
 
 
   Cenario:14 Acessar meus bilhetes offline
-#    Dado que estou na área não logada do app
-#    E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Devires@123"
-#    E vou para a minha home do aplicativo
+    Dado que estou na área não logada do app
+    E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Devires@123"
+    E acesso a home do aplicativo
     Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo tendo cartão de crédito cadastrado
     E eu desligo a conexão de internet do dispositivo
     E clico na opçao Comprar Bilhetes
@@ -172,9 +172,9 @@ Funcionalidade: BilhetesQrCode
     E reestabeleço a conexão com a internet
 
   Cenario:15 Acessar minhas formas de pagamento ao reestabelecer a conexão com a internet
-#    Dado que estou na área não logada do app
-#    E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Devires@123"
-#    E acesso a home do aplicativo
+    Dado que estou na área não logada do app
+    E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Devires@123"
+    E acesso a home do aplicativo
     Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo tendo cartão de crédito cadastrado
     E eu desligo a conexão de internet do dispositivo
     E clico na opção Formas de Pagamento
@@ -183,6 +183,9 @@ Funcionalidade: BilhetesQrCode
     Entao visualizo a tela de formas de pagamento
 
   Cenario:16 Historico de compra de bilhete
+    Dado que estou na área não logada do app
+    E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Devires@123"
+    E acesso a home do aplicativo
     Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo tendo cartão de crédito cadastrado
     E clico no ultimo registro de compra no historico
     Entao visualizo o modal com os detalhes da compra

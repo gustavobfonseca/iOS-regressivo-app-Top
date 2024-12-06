@@ -4,11 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.TouchAction;
-import io.appium.java_client.touch.TapOptions;
-import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.PointOption;
-import org.example.ClickCordenadas;
+import org.example.GestosEmulador;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
@@ -17,7 +13,6 @@ import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -117,7 +112,7 @@ public class Home {
     }
 
     public void clicarFotoDePerfil() {
-        ClickCordenadas.clickCoordenada(280,170);
+        GestosEmulador.clickCoordenada(280,170);
 //        fotoDePerfil.click();
     }
 
@@ -201,12 +196,12 @@ public class Home {
             System.out.println("nao carregou a página");
 //            MobileElement tentarNovamente = (MobileElement) driver.findElementById("TENTAR NOVAMENTE");
 //            tentarNovamente.click();
-            ClickCordenadas.clickCoordenada(200,700);
+            GestosEmulador.clickCoordenada(200,700);
             WebDriverWait espera = new WebDriverWait(driver, 20);
             espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[@name=\"DADOS PESSOAIS\"]")));
         }
 //        textoMockTokenGemalto = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true))" + ".scrollIntoView(new UiSelector().text(\"Mock gemalto token\"));"));
-            ClickCordenadas.rolarTelaVertical("//XCUIElementTypeOther[@name=\"Mock gemalto token\"]");
+            GestosEmulador.rolarTelaVertical("//XCUIElementTypeOther[@name=\"Mock gemalto token\"]");
 
             botaoTogleMockTokenGemalto = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[@name=\"Mock gemalto token\"]");
     }
@@ -238,7 +233,7 @@ public class Home {
     }
 
     public void clicarBotaoBilhetes() {
-        ClickCordenadas.clickCoordenada(40,540);
+        GestosEmulador.clickCoordenada(40,540);
     }
 
     public void clicarIconePerfil() {
