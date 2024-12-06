@@ -4,15 +4,11 @@ import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.remote.RemoteWebElement;
-import io.appium.java_client.TouchAction;
-import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.PointOption;
-import java.time.Duration;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class ClickCordenadas {
+public class GestosEmulador {
 
     public static void clickCoordenada(int x, int y) {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
@@ -48,4 +44,33 @@ public class ClickCordenadas {
         driver.executeScript("mobile: swipe", swipeObject);
     }
 
-}
+    public static void desligarWifi() {
+        try {
+            // Executa o comando para desativar o Wi-Fi
+            Process process = Runtime.getRuntime().exec("networksetup -setairportpower en0 off");
+            process.waitFor(); // Aguarda a execução do comando terminar
+
+            // Verifica se houve algum erro na execução
+            if (process.exitValue() != 0) {
+                throw new RuntimeException("Falha ao desativar o Wi-Fi.");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Erro ao executar o comando para desativar o Wi-Fi: " + e.getMessage(), e);
+        }
+    }
+
+    public static void ligarWifi(){
+        try {
+            // Executa o comando para ativar o Wi-Fi
+            Process process = Runtime.getRuntime().exec("networksetup -setairportpower en0 on");
+            process.waitFor(); // Aguarda a execução do comando terminar
+
+            // Verifica se houve algum erro na execução
+            if (process.exitValue() != 0) {
+                throw new RuntimeException("Falha ao reativar o Wi-Fi.");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Erro ao executar o comando para reativar o Wi-Fi: " + e.getMessage(), e);
+        }
+    }
+    }

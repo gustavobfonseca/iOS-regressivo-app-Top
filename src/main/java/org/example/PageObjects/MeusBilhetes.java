@@ -2,10 +2,11 @@ package org.example.PageObjects;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import org.example.ClickCordenadas;
+import org.example.GestosEmulador;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -53,9 +54,9 @@ public class MeusBilhetes {
 
     public void buscarUltimaCompraDeBilhete() {
         WebDriverWait espera = new WebDriverWait(driver, 10);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//android.view.ViewGroup[@content-desc=\"null  null no valor de 5 reais\"])[1]")));
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//XCUIElementTypeOther[@name=\"Compra de Bilhetes  1 Un. CPTM / Metrô no valor de 5 reais\"])[2]")));
 
-        ultimaCompraDeBilhete = (MobileElement) driver.findElementByXPath("(//android.view.ViewGroup[@content-desc=\"null  null no valor de 5 reais\"])[1]");
+        ultimaCompraDeBilhete = (MobileElement) driver.findElementByXPath("(//XCUIElementTypeOther[@name=\"Compra de Bilhetes  1 Un. CPTM / Metrô no valor de 5 reais\"])[2]");
 
     }
 
@@ -65,32 +66,32 @@ public class MeusBilhetes {
 
     public void buscarModalDetalhesCompra() {
         WebDriverWait espera = new WebDriverWait(driver, 10);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@content-desc=\"Detalhe da compra\"]")));
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeOther[contains(@name, 'Detalhe da compra')]\n")));
 
-        modalDetalhesCompra = (MobileElement) driver.findElementByXPath("//android.widget.TextView[@content-desc=\"Detalhe da compra\"]");
+        modalDetalhesCompra = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[contains(@name, 'Detalhe da compra')]\n");
 
     }
 
     public void buscarCartoesEmFormasDePgto() {
-        WebDriverWait espera = new WebDriverWait(driver, 30);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@text=\"Crédito\"]")));
+        WebDriverWait espera = new WebDriverWait(driver, 50);
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeOther[@name=\"\uE98E ADICIONAR CARTÃO\"]")));
 
-        cartaoDeCredito = (MobileElement) driver.findElementByXPath("//android.widget.TextView[@text=\"Crédito\"]");
+        cartaoDeCredito = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[@name=\"\uE98E ADICIONAR CARTÃO\"]");
     }
 
     public void buscarElementosTelaSemConexao() {
         WebDriverWait espera = new WebDriverWait(driver, 10);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.ViewGroup[@content-desc=\"Bilhete offline\"]")));
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeOther[@name=\"Bilhete offline\"]")));
 
-        botaoTentarNovamente = (MobileElement) driver.findElementByXPath("//android.widget.TextView[@content-desc=\"TENTAR NOVAMENTE\"]");
-        botaoAcessarBilhetesOffline = (MobileElement) driver.findElementByXPath("//android.view.ViewGroup[@content-desc=\"Bilhete offline\"]");
+        botaoTentarNovamente = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[@name=\"Tentar novamente\"]");
+        botaoAcessarBilhetesOffline = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[@name=\"Bilhete offline\"]");
     }
 
     public void buscarMensagemListaDeBilhetes() {
         WebDriverWait espera = new WebDriverWait(driver, 10);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@content-desc=\"Estes são seus Bilhetes Digitais QR Code aceitos nas estações de Trem e Metrô de São Paulo\"]")));
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[@name=\"Estes são seus Bilhetes Digitais QR Code aceitos nas estações de Trem e Metrô de São Paulo\"]")));
 
-        msgListaDeBilhetes = (MobileElement) driver.findElementByXPath("//android.widget.TextView[@content-desc=\"Estes são seus Bilhetes Digitais QR Code aceitos nas estações de Trem e Metrô de São Paulo\"]");
+        msgListaDeBilhetes = (MobileElement) driver.findElementByXPath("//XCUIElementTypeStaticText[@name=\"Estes são seus Bilhetes Digitais QR Code aceitos nas estações de Trem e Metrô de São Paulo\"]");
 
     }
 
@@ -98,9 +99,26 @@ public class MeusBilhetes {
         botaoAcessarBilhetesOffline.click();
     }
 
+    private int tentativas = 0;
+
     public void clicarBotaoTentarNovamente() {
+        if (tentativas >= 3) {
+            System.out.println("Máximo de tentativas alcançado. Conexão não restabelecida.");
+            return;
+        }
+
         botaoTentarNovamente.click();
+        tentativas++;
+
+        try {
+            WebDriverWait espera = new WebDriverWait(driver, 2);
+            espera.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//XCUIElementTypeOther[@name=\"Tentar novamente\"]")));
+        } catch (TimeoutException timeoutException) {
+            System.out.println("Conexão não voltou, tentando novamente. Tentativa: " + tentativas);
+            clicarBotaoTentarNovamente();
+        }
     }
+
 
 
     public void buscarBotaoComprarBilhetes() {
@@ -148,7 +166,7 @@ public class MeusBilhetes {
     }
 
     public void clicarFormasDePgto() {
-        ClickCordenadas.clickCoordenada(350,400);
+        GestosEmulador.clickCoordenada(350,400);
 //        botaoFormasDePagamento.click();
     }
 
@@ -187,22 +205,29 @@ public class MeusBilhetes {
         WebDriverWait espera = new WebDriverWait(driver, 120);
         espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[@name=\"Outras\"]")));
 
-        if (tipo.equalsIgnoreCase("crédito")){
-                espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeOther[contains(@name, 'Débito')]")));
-                MobileElement cartao = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[contains(@name, 'Débito')]");
-                System.out.println("cordenadas: ");
-            System.out.println(cartao.getLocation().getX());
-            System.out.println(cartao.getLocation().getY());
+        WebDriverWait espera2 = new WebDriverWait(driver, 10);
 
-
-
+        if (tipo.equalsIgnoreCase("débito")){
+            System.out.println("procurando cartao débito ");
+                espera2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//XCUIElementTypeOther[contains(@name, 'Débito')])[2]")));
+                MobileElement cartao = (MobileElement) driver.findElementByXPath("(//XCUIElementTypeOther[contains(@name, 'Débito')])[2]");
+            System.out.println(
+                    cartao.getLocation()
+            );
         }
 
         else {
+            System.out.println("procurando cartao crédito ");
+            espera2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//XCUIElementTypeOther[contains(@name, 'Crédito')])[2]")));
+            MobileElement cartao = (MobileElement) driver.findElementByXPath("(//XCUIElementTypeOther[contains(@name, 'Crédito')])[2]");
+
+            System.out.println(
+                    cartao.getLocation()
+            );
 
         }
 
-        ClickCordenadas.clickCoordenada(350,350);
+        GestosEmulador.clickCoordenada(350,350);
 //        botaoExcluirCartaoDeCredito.click();
     }
 
@@ -215,7 +240,7 @@ public class MeusBilhetes {
 
     public void clicarBotaoConfirmarExclusaoCartao() throws InterruptedException {
         Thread.sleep(3000);
-        ClickCordenadas.clickCoordenada(200,700);
+        GestosEmulador.clickCoordenada(200,700);
 //        botaoConfirmarExclusaoCartao.click();
     }
 
@@ -268,7 +293,7 @@ public class MeusBilhetes {
 //            throw new RuntimeException("Element not found after maximum retries");
 //        }
 //        return null;
-        ClickCordenadas.clickCoordenada(90,400);
+        GestosEmulador.clickCoordenada(90,400);
     }
 
 
@@ -316,7 +341,7 @@ public class MeusBilhetes {
 
     public void clicarSaldoEmConta() throws InterruptedException {
         System.out.println("saldo em conta");
-        ClickCordenadas.clickCoordenada(192,252);
+        GestosEmulador.clickCoordenada(192,252);
         Thread.sleep(5000);
 //        opcaoSaldoEmConta.click();
     }
