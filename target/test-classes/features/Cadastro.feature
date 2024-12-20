@@ -53,7 +53,7 @@ Funcionalidade: Cadastro
     Dado que estou na área não logada do app
     Quando acesso a opção "Criar uma conta"
     E informo um CPF válido ainda não cadastrado
-    E informo a data de nascimento menor que 13 anos
+    E informo a data de nascimento menor que 18 anos
     E clico em "Continuar" com os demais campos preenchidos dentro dos critérios de aceite, menos a data de nascimento
     Entao visualizo a mensagem de "Não é possível cadastrar menores de idade" no campo "Data de nascimento"
 

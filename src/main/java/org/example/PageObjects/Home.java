@@ -76,7 +76,7 @@ public class Home {
     public void redefinirSenhaPeloPerfil() throws InterruptedException {
         clicarIconePerfil();
         clicarPerfilSenhaDoAplicativo();
-        redefinirSenha("Devires@1234", "Devires@123", "Devires@123");
+        redefinirSenha("Teste1234", "Teste123", "Teste123");
 
     }
 
@@ -134,7 +134,7 @@ public class Home {
     }
 
     public void buscarMensagemBemVindo() {
-        WebDriverWait espera = new WebDriverWait(driver, 10);
+        WebDriverWait espera = new WebDriverWait(driver, 60);
         espera.until(ExpectedConditions.presenceOfElementLocated(By.id("Transporte")));
         msgBoaViagem = (MobileElement) driver.findElementByAccessibilityId("Transporte");
     }

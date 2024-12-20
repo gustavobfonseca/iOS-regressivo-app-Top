@@ -282,14 +282,14 @@ public class DefinicaoPassosCucumber {
         cadastro.preencherEmail("emailSemArroba.com");
     }
 
-    @E("informo a data de nascimento menor que 13 anos")
-    public void menorDe13Anos() {
+    @E("informo a data de nascimento menor que 18 anos")
+    public void menorDe13Anos() throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         Cadastro cadastro = new Cadastro(driver);
 
         LocalDate currentDate = LocalDate.now();
         Integer anoAtual = currentDate.getYear();
-        Integer anoDeNascimento = anoAtual - 12;
+        Integer anoDeNascimento = anoAtual - 17;
         String dataNascimento = "01/01/" + anoDeNascimento;
 
         cadastro.buscarElementos();
