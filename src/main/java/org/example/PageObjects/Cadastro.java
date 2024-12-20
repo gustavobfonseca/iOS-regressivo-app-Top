@@ -106,10 +106,12 @@ public class Cadastro {
 
     }
 
-    public void preencherDataNascimento(String dataNascimento) {
-        dtNasc.sendKeys(dataNascimento);
+    public void preencherDataNascimento(String dataNascimento) throws InterruptedException {
+        for (char c : dataNascimento.toCharArray()) {
+            dtNasc.sendKeys(String.valueOf(c));
+            Thread.sleep(10); // Atraso de 100ms entre cada caractere
+        }
         dtNasc.sendKeys(Keys.RETURN);
-
     }
 
     public void preencherDataNascimentoPadrao() throws InterruptedException {
