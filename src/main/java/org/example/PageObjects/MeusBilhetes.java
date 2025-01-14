@@ -296,12 +296,12 @@ public class MeusBilhetes {
         GestosEmulador.clickCoordenada(90,400);
     }
 
-
+// contains nao funciona 1 unidade
     public void buscarBotaoUnidades() {
         WebDriverWait espera = new WebDriverWait(driver, 10);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeOther[@name=\"1 unidade no valor R$5\"]")));
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeOther[@name=\"1 unidade no valor R$5.2\"]")));
 
-        botaoUnidade = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[@name=\"1 unidade no valor R$5\"]");
+        botaoUnidade = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[@name=\"1 unidade no valor R$5.2\"]");
 
     }
 

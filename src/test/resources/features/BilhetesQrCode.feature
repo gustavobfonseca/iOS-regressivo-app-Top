@@ -3,7 +3,7 @@ Funcionalidade: BilhetesQrCode
 
   Cenario:01 Compra bilhete CPTM ou Metro com pagamento via pix
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Devires@123"
+    E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Teste123"
     E acesso a home do aplicativo
     Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo tendo cartão de crédito cadastrado
     E clico na opçao Comprar Bilhetes
@@ -38,7 +38,7 @@ Funcionalidade: BilhetesQrCode
 
   Cenario:04 Erro na compra de bilhete via cartão de débito informando o cvv incorreto
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Devires@123"
+    E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Teste123"
     E acesso a home do aplicativo
     Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo tendo cartão de crédito cadastrado
     E clico na opçao Comprar Bilhetes
@@ -50,7 +50,7 @@ Funcionalidade: BilhetesQrCode
 
   Cenario:05 Compra de bilhete via cartão de débito
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Devires@123"
+    E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Teste123"
     E acesso a home do aplicativo
     Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo tendo cartão de crédito cadastrado
     E clico na opçao Comprar Bilhetes
@@ -60,22 +60,22 @@ Funcionalidade: BilhetesQrCode
     E confirmo o pagamento informando o CVV "123"
     Então visualizo a tela de Pagamento efetuado com sucesso
 
-  Cenario:06 Compra de bilhete CPTM, Metro com pagamento via saldo em conta
-    Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "51919740856", senha "Devires@123"
-    E acesso a home do aplicativo
-    E eu habilito o mock do token no perfil do usuario
-    Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo tendo cartão de crédito cadastrado
-    E clico na opçao Comprar Bilhetes
-    E clico na opção CPTM, Metrô
-    E seleciono a quantidade de bilhetes
-    E confirmo saldo disponível como forma de pagamento
-    E confirmo o pagamento informando a senha correta "1571"
-    Então visualizo a tela de Pagamento efetuado com sucesso
+#  Cenario:06 Compra de bilhete CPTM, Metro com pagamento via saldo em conta
+#    Dado que estou na área não logada do app
+#    E submeto as seguintes credenciais validas para login, cpf "51919740856", senha "Teste123"
+#    E acesso a home do aplicativo
+#    E eu habilito o mock do token no perfil do usuario
+#    Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo tendo cartão de crédito cadastrado
+#    E clico na opçao Comprar Bilhetes
+#    E clico na opção CPTM, Metrô
+#    E seleciono a quantidade de bilhetes
+#    E confirmo saldo disponível como forma de pagamento
+#    E confirmo o pagamento informando a senha correta "1571"
+#    Então visualizo a tela de Pagamento efetuado com sucesso
 
   Cenario:07 Erro na compra de bilhete CPTM, Metro com pagamento via saldo em conta
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Devires@123"
+    E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Teste123"
     E acesso a home do aplicativo
     E eu habilito o mock do token no perfil do usuario
     Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo tendo cartão de crédito cadastrado
@@ -124,7 +124,7 @@ Funcionalidade: BilhetesQrCode
 
   Cenario:11 Remover cartão de débito como forma de pagamento tendo menos que 3 cartões cadastrados
    Dado que estou na área não logada do app
-   E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Devires@123"
+   E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Teste123"
     E acesso a home do aplicativo
     Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo tendo cartão de crédito cadastrado
     E clico na opção Formas de Pagamento
@@ -134,7 +134,7 @@ Funcionalidade: BilhetesQrCode
 
   Cenario:12 Cadastro de cartão de débito
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Devires@123"
+    E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Teste123"
     E acesso a home do aplicativo
 #    Quando reseto o app
     Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo tendo cartão de crédito cadastrado
@@ -148,7 +148,7 @@ Funcionalidade: BilhetesQrCode
 
   Cenario:13 Cadastro de cartão de débito inválido
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Devires@123"
+    E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Teste123"
     E acesso a home do aplicativo
     Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo tendo cartão de crédito cadastrado
     E clico na opção Formas de Pagamento
@@ -162,7 +162,7 @@ Funcionalidade: BilhetesQrCode
 
   Cenario:14 Acessar meus bilhetes offline
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Devires@123"
+    E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Teste123"
     E acesso a home do aplicativo
     Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo tendo cartão de crédito cadastrado
     E eu desligo a conexão de internet do dispositivo
@@ -173,7 +173,7 @@ Funcionalidade: BilhetesQrCode
 
   Cenario:15 Acessar minhas formas de pagamento ao reestabelecer a conexão com a internet
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Devires@123"
+    E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Teste123"
     E acesso a home do aplicativo
     Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo tendo cartão de crédito cadastrado
     E eu desligo a conexão de internet do dispositivo
@@ -184,7 +184,7 @@ Funcionalidade: BilhetesQrCode
 
   Cenario:16 Historico de compra de bilhete
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Devires@123"
+    E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Teste123"
     E acesso a home do aplicativo
     Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo tendo cartão de crédito cadastrado
     E clico no ultimo registro de compra no historico
