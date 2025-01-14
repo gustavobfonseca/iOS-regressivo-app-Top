@@ -117,9 +117,9 @@ public class StepDefinitionBilheteUnico {
     public void visualizoATelaDeBilhetesCadastradosComOsBilhetes(int arg0) {
         tela.clicarEmElemento("//XCUIElementTypeOther[@name=\"VER TODOS OS CARTÕES\"]", 10);
 
-        MobileElement bilhete1 = tela.buscarElementoNaTela("//XCUIElementTypeOther[contains(@label, '556005492')]", 10);
-        MobileElement bilhete2 = tela.buscarElementoNaTela("//XCUIElementTypeOther[contains(@label, '463114703')]", 10);
-        MobileElement bilhete3 = tela.buscarElementoNaTela("//XCUIElementTypeOther[contains(@label, '510824478')]", 10);
+        MobileElement bilhete1 = tela.buscarElementoNaTela("//XCUIElementTypeOther[contains(@label, '507755490')]", 10);
+        MobileElement bilhete2 = tela.buscarElementoNaTela("//XCUIElementTypeOther[contains(@label, '510356863')]", 10);
+        MobileElement bilhete3 = tela.buscarElementoNaTela("//XCUIElementTypeOther[contains(@label, '533727865')]", 10);
 
         Assert.assertTrue(bilhete1.isDisplayed() && bilhete2.isDisplayed() && bilhete3.isDisplayed());
     }

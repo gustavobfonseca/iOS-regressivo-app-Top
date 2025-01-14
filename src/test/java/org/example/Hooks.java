@@ -3,6 +3,7 @@ package org.example;
 import io.appium.java_client.AppiumDriver;
 import io.cucumber.java.*;
 import io.cucumber.java.AfterStep;
+import org.example.PageObjects.CacheAppConfig;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -27,7 +28,7 @@ public class Hooks {
     private static StringBuilder relatorio = new StringBuilder();
 
 
-    @AfterStep
+//    @AfterStep
     public void verificarErro(Scenario scenario) {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         // Verifica se o driver foi inicializado corretamente
@@ -61,53 +62,24 @@ public class Hooks {
     }
 
     @Before
-    public void beforeScenario() {
-        System.out.println("Reiniciando o aplicativo antes do cenário...");
+    public void beforeScenario(Scenario scenario) {
+        System.out.println("Preparando o app para o próximo cenário: " + scenario.getName());
         try {
-            AppiumDriverConfig.Instance().restartApp();
-//            clearAppCache();
-
+            CacheAppConfig.restartAppWithCacheClear();
         } catch (Exception e) {
-            System.err.println("Erro ao reiniciar o app: " + e.getMessage());
+            System.err.println("Erro ao preparar o app para o próximo cenário: " + e.getMessage());
         }
     }
 
+
     @After
-    public void afterScenario() {
-        System.out.println("Cenário finalizado.");
-        // Se precisar finalizar o driver ao final de todos os testes, descomente abaixo.
-        // AppiumDriverConfig.Instance().driver.quit();
-        // AppiumDriverConfig._instance = null;
+    public void afterScenario(Scenario scenario) {
+        System.out.println("Cenário finalizado: " + scenario.getName());
+        try {
+//            CacheAppConfig.restartAppWithStorageClear();
+        } catch (Exception e) {
+            System.err.println("Erro ao finalizar o cenário: " + e.getMessage());
+        }
     }
-//    public void clearAppCache() {
-//        String bundleId = "br.com.autopass.top.builders.dev.hml";
-//        try {
-//            // Passo 1: Localizar o caminho correto do app no simulador
-//            HashMap<String, Object> paramsPath = new HashMap<>();
-//            paramsPath.put("command", "xcrun");
-//            paramsPath.put("args", new String[]{"simctl", "get_app_container", "502683C8-727A-44F6-97B1-3CB917F2A409", bundleId, "data"});
-//            String appDataPath = (String) driver.executeScript("mobile: shell", paramsPath);
-//
-//            // Passo 2: Limpar arquivos de cache na pasta Library/Caches
-//            if (appDataPath != null && !appDataPath.isEmpty()) {
-//                System.out.println("📂 Caminho do app encontrado: " + appDataPath);
-//
-//                // Montar o caminho completo para a pasta de Caches
-//                String cachePath = appDataPath.trim() + "/Library/Caches/*";
-//
-//                // Passo 3: Deletar arquivos de cache
-//                HashMap<String, Object> paramsClear = new HashMap<>();
-//                paramsClear.put("command", "rm");
-//                paramsClear.put("args", new String[]{"-rf", cachePath});
-//                driver.executeScript("mobile: shell", paramsClear);
-//
-//                System.out.println("✅ Cache do aplicativo limpo com sucesso.");
-//            } else {
-//                System.err.println("❌ Não foi possível encontrar o caminho do app.");
-//            }
-//        } catch (Exception e) {
-//            System.err.println("❌ Erro ao limpar o cache: " + e.getMessage());
-//        }
-//    }
 
 }

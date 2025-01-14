@@ -5,6 +5,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.remote.RemoteWebElement;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -71,6 +72,30 @@ public class GestosEmulador {
             }
         } catch (Exception e) {
             throw new RuntimeException("Erro ao executar o comando para reativar o Wi-Fi: " + e.getMessage(), e);
+        }
+    }
+
+    public static void biometriaEmulador(String deviceName, int estado) {
+        if (estado != 1 && estado != 0) {
+            System.out.println("Parâmetros: 1 para ativar biometria ou 0 para desativar biometria.");
+        } else {
+            try {
+                String enableBiometricCommand = String.format("xcrun simctl spawn '%s' notifyutil -s com.apple.BiometricKit.enrollmentChanged '%d'", deviceName, estado);
+                String checkBiometricCommand = String.format("xcrun simctl spawn '%s' notifyutil -p com.apple.BiometricKit.enrollmentChanged", deviceName);
+                ProcessBuilder processBuilderEnable = new ProcessBuilder("/bin/bash", "-c", enableBiometricCommand);
+                Process processEnable = processBuilderEnable.start();
+                processEnable.waitFor();
+                ProcessBuilder processBuilderCheck = new ProcessBuilder("/bin/bash", "-c", checkBiometricCommand);
+                Process processCheck = processBuilderCheck.start();
+                processCheck.waitFor();
+                if (estado == 1) {
+                    System.out.println("Biometria habilitada e verificada com sucesso.");
+                } else {
+                    System.out.println("Biometria desabilitada e verificada com sucesso.");
+                }
+            } catch (IOException | InterruptedException e) {
+                System.err.println("Erro ao executar o comando: " + e.getMessage());
+            }
         }
     }
     }

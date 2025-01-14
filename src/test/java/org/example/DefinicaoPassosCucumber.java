@@ -1199,6 +1199,18 @@ public class DefinicaoPassosCucumber {
         cadastro.buscarInput0email();
         cadastro.inserirInputEmail(codigo);
     }
+
+    @E("insiro o token sms invalido p login")
+    public void insiroOTokenSmsInvalidoPLogin() throws InterruptedException {
+        AppiumDriver driver = AppiumDriverConfig.Instance().driver;
+        EsqueciMinhaSenha telaEsqueciminhaSenha = new EsqueciMinhaSenha(driver);
+
+        Thread.sleep(2000);
+        telaEsqueciminhaSenha.buscarInput0sms();
+        telaEsqueciminhaSenha.clicarInput0();
+        telaEsqueciminhaSenha.inserirInputs("111111");
+        Thread.sleep(2000);
+    }
 }
 
 
