@@ -79,7 +79,7 @@ Funcionalidade: Perfil do usuário
 
 
   Cenário: Meu telefone de contato Autopass
-    #        Dado que eu acesso a tela home do aplicativo
+            Dado que eu acesso a tela home do aplicativo
     Dado que acesso o perfil de usuário
     Quando clico na opção "Seus telefones de contato"
     E seleciono a opção "Celular (Transporte)"

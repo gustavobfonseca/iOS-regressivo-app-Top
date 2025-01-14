@@ -37,18 +37,18 @@ public class StepDefinitionMobilidade {
         telaLogin.buscarElementos();
         telaLogin.buscarElementos();
         telaLogin.limparCamposLogin();
-        telaLogin.preencherFormulario("54926406829", "Teste@1234");
+        telaLogin.preencherFormulario("54926406829", "Teste@123");
         MobileElement tela = (MobileElement) driver.findElementByAccessibilityId("Que bom ter você aqui! Confirme seus dados para continuar. \uEA38 CPF Espaço para digitar o cpf  icon_Espaço para digitar o cpf  \uE985 SENHA Espaço para digitar senha \uE91C Esqueci minha senha. env Botão para acessar o aplicativo É novo por aqui?  Crie uma conta.");
         tela.click();
         telaLogin.logar();
         Home telaHome = new Home(driver);
 
-        try {
-            telaHome.arrastarModalParaBaixo();
-        } catch (Exception e) {
-//            telaHome.clicarBotaoModalQueroConhecer();
-            throw new RuntimeException("nao arrastou o modal para baixo");
-        }
+//        try {
+//            telaHome.arrastarModalParaBaixo();
+//        } catch (Exception e) {
+////            telaHome.clicarBotaoModalQueroConhecer();
+//            throw new RuntimeException("nao arrastou o modal para baixo");
+//        }
         telaHome.buscarMensagemBemVindo();
     }
 
