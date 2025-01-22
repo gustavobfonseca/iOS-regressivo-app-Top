@@ -72,14 +72,14 @@ public class CacheAppConfig {
         }
     }
 
-    private static void killApp() throws Exception {
+    public static void killApp() throws Exception {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         driver.terminateApp(BUNDLE_ID);
 //        System.out.println("✅ Aplicativo encerrado com sucesso.");
         //        Thread.sleep(3000);
     }
 
-    private static void relancarApp() throws Exception {
+    public static void relancarApp() throws Exception {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
 
         HashMap<String, Object> params = new HashMap<>();

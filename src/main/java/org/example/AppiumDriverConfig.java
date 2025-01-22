@@ -27,7 +27,7 @@ public class AppiumDriverConfig {
         config.setCapability("automationName", "XCUITest");
         config.setCapability("udid", "502683C8-727A-44F6-97B1-3CB917F2A409");
         config.setCapability("platformVersion", "16.2");
-        config.setCapability("bundleId", "br.com.autopass.top.builders.dev.hml"); // Substitua pelo Bundle ID correto
+        config.setCapability("bundleId", "br.com.autopass.top.builders.dev.hml");
         config.setCapability("noReset", false); // Não mantém cache nem preferências
         config.setCapability("fullReset", false); // Não reinstala o app, mas limpa os dados
         URL urlConexao;

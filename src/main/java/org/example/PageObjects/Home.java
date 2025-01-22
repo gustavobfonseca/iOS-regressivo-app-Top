@@ -241,8 +241,15 @@ public class Home {
         espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//XCUIElementTypeOther[@name=\"\uEA27\"])[2]")));
         iconePerfil = (MobileElement) driver.findElementByXPath("(//XCUIElementTypeOther[@name=\"\uEA27\"])[2]");
         iconePerfil.click();
-
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.id("DADOS PESSOAIS")));
+        try {
+            espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[@name=\"DADOS PESSOAIS\"]")));
+        }catch (TimeoutException e){
+            System.out.println("nao carregou o perfil, tentando novamente");
+//            MobileElement tentarNovamente = (MobileElement) driver.findElementById("TENTAR NOVAMENTE");
+//            tentarNovamente.click();
+            GestosEmulador.clickCoordenada(200,700);
+            espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[@name=\"DADOS PESSOAIS\"]")));
+        }
     }
 
     public void clicarPerfilSenhaDoAplicativo() {
@@ -325,7 +332,10 @@ public class Home {
     }
 
     public void rolarScrollViewHorizontalmente() throws InterruptedException {
-        MobileElement scrollView =(MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[@name=\" Bilhetes\nQR Code  Cartão\nTOP  Bilhete\nÚnico  Mapa das\nEstações  Mobilidade Barra de rolagem vertical, 2 páginas\"]/XCUIElementTypeScrollView");
+        MobileElement scrollView =(MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[@name=\"\uE9C1 Bilhetes\n" +
+                "QR Code \uE884 Cartão\n" +
+                "TOP \uE989 Mapa das\n" +
+                "Estações \uE906 Mobilidade Barra de rolagem vertical, 2 páginas\"]/XCUIElementTypeScrollView");
 
         // Rolar da direita para a esquerda
         driver.executeScript("mobile: swipe", ImmutableMap.of(

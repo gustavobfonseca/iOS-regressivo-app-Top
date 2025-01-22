@@ -9,7 +9,6 @@ Funcionalidade: Mobilidade
 
 
   Cenário:02 Mobilidade
-#    Dado que eu esteja na tela home do aplicativo
     Dado que eu acesso a tela home do aplicativo
     Quando clico na opção "Mobilidade"
     Então visualizo a tela de "Disponível em breve"

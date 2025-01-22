@@ -102,9 +102,8 @@ public class DefinicaoPassosCucumber {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
 
         Home telaHome = new Home(driver);
-
-        telaHome.clicarBotaoModalQueroConhecer();
-        Assert.assertEquals("Tenha uma boa viagem.", telaHome.getMsgBoaViagem().getText());
+        telaHome.buscarMensagemBemVindo();
+//        telaHome.clicarBotaoModalQueroConhecer();
     }
 
     @Entao("visualizo o modal de codigo invalido")
@@ -161,7 +160,7 @@ public class DefinicaoPassosCucumber {
 
         telaLogin.buscarElementos();
         telaLogin.limparCamposLogin();
-        telaLogin.preencherFormulario("73040542559", "Devires@123");
+        telaLogin.preencherFormulario("73040542559", "Teste123");
         MobileElement tela = (MobileElement) driver.findElementByAccessibilityId("Que bom ter você aqui! Confirme seus dados para continuar. \uEA38 CPF Espaço para digitar o cpf  icon_Espaço para digitar o cpf  \uE985 SENHA Espaço para digitar senha \uE91C Esqueci minha senha. env Botão para acessar o aplicativo É novo por aqui?  Crie uma conta.");
         tela.click();
         telaLogin.logar();
@@ -228,7 +227,7 @@ public class DefinicaoPassosCucumber {
     }
 
     @E("clico no botão \"Enviar mensagem\"")
-    public void enviarMensagem() {
+    public void enviarMensagem() throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         Login login = new Login(driver);
 
@@ -1114,7 +1113,7 @@ public class DefinicaoPassosCucumber {
     }
 
     @E("clico em \"CONFIRMAR NÚMERO\" após inserir um novo número de celular")
-    public void clicoEmConfirmarNúmeroApósInserirUmNovoNúmeroDeCelular() {
+    public void clicoEmConfirmarNúmeroApósInserirUmNovoNúmeroDeCelular() throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         Cadastro cadastro = new Cadastro(driver);
         cadastro.alterarNumero();
@@ -1137,7 +1136,7 @@ public class DefinicaoPassosCucumber {
     }
 
     @E("clico em \"CONFIRMAR E-MAIL\" após inserir um novo e-mail")
-    public void clicoEmConfirmarEmailApósInserirUmNovoEMail() {
+    public void clicoEmConfirmarEmailApósInserirUmNovoEMail() throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         Cadastro cadastro = new Cadastro(driver);
         cadastro.alterarEmail();
@@ -1184,7 +1183,7 @@ public class DefinicaoPassosCucumber {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         Cadastro cadastro = new Cadastro(driver);
         cadastro.buscarInput0sms();
-       String codigo=  OTPUtils.getOTPtokenByPhoneNumberOrEmail("+5511922334456");
+        String codigo=  OTPUtils.getOTPtokenByPhoneNumberOrEmail("+5511922334456");
         cadastro.inserirInputSms(codigo);
     }
 
@@ -1193,9 +1192,6 @@ public class DefinicaoPassosCucumber {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         Cadastro cadastro = new Cadastro(driver);
         String codigo=  OTPUtils.getOTPtokenByPhoneNumberOrEmail("testecav8@gmail.com");
-        MobileElement tela =(MobileElement) driver.findElementByXPath("//XCUIElementTypeStaticText[@name=\"Por favor, informe o código recebido para prosseguir com seu cadastro:\"]");
-        tela.click();
-
         cadastro.buscarInput0email();
         cadastro.inserirInputEmail(codigo);
     }

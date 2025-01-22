@@ -3,6 +3,7 @@ package org.example;
 import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import org.example.PageObjects.CacheAppConfig;
 import org.openqa.selenium.remote.RemoteWebElement;
 
 import java.io.IOException;
@@ -75,27 +76,29 @@ public class GestosEmulador {
         }
     }
 
-    public static void biometriaEmulador(String deviceName, int estado) {
-        if (estado != 1 && estado != 0) {
-            System.out.println("Parâmetros: 1 para ativar biometria ou 0 para desativar biometria.");
-        } else {
-            try {
-                String enableBiometricCommand = String.format("xcrun simctl spawn '%s' notifyutil -s com.apple.BiometricKit.enrollmentChanged '%d'", deviceName, estado);
-                String checkBiometricCommand = String.format("xcrun simctl spawn '%s' notifyutil -p com.apple.BiometricKit.enrollmentChanged", deviceName);
-                ProcessBuilder processBuilderEnable = new ProcessBuilder("/bin/bash", "-c", enableBiometricCommand);
-                Process processEnable = processBuilderEnable.start();
-                processEnable.waitFor();
-                ProcessBuilder processBuilderCheck = new ProcessBuilder("/bin/bash", "-c", checkBiometricCommand);
-                Process processCheck = processBuilderCheck.start();
-                processCheck.waitFor();
-                if (estado == 1) {
-                    System.out.println("Biometria habilitada e verificada com sucesso.");
-                } else {
-                    System.out.println("Biometria desabilitada e verificada com sucesso.");
-                }
-            } catch (IOException | InterruptedException e) {
-                System.err.println("Erro ao executar o comando: " + e.getMessage());
-            }
+    public static void controlarBiometriaEmulador(String deviceName, boolean habilitar) {
+        try {
+            CacheAppConfig.killApp();
+            CacheAppConfig.limparArmazenamento();
+
+            // Define o comando para alterar a biometria com base no valor booleano
+            int estado = habilitar ? 1 : 0;
+            String alterarBiometriaCommand = String.format("xcrun simctl biometric enroll %s", deviceName);
+            System.out.println(alterarBiometriaCommand);
+            // Executa o comando para alterar a biometria
+            ProcessBuilder processBuilder = new ProcessBuilder("/bin/bash", "-c", alterarBiometriaCommand);
+            Process process = processBuilder.start();
+            process.waitFor();
+
+            // Verifica o estado alterado
+            String resultado = habilitar ? "habilitada" : "desabilitada";
+            System.out.println("Biometria " + resultado + " com sucesso.");
+
+            CacheAppConfig.relancarApp();
+        } catch (IOException | InterruptedException e) {
+            System.err.println("Erro ao executar o comando: " + e.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
     }

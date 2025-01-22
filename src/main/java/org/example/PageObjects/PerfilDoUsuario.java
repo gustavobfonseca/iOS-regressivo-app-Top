@@ -5,8 +5,10 @@ import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
+import org.example.GestosEmulador;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -35,8 +37,16 @@ public class PerfilDoUsuario {
     }
 
     public void buscarElementos() {
-        WebDriverWait espera = new WebDriverWait(driver, 10);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@text=\"DADOS PESSOAIS\"]")));
+        WebDriverWait espera = new WebDriverWait(driver, 30);
+        try {
+            espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[@name=\"DADOS PESSOAIS\"]")));
+        }catch (TimeoutException e){
+            System.out.println("nao carregou a página");
+//            MobileElement tentarNovamente = (MobileElement) driver.findElementById("TENTAR NOVAMENTE");
+//            tentarNovamente.click();
+            GestosEmulador.clickCoordenada(200,700);
+            espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[@name=\"DADOS PESSOAIS\"]")));
+        }
         dadosPessoais = (MobileElement) driver.findElementByAccessibilityId("DADOS PESSOAIS");
         voltarHome = (MobileElement) driver.findElementByXPath("(//XCUIElementTypeOther[@name=\"\uE82F\"])[2]");
     }
@@ -227,15 +237,14 @@ public class PerfilDoUsuario {
     public void clicarSair() {
         WebDriverWait espera = new WebDriverWait(driver, 10);
 
-        botaoSair = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true))" +
-                ".scrollIntoView(new UiSelector().text(\"Sair do Aplicativo\"));"));
+        GestosEmulador.rolarTelaVertical("//XCUIElementTypeOther[@name=\"Sair do Aplicativo\"]");
 
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@text=\"Sair do Aplicativo\"]")));
-        botaoSair = (MobileElement) driver.findElementByXPath("//android.widget.TextView[@text=\"Sair do Aplicativo\"]");
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeOther[@name=\"Sair do Aplicativo\"]")));
+        botaoSair = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[@name=\"Sair do Aplicativo\"]");
         botaoSair.click();
 
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.Button[@resource-id=\"android:id/button1\"]")));
-        botaoConfirmarSair = (MobileElement) driver.findElementByXPath("//android.widget.Button[@resource-id=\"android:id/button1\"]");
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"Sair\"]")));
+        botaoConfirmarSair = (MobileElement) driver.findElementByXPath("//XCUIElementTypeButton[@name=\"Sair\"]");
         botaoConfirmarSair.click();
     }
 

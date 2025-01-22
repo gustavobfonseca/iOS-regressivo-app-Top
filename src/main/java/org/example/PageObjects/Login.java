@@ -8,6 +8,7 @@ package org.example.PageObjects;
 import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import org.example.GestosEmulador;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
@@ -114,14 +115,17 @@ public class Login {
 
     public void clicarBotaoFecharModalCPFSenha() {
         System.out.println("click fechar modal");
-        botaoFecharModalErroCPFSenha.click();
+        GestosEmulador.clickCoordenada(190,745);
+//        botaoFecharModalErroCPFSenha.click();
     }
 
     public void clicarBotaoAtendimentoWhatsApp() throws InterruptedException {
-        WebDriverWait espera = new WebDriverWait(this.driver, 10L);
-        espera.until(ExpectedConditions.elementToBeClickable(By.id("botao_modal_bloqueio")));
-        this.botaoAtendimentoViaWhatsApp = (MobileElement) this.driver.findElementByAccessibilityId("botao_modal_bloqueio");
-        this.botaoAtendimentoViaWhatsApp.click();
+//        WebDriverWait espera = new WebDriverWait(this.driver, 10L);
+//        espera.until(ExpectedConditions.presenceOfElementLocated(By.id("botao_modal_bloqueio")));
+//        this.botaoAtendimentoViaWhatsApp = (MobileElement) this.driver.findElementByAccessibilityId("botao_modal_bloqueio");
+//        this.botaoAtendimentoViaWhatsApp.click();
+        Thread.sleep(3000);
+        GestosEmulador.clickCoordenada(200,786);
     }
 
     public void clicarCentralDeAjuda() {
@@ -133,11 +137,13 @@ public class Login {
         this.criarConta.click();
     }
 
-    public void clicarEnviarMensagem() {
-        WebDriverWait espera = new WebDriverWait(this.driver, 10L);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.id("Abrir suporte via WhatsApp")));
-        this.enviarMensagem = (MobileElement) this.driver.findElementByAccessibilityId("Abrir suporte via WhatsApp");
-        this.enviarMensagem.click();
+    public void clicarEnviarMensagem() throws InterruptedException {
+        Thread.sleep(3000);
+        GestosEmulador.clickCoordenada(200,740);
+//        WebDriverWait espera = new WebDriverWait(this.driver, 10L);
+//        espera.until(ExpectedConditions.presenceOfElementLocated(By.id("Abrir suporte via WhatsApp")));
+//        this.enviarMensagem = (MobileElement) this.driver.findElementByAccessibilityId("Abrir suporte via WhatsApp");
+//        this.enviarMensagem.click();
     }
 
     public void verificarRedirecionamentoWhatsapp() {

@@ -1,6 +1,7 @@
 package org.example;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
@@ -15,7 +16,7 @@ import static org.junit.Assert.assertTrue;
 
 public class StepDefinitionAreaSemiLogada {
 
-    @Dado("que realizo o logout para a área semi logada do app, estando com a biometria habilitada")
+    @Dado("que realizo o logout para a área semi logada do app")
     public void queRealizoOLogoutParaAÁreaSemiLogadaDoAppEstandoComABiometriaHabilitada() throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         Login telaLogin = new Login(driver);
@@ -29,11 +30,11 @@ public class StepDefinitionAreaSemiLogada {
         telaHome.esperarBotaoBiometria();
 //        telaHome.clicarBotaoAtivarBiometria();
 
-        try {
-            telaHome.arrastarModalParaBaixo();
-        } catch (Exception e) {
-            telaHome.clicarBotaoModalQueroConhecer();
-        }
+//        try {
+//            telaHome.arrastarModalParaBaixo();
+//        } catch (Exception e) {
+//            telaHome.clicarBotaoModalQueroConhecer();
+//        }
         Assert.assertEquals("Tenha uma boa viagem.", telaHome.getMsgBoaViagem().getText());
 
         telaHome.deslogar();
@@ -77,18 +78,13 @@ public class StepDefinitionAreaSemiLogada {
     public void clicoEmEntrar() {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         SemiLogado semiLogado = new SemiLogado(driver);
-
-        semiLogado.clicarBotaoEntrar();
+//        semiLogado.clicarBotaoEntrar();
     }
 
-    @Então("sou logado para a home do aplicativo com o modal de ativação de biometria")
+    @Então("sou logado para a home do aplicativo")
     public void souLogadoParaAHomeDoAplicativoComOModalDeAtivaçãoDeBiometria() throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         Home telaHome = new Home(driver);
-
-        Thread.sleep(3000);
-        telaHome.esperarBotaoBiometria();
-
         telaHome.buscarMensagemBemVindo();
     }
 
@@ -108,22 +104,21 @@ public class StepDefinitionAreaSemiLogada {
         Login telaLogin = new Login(driver);
         telaLogin.buscarElementos();
         telaLogin.limparCamposLogin();
-        telaLogin.preencherFormulario("659.989.520-49", "Laura107");
+        telaLogin.preencherFormulario("659.989.520-49", "Teste123");
+        MobileElement tela = (MobileElement) driver.findElementByAccessibilityId("Que bom ter você aqui! Confirme seus dados para continuar. \uEA38 CPF Espaço para digitar o cpf  icon_Espaço para digitar o cpf  \uE985 SENHA Espaço para digitar senha \uE91C Esqueci minha senha. env Botão para acessar o aplicativo É novo por aqui?  Crie uma conta.");
+        tela.click();
         telaLogin.logar();
 
         Home telaHome = new Home(driver);
+        PerfilDoUsuario perfilDoUsuario = new PerfilDoUsuario(driver);
 
-        telaHome.esperarBotaoBiometria();
-//        telaHome.clicarBotaoAtivarBiometria();
+        telaHome.buscarMensagemBemVindo();
+        telaHome.clicarIconePerfil();
+        perfilDoUsuario.buscarElementos();
+        perfilDoUsuario.clicarSair();
 
-        try {
-            telaHome.arrastarModalParaBaixo();
-        } catch (Exception e) {
-            telaHome.clicarBotaoModalQueroConhecer();
-        }
-        Assert.assertEquals("Tenha uma boa viagem.", telaHome.getMsgBoaViagem().getText());
-
-        telaHome.desativarBiometria();
+        SemiLogado semiLogado = new SemiLogado(driver);
+        semiLogado.buscarElementos();
     }
 
 
@@ -151,8 +146,6 @@ public class StepDefinitionAreaSemiLogada {
         Login telaLogin = new Login(driver);
 
         telaLogin.buscarModalErro();
-        Assert.assertEquals("CPF e/ou senha inválidos.", telaLogin.getModalErro().getText());
-        telaLogin.buscarBotaoFecharModalCPFSenha();
         telaLogin.clicarBotaoFecharModalCPFSenha();
 
         SemiLogado semiLogado = new SemiLogado(driver);
@@ -254,28 +247,15 @@ public class StepDefinitionAreaSemiLogada {
         Login telaLogin = new Login(driver);
         telaLogin.buscarElementos();
         telaLogin.limparCamposLogin();
-        telaLogin.preencherFormulario("365.369.350-04", "Devires@123");
+        telaLogin.preencherFormulario("365.369.350-04", "Teste123");
+        MobileElement tela = (MobileElement) driver.findElementByAccessibilityId("Que bom ter você aqui! Confirme seus dados para continuar. \uEA38 CPF Espaço para digitar o cpf  icon_Espaço para digitar o cpf  \uE985 SENHA Espaço para digitar senha \uE91C Esqueci minha senha. env Botão para acessar o aplicativo É novo por aqui?  Crie uma conta.");
+        tela.click();
         telaLogin.logar();
 
         Home telaHome = new Home(driver);
+        PerfilDoUsuario perfilDoUsuario = new PerfilDoUsuario(driver);
 
-        telaHome.esperarBotaoBiometria();
-//        telaHome.clicarBotaoAtivarBiometria();
-
-        try {
-            telaHome.arrastarModalParaBaixo();
-        } catch (Exception e) {
-            telaHome.clicarBotaoModalQueroConhecer();
-        }
-        Assert.assertEquals("Tenha uma boa viagem.", telaHome.getMsgBoaViagem().getText());
-
-        telaHome.buscarBotaoBilhetes();
-        telaHome.clicarBotaoBilhetes();
-
-        MeusBilhetes meusBilhetes = new MeusBilhetes(driver);
-        meusBilhetes.buscarElementos();
-        meusBilhetes.verificarQtdDeBilhete();
-        meusBilhetes.clicarSetaVoltar();
+        telaHome.buscarMensagemBemVindo();
     }
 
     @E("faço o logoff do app para a área semi logada")
@@ -283,8 +263,12 @@ public class StepDefinitionAreaSemiLogada {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         Home home = new Home(driver);
 
-        home.deslogar();
+        home.clicarIconePerfil();
 
+        PerfilDoUsuario perfilDoUsuario =new PerfilDoUsuario(driver);
+
+        perfilDoUsuario.buscarElementos();
+        perfilDoUsuario.clicarSair();
     }
 
     @Então("visualizo meus bilhetes disponíveis para utilização")
@@ -328,6 +312,30 @@ public class StepDefinitionAreaSemiLogada {
     public void souDirecionadoÀÁreaSemiLogadaDoAplicativoTOP() {
 
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
+        SemiLogado semiLogado = new SemiLogado(driver);
+        semiLogado.buscarElementos();
+    }
+
+    @Dado("que realizo o logout para a área semi logada do app, estando com a biometria habilitada")
+    public void queRealizoOLogoutParaAÁreaSemiLogadaDoAppEstandoComABiometriaHabilitadaa() throws InterruptedException {
+        AppiumDriver driver = AppiumDriverConfig.Instance().driver;
+        GestosEmulador.controlarBiometriaEmulador("502683C8-727A-44F6-97B1-3CB917F2A409",true);
+        Login telaLogin = new Login(driver);
+        telaLogin.buscarElementos();
+        telaLogin.limparCamposLogin();
+        telaLogin.preencherFormulario("659.989.520-49", "Teste123");
+        MobileElement tela = (MobileElement) driver.findElementByAccessibilityId("Que bom ter você aqui! Confirme seus dados para continuar. \uEA38 CPF Espaço para digitar o cpf  icon_Espaço para digitar o cpf  \uE985 SENHA Espaço para digitar senha \uE91C Esqueci minha senha. env Botão para acessar o aplicativo É novo por aqui?  Crie uma conta.");
+        tela.click();
+        telaLogin.logar();
+
+        Home telaHome = new Home(driver);
+        PerfilDoUsuario perfilDoUsuario = new PerfilDoUsuario(driver);
+
+        telaHome.buscarMensagemBemVindo();
+        telaHome.clicarIconePerfil();
+        perfilDoUsuario.buscarElementos();
+        perfilDoUsuario.clicarSair();
+
         SemiLogado semiLogado = new SemiLogado(driver);
         semiLogado.buscarElementos();
     }

@@ -3,14 +3,14 @@ Funcionalidade: Bilhete Unico
 
   Cenario:01 Onboarding Bilhete Unico
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+    E submeto as seguintes credenciais validas para login, cpf "76795834042", senha "Teste@123"
     E acesso a home do aplicativo
     Quando navego ate Bilhete Unico
     Entao visualizo a tela de onboarding de Bilhete Unico
 
   Cenario:02 Modal Onde Encontar o Numero do Bilhete
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+    E submeto as seguintes credenciais validas para login, cpf "76795834042", senha "Teste@123"
     E acesso a home do aplicativo
     Quando navego ate Bilhete Unico
     E clico em Cadasrar Bilhete Unico
@@ -19,7 +19,7 @@ Funcionalidade: Bilhete Unico
 
   Cenario:03 Cadastro de Bilhete Unico
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+    E submeto as seguintes credenciais validas para login, cpf "76795834042", senha "Teste@123"
     E acesso a home do aplicativo
     Quando navego ate Bilhete Unico
     E clico em Cadasrar Bilhete Unico
@@ -30,7 +30,7 @@ Funcionalidade: Bilhete Unico
 
   Cenario:04 Validacao de recarga
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+    E submeto as seguintes credenciais validas para login, cpf "76795834042", senha "Teste@123"
     E acesso a home do aplicativo
     Quando navego ate Bilhete Unico
     E clico em Saiba Mais na tela de BU
@@ -38,7 +38,7 @@ Funcionalidade: Bilhete Unico
 
   Cenario:05 Cadastro de segundo Bilhete
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+    E submeto as seguintes credenciais validas para login, cpf "76795834042", senha "Teste@123"
     E acesso a home do aplicativo
     Quando navego ate Bilhete Unico
     E clico em adicionar novo cartao
@@ -49,7 +49,7 @@ Funcionalidade: Bilhete Unico
 
   Cenario:06 Cadastro de Bilhete já vinculado ao CPF
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+    E submeto as seguintes credenciais validas para login, cpf "76795834042", senha "Teste@123"
     E acesso a home do aplicativo
     Quando navego ate Bilhete Unico
     E clico em adicionar novo cartao
@@ -60,7 +60,7 @@ Funcionalidade: Bilhete Unico
 
   Cenario:07 Cadastro de terceiro Bilhete
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+    E submeto as seguintes credenciais validas para login, cpf "76795834042", senha "Teste@123"
     E acesso a home do aplicativo
     Quando navego ate Bilhete Unico
     E clico em adicionar novo cartao
@@ -72,7 +72,7 @@ Funcionalidade: Bilhete Unico
 
   Cenario:08 Edicao de bilhete
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+    E submeto as seguintes credenciais validas para login, cpf "76795834042", senha "Teste@123"
     E acesso a home do aplicativo
     Quando navego ate Bilhete Unico
     E clico no bilhete unico de numero "533727865" e nome "BU Matheus 3"
@@ -82,7 +82,7 @@ Funcionalidade: Bilhete Unico
 
   Cenario:09 Recarga comum
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+    E submeto as seguintes credenciais validas para login, cpf "76795834042", senha "Teste@123"
     E acesso a home do aplicativo
     Quando navego ate Bilhete Unico
     E clico no bilhete unico de numero "510356863"
@@ -94,7 +94,7 @@ Funcionalidade: Bilhete Unico
 
   Cenario:10 Recarga comum codigo pix expirado
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+    E submeto as seguintes credenciais validas para login, cpf "76795834042", senha "Teste@123"
     E acesso a home do aplicativo
     Quando navego ate Bilhete Unico
     E clico no bilhete unico de numero "510356863"
@@ -106,7 +106,7 @@ Funcionalidade: Bilhete Unico
 
   Cenario:11 Recarga diaria Onibus Metro e Trem
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+    E submeto as seguintes credenciais validas para login, cpf "76795834042", senha "Teste@123"
     E acesso a home do aplicativo
     Quando navego ate Bilhete Unico
     E clico no bilhete unico de numero "510356863"
@@ -119,7 +119,7 @@ Funcionalidade: Bilhete Unico
 
   Cenario:12 Recarga diaria Metro e Trem
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+    E submeto as seguintes credenciais validas para login, cpf "76795834042", senha "Teste@123"
     E acesso a home do aplicativo
     Quando navego ate Bilhete Unico
     E clico no bilhete unico de numero "510356863"
@@ -132,7 +132,7 @@ Funcionalidade: Bilhete Unico
 
   Cenario:13 Recarga diaria Onibus
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+    E submeto as seguintes credenciais validas para login, cpf "76795834042", senha "Teste@123"
     E acesso a home do aplicativo
     Quando navego ate Bilhete Unico
     E clico no bilhete unico de numero "510356863"
@@ -145,7 +145,7 @@ Funcionalidade: Bilhete Unico
 
   Cenario:14 Recarga diária codigo pix expirado
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+    E submeto as seguintes credenciais validas para login, cpf "76795834042", senha "Teste@123"
     E acesso a home do aplicativo
     Quando navego ate Bilhete Unico
     E clico no bilhete unico de numero "510356863"
@@ -158,7 +158,7 @@ Funcionalidade: Bilhete Unico
 
   Cenario:15 Recarga mensal Onibus Metro e Trem
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+    E submeto as seguintes credenciais validas para login, cpf "76795834042", senha "Teste@123"
     E acesso a home do aplicativo
     Quando navego ate Bilhete Unico
     E clico no bilhete unico de numero "510356863"
@@ -170,7 +170,7 @@ Funcionalidade: Bilhete Unico
 
   Cenario:16 Recarga mensal Metro e Trem
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+    E submeto as seguintes credenciais validas para login, cpf "76795834042", senha "Teste@123"
     E acesso a home do aplicativo
     Quando navego ate Bilhete Unico
     E clico no bilhete unico de numero "510356863"
@@ -182,7 +182,7 @@ Funcionalidade: Bilhete Unico
 
   Cenario:17 Recarga mensal Onibus
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+    E submeto as seguintes credenciais validas para login, cpf "76795834042", senha "Teste@123"
     E acesso a home do aplicativo
     Quando navego ate Bilhete Unico
     E clico no bilhete unico de numero "510356863"
@@ -194,7 +194,7 @@ Funcionalidade: Bilhete Unico
 
   Cenario:18 Recarga Mensal codigo pix expirado
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+    E submeto as seguintes credenciais validas para login, cpf "76795834042", senha "Teste@123"
     E acesso a home do aplicativo
     Quando navego ate Bilhete Unico
     E clico no bilhete unico de numero "510356863"
@@ -206,7 +206,7 @@ Funcionalidade: Bilhete Unico
 
   Cenario:19 Exclusão de Bilhete - 3 cadastrados
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+    E submeto as seguintes credenciais validas para login, cpf "76795834042", senha "Teste@123"
     E acesso a home do aplicativo
     Quando navego ate Bilhete Unico
     E excluo o cartao numero "533727865" e nome "MATHEUS ESTUDANTE"
@@ -214,7 +214,7 @@ Funcionalidade: Bilhete Unico
 
   Cenario:20 Exclusão de Bilhete - 2 cadastrados
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+    E submeto as seguintes credenciais validas para login, cpf "76795834042", senha "Teste@123"
     E acesso a home do aplicativo
     Quando navego ate Bilhete Unico
     E excluo o cartao numero "510356863" e nome "BU Matheus 2"
@@ -222,7 +222,7 @@ Funcionalidade: Bilhete Unico
 
   Cenario:21 Exclusão de Bilhete - 1 cadastrado
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+    E submeto as seguintes credenciais validas para login, cpf "76795834042", senha "Teste@123"
     E acesso a home do aplicativo
     Quando navego ate Bilhete Unico
     E excluo o único cartao cadastrado
@@ -230,7 +230,7 @@ Funcionalidade: Bilhete Unico
 
   Cenario:22 Cadastro de BU vinculado a outro CPF
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+    E submeto as seguintes credenciais validas para login, cpf "76795834042", senha "Teste@123"
     E acesso a home do aplicativo
     Quando navego ate Bilhete Unico
     E clico em Cadasrar Bilhete Unico
