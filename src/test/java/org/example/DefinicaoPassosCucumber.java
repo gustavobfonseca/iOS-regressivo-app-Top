@@ -220,14 +220,14 @@ public class DefinicaoPassosCucumber {
         telaEsqueciSenha.clicarBotaoConfirmar();
     }
 
-    @Quando("clico na opção \"Central de Ajuda\"")
+    @Quando("clico na opção Central de Ajuda")
     public void clicoCentralDeAjuda() {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         Login login = new Login(driver);
         login.clicarCentralDeAjuda();
     }
 
-    @E("clico no botão \"Enviar mensagem\"")
+    @E("clico no botão Enviar mensagem")
     public void enviarMensagem() {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         Login login = new Login(driver);

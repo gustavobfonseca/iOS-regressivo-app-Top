@@ -26,7 +26,7 @@ public class StepDefinitionAreaSemiLogada {
 
         Home telaHome = new Home(driver);
 
-        telaHome.esperarBotaoBiometria();
+//        telaHome.esperarBotaoBiometria();
 //        telaHome.clicarBotaoAtivarBiometria();
 
         try {
