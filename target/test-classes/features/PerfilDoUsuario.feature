@@ -1,33 +1,34 @@
 # language: pt
 Funcionalidade: Perfil do usuário
-
-  Cenário:01 Inclusão de foto de perfil via câmera
-    Dado que eu acesso a tela home do aplicativo
-    E não possua foto de perfil
-    E sem ter a permissão de acesso à câmera habilitada para o aplicativo TOP
-    Quando clico em minha apresentação na Home
-    E clico na opção "Editar" em "Foto de Perfil"
-    E seleciono a opção "Tirar Foto" no modal
-    E habilito a permissão de acesso à câmera
-    E seleciono a opção "Tirar Foto" no modal
-    E submeto o envio de uma foto através da câmera do dispositivo,
-    Então visualizo a foto enviada na tela de perfil de usuário
-    E na apresentação da Home.
-
 # BLOQUEADO
-#  Cenário: Remoção de foto de perfil
-#    Dado que acesso a Home do aplicativo tendo foto de perfil
+
+#  Cenário:01 Inclusão de foto de perfil via câmera
+#    Dado que eu acesso a tela home do aplicativo
 #    Quando clico em minha apresentação na Home
+#    E não possua foto de perfil
+##    E sem ter a permissão de acesso à câmera habilitada para o aplicativo TOP
 #    E clico na opção "Editar" em "Foto de Perfil"
-#    E seleciono a opção "Remover minha foto" no modal
-#    Então minha foto é removida no perfil de usuário
+#    E seleciono a opção "Tirar Foto" no modal
+#    E habilito a permissão de acesso à câmera
+#    E seleciono a opção "Tirar Foto" no modal
+#    E submeto o envio de uma foto através da câmera do dispositivo,
+#    Então visualizo a foto enviada na tela de perfil de usuário
+#    E na apresentação da Home.
+
+  Cenário: Remoção de foto de perfil
+    Dado que eu acesso a tela home do aplicativo
+    Quando clico em minha apresentação na Home
+    E possua foto de perfil
+    E clico na opção "Editar" em "Foto de Perfil"
+    E seleciono a opção Remover minha foto no modal
+    Então minha foto é removida no perfil de usuário
 #    E removida na apresentação da Home
 
 
   Cenário:02 Inclusão de foto de perfil via galeria
-#    Dado que eu acesso a tela home do aplicativo
-    Dado que acesso a Home do aplicativo sem possuir foto de perfil
-    E sem ter a permissão de acesso à galeria habilitada para o aplicativo TOP
+    Dado que eu acesso a tela home do aplicativo
+    E não possua foto de perfil
+#    E sem ter a permissão de acesso à galeria habilitada para o aplicativo TOP
     Quando clico em minha apresentação na Home
     E clico na opção "Editar" em "Foto de Perfil"
     E seleciono a opção Escolher Foto no modal
