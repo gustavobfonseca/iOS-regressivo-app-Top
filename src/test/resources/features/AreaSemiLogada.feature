@@ -10,8 +10,8 @@ Funcionalidade: Área Semi Logada
     E clico em confirmar sms
     E insiro o token email
     E clico em confirmar email
-    E insiro a senha "Devires@123"
-    E confirmo a nova senha "Devires@123"
+    E insiro a senha "Teste123"
+    E confirmo a nova senha "Teste123"
     E clico em confirmar redefinir senha
     Então acesso a tela home do aplicativo
 

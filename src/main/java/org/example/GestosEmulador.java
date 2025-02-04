@@ -3,9 +3,16 @@ package org.example;
 import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.ElementOption;
+import org.openqa.selenium.By;
 import org.openqa.selenium.remote.RemoteWebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,10 +28,10 @@ public class GestosEmulador {
         driver.executeScript("mobile: tap", params);
     }
 
-    public void rolarScrollViewHorizontalmente() throws InterruptedException {
+    public static void rolarScrollViewHorizontalmente(String xpathScrollView) throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
 
-        MobileElement scrollView =(MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[@name=\" Bilhetes\nQR Code  Cartão\nTOP  Bilhete\nÚnico  Mapa das\nEstações  Mobilidade Barra de rolagem vertical, 2 páginas\"]/XCUIElementTypeScrollView");
+        MobileElement scrollView =(MobileElement) driver.findElementByXPath(xpathScrollView);
 
         // Rolar da direita para a esquerda
         driver.executeScript("mobile: swipe", ImmutableMap.of(
@@ -33,6 +40,15 @@ public class GestosEmulador {
         ));
 
         Thread.sleep(500);
+    }
+    public static void rolarTelaVertical() {
+        AppiumDriver driver = AppiumDriverConfig.Instance().driver;
+
+        HashMap<String, Object> scrollObject = new HashMap<>();
+        scrollObject.put("direction", "down");  // Direção do scroll (down ou up)
+        scrollObject.put("percent", 0.05);      // Percentual da distância
+
+        driver.executeScript("mobile: scroll", scrollObject);
     }
 
     public static void rolarTelaVertical(String xpath) {
@@ -97,5 +113,34 @@ public class GestosEmulador {
                 System.err.println("Erro ao executar o comando: " + e.getMessage());
             }
         }
+
     }
+
+
+    public static void segurarEArrastar(String xpathOrigem, String xpathDestino) {
+        System.out.println("Segurar e arrastar");
+
+        AppiumDriver<MobileElement> driver = AppiumDriverConfig.Instance().driver;
+        WebDriverWait espera = new WebDriverWait(driver, 20);
+
+        // Esperar pelos elementos de origem e destino
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpathOrigem)));
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpathDestino)));
+
+        MobileElement origem = driver.findElementByXPath(xpathOrigem);
+        MobileElement destino = driver.findElementByXPath(xpathDestino);
+
+        // Configurar o gesto com coordenadas dos elementos
+        HashMap<String, Object> dragParams = new HashMap<>();
+        dragParams.put("duration", 1.0);  // Duração do gesto em segundos
+        dragParams.put("fromX", origem.getLocation().getX());
+        dragParams.put("fromY", origem.getLocation().getY());
+        dragParams.put("toX", destino.getLocation().getX());
+        dragParams.put("toY", destino.getLocation().getY());
+
+        // Executar o gesto
+        driver.executeScript("mobile: dragFromToForDuration", dragParams);
     }
+
+
+}
