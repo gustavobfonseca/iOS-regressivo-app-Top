@@ -427,4 +427,37 @@ public class StepDefinitionPerfilDoUsuario {
         perfilDoUsuario.inserirNovaSenha(arg0);
         perfilDoUsuario.inserirConfirmarNovaSenha(arg1);
     }
+
+    @E("não possua foto de perfil")
+    public void nãoPossuaFotoDePerfil() {
+        AppiumDriver driver = AppiumDriverConfig.Instance().driver;
+        PerfilDoUsuario perfilDoUsuario = new PerfilDoUsuario(driver);
+        if (!perfilDoUsuario.verificarFotoPerfil()){
+
+        }else {
+            throw new RuntimeException();
+        }
+
+    }
+
+    @E("possua foto de perfil")
+    public void possuaFotoDePerfil() {
+        AppiumDriver driver = AppiumDriverConfig.Instance().driver;
+        PerfilDoUsuario perfilDoUsuario = new PerfilDoUsuario(driver);
+        if (perfilDoUsuario.verificarFotoPerfil()){
+
+        }else {
+            throw new RuntimeException();
+        }    }
+
+    @E("seleciono a opção Remover minha foto no modal")
+    public void selecionoAOpçãoRemoverMinhaFotoNoModal() {
+        AppiumDriver driver = AppiumDriverConfig.Instance().driver;
+
+        Tela tela = new Tela(driver);
+        tela.buscarElementoNaTela("(//XCUIElementTypeOther[@name=\"Botão para abrir a câmera. Botão para escolher foto da galeria. Botão para fechar o modal ou remover foto.\"])[1]",10);
+        GestosEmulador.clickCoordenada(200,784);
+        PerfilDoUsuario perfilDoUsuarip = new PerfilDoUsuario(driver);
+        perfilDoUsuarip.buscarElementos();
+    }
 }

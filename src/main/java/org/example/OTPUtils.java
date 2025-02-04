@@ -38,7 +38,5 @@ public class OTPUtils {
 
     public static void main(String[] args) {
         getOTPtokenByPhoneNumberOrEmail("+5511922334456");
-        //XCUIElementTypeOther[@name="Insira o código de segurança que enviamos para o seu ,testeca*****ail.com"]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]
-        //XCUIElementTypeOther[@name="Insira o código de segurança que enviamos para o seu ,testeca*****ail.com"]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeStaticText
     }
 }

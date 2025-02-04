@@ -3,6 +3,7 @@ package org.example.PageObjects;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -21,14 +22,14 @@ public class InserirDadosCartao {
 
     public void buscarElementos(){
         WebDriverWait espera = new WebDriverWait(driver, 10);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.EditText[@content-desc=\"Nome do titular\"]")));
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeTextField[@name=\"nome_no_cartao\"]")));
 
-        this.inputNomeCartao = (MobileElement) driver.findElementByXPath("//android.widget.EditText[@content-desc=\"Nome do titular\"]");
-        this.inputNumeroCartao = (MobileElement) driver.findElementByXPath("//android.widget.EditText[@content-desc=\"Número do Cartão\"]");
-        this.inputValidadeCartao = (MobileElement) driver.findElementByXPath("//android.widget.EditText[@content-desc=\"Validade\"]");
-        this.inputCvvCartao = (MobileElement) driver.findElementByXPath("//android.widget.EditText[@content-desc=\"CVV do Cartão\"]");
-        this.inputCpfTitular = (MobileElement) driver.findElementByXPath("//android.widget.EditText[@content-desc=\"Digite o CPF do titular\"]");
-        this.botaoConfirmar = (MobileElement) driver.findElementByXPath("//android.view.ViewGroup[@content-desc=\"botão confirmar\"]");
+        this.inputNomeCartao = (MobileElement) driver.findElementByXPath("//XCUIElementTypeTextField[@name=\"nome_no_cartao\"]");
+        this.inputNumeroCartao = (MobileElement) driver.findElementByXPath("//XCUIElementTypeTextField[@name=\"numero_do_cartao\"]");
+        this.inputValidadeCartao = (MobileElement) driver.findElementByXPath("//XCUIElementTypeTextField[@name=\"validade_do_cartão\"]");
+        this.inputCvvCartao = (MobileElement) driver.findElementByXPath("//XCUIElementTypeTextField[@name=\"cvv_do_cartão\"]");
+        this.inputCpfTitular = (MobileElement) driver.findElementByXPath("//XCUIElementTypeTextField[@name=\"cpf_input\"]");
+        this.botaoConfirmar = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[@name=\"botão confirmar\"]");
 
     }
 
@@ -38,6 +39,7 @@ public class InserirDadosCartao {
         inputValidadeCartao.sendKeys(validadeCartao);
         inputCvvCartao.sendKeys(cvvCartao);
         inputCpfTitular.sendKeys(cpfTitular);
+        inputCpfTitular.sendKeys(Keys.RETURN);
         botaoConfirmar.click();
     }
 }

@@ -3,6 +3,7 @@ package org.example;
 import io.appium.java_client.AppiumDriver;
 import io.cucumber.java.*;
 import io.cucumber.java.AfterStep;
+import org.example.PageObjects.CacheAppConfig;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -14,6 +15,7 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public class Hooks {
@@ -26,7 +28,7 @@ public class Hooks {
     private static StringBuilder relatorio = new StringBuilder();
 
 
-    @AfterStep
+//    @AfterStep
     public void verificarErro(Scenario scenario) {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         // Verifica se o driver foi inicializado corretamente
@@ -57,6 +59,27 @@ public class Hooks {
         // Anexa o caminho do screenshot ao cenário do Cucumber
         scenario.attach(screenshotBytes, "image/png", screenshotName);
 
+    }
+
+    @Before
+    public void beforeScenario(Scenario scenario) {
+        System.out.println("Preparando o app para o próximo cenário: " + scenario.getName());
+        try {
+            CacheAppConfig.restartAppWithCacheClear();
+        } catch (Exception e) {
+            System.err.println("Erro ao preparar o app para o próximo cenário: " + e.getMessage());
+        }
+    }
+
+
+    @After
+    public void afterScenario(Scenario scenario) {
+        System.out.println("Cenário finalizado: " + scenario.getName());
+        try {
+//            CacheAppConfig.restartAppWithStorageClear();
+        } catch (Exception e) {
+            System.err.println("Erro ao finalizar o cenário: " + e.getMessage());
+        }
     }
 
 }
