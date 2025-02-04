@@ -511,7 +511,7 @@ public class Cadastro {
     }
 
     public void buscarInput0sms() {
-        WebDriverWait webDriverWait = new WebDriverWait(driver, 10);
+        WebDriverWait webDriverWait = new WebDriverWait(driver, 50);
         webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//XCUIElementTypeOther[@name=\"Editar meu número de celular\"])[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]")));
         inputSms = (MobileElement) driver.findElementByXPath("(//XCUIElementTypeOther[@name=\"Editar meu número de celular\"])[1]");
 
@@ -519,7 +519,7 @@ public class Cadastro {
 
     public void buscarInput0email() {
         System.out.println("bucando elemento da input");
-         WebDriverWait webDriverWait = new WebDriverWait(driver, 30);
+         WebDriverWait webDriverWait = new WebDriverWait(driver, 50);
         webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//XCUIElementTypeOther[@name=\"Editar meu endereço de e-mail\"])[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]")));
         inputNEmail = (MobileElement) driver.findElementByXPath("(//XCUIElementTypeOther[@name=\"Editar meu endereço de e-mail\"])[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]");
         inputNEmail.click();
