@@ -8,6 +8,7 @@ package org.example.PageObjects;
 import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import org.example.GestosEmulador;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
@@ -118,10 +119,12 @@ public class Login {
     }
 
     public void clicarBotaoAtendimentoWhatsApp() throws InterruptedException {
-        WebDriverWait espera = new WebDriverWait(this.driver, 10L);
-        espera.until(ExpectedConditions.elementToBeClickable(By.id("botao_modal_bloqueio")));
-        this.botaoAtendimentoViaWhatsApp = (MobileElement) this.driver.findElementByAccessibilityId("botao_modal_bloqueio");
-        this.botaoAtendimentoViaWhatsApp.click();
+        Thread.sleep(2000);
+        GestosEmulador.clickCoordenada(190,771);
+//        WebDriverWait espera = new WebDriverWait(this.driver, 10L);
+//        espera.until(ExpectedConditions.elementToBeClickable(By.id("botao_modal_bloqueio")));
+//        this.botaoAtendimentoViaWhatsApp = (MobileElement) this.driver.findElementByAccessibilityId("botao_modal_bloqueio");
+//        this.botaoAtendimentoViaWhatsApp.click();
     }
 
     public void clicarCentralDeAjuda() {
@@ -135,9 +138,10 @@ public class Login {
 
     public void clicarEnviarMensagem() {
         WebDriverWait espera = new WebDriverWait(this.driver, 10L);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.id("Abrir suporte via WhatsApp")));
-        this.enviarMensagem = (MobileElement) this.driver.findElementByAccessibilityId("Abrir suporte via WhatsApp");
-        this.enviarMensagem.click();
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//XCUIElementTypeOther[@name=\"ENVIAR MENSAGEM PORTAL DE NEGOCIAÇÃO\"])[2]")));
+//        this.enviarMensagem = (MobileElement) this.driver.findElementByAccessibilityId("Abrir suporte via WhatsApp");
+//        this.enviarMensagem.click();
+        GestosEmulador.clickCoordenada(190,717);
     }
 
     public void verificarRedirecionamentoWhatsapp() {

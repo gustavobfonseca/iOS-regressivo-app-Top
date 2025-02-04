@@ -101,7 +101,7 @@ Funcionalidade: Cadastro
 #    E clico em "Editar meu número de celular"
 #    E clico em "CONFIRMAR NÚMERO" após inserir um novo número de celular
 #    Então o modal é fechado exibindo a tela de confirmação com os 4 últimos dígitos do número atualizado
-
+#
 #  Cenário:12 Editar meu endereço de e-mail
 #    Dado que estou na área não logada do app
 #    Quando acesso a opção "Criar uma conta"

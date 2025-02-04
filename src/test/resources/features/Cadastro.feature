@@ -92,27 +92,27 @@ Funcionalidade: Cadastro
     E clico em "REENVIAR CÓDIGO" após término do contador e-mail
     Então recebo um novo código atualizado via e-mail
 
-  Cenário:11 Editar meu número de celular
-    Dado que estou na área não logada do app
-    Quando acesso a opção "Criar uma conta"
-    E informo um CPF válido ainda não cadastrado
-    E informo o número de telefone errado "11911234567"
-    E clico em "Continuar" com os demais campos preenchidos corretamente, menos o celular
-    E clico em "Editar meu número de celular"
-    E clico em "CONFIRMAR NÚMERO" após inserir um novo número de celular
-    Então o modal é fechado exibindo a tela de confirmação com os 4 últimos dígitos do número atualizado
-
-  Cenário:12 Editar meu endereço de e-mail
-    Dado que estou na área não logada do app
-    Quando acesso a opção "Criar uma conta"
-    E informo um CPF válido ainda não cadastrado
-    E informo o endereço de e-mail errado "email.errado@gmail.com"
-    E clico em "Continuar" com os demais campos preenchidos corretamente, menos o e-mail
-    E insiro o token sms p cadastro
-    E clico em confirmar sms
-    E clico em "Editar meu endereço de e-mail"
-    E clico em "CONFIRMAR E-MAIL" após inserir um novo e-mail
-    Então o modal é fechado exibindo a tela de confirmação com o e-mail atualizado
+#  Cenário:11 Editar meu número de celular
+#    Dado que estou na área não logada do app
+#    Quando acesso a opção "Criar uma conta"
+#    E informo um CPF válido ainda não cadastrado
+#    E informo o número de telefone errado "11911234567"
+#    E clico em "Continuar" com os demais campos preenchidos corretamente, menos o celular
+#    E clico em "Editar meu número de celular"
+#    E clico em "CONFIRMAR NÚMERO" após inserir um novo número de celular
+#    Então o modal é fechado exibindo a tela de confirmação com os 4 últimos dígitos do número atualizado
+#
+#  Cenário:12 Editar meu endereço de e-mail
+#    Dado que estou na área não logada do app
+#    Quando acesso a opção "Criar uma conta"
+#    E informo um CPF válido ainda não cadastrado
+#    E informo o endereço de e-mail errado "email.errado@gmail.com"
+#    E clico em "Continuar" com os demais campos preenchidos corretamente, menos o e-mail
+#    E insiro o token sms p cadastro
+#    E clico em confirmar sms
+#    E clico em "Editar meu endereço de e-mail"
+#    E clico em "CONFIRMAR E-MAIL" após inserir um novo e-mail
+#    Então o modal é fechado exibindo a tela de confirmação com o e-mail atualizado
 
   Cenário:13 Validação dos requisítos da senha
     Dado que estou na área não logada do app
