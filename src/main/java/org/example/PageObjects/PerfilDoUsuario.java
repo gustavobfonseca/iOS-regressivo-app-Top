@@ -5,6 +5,8 @@ import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
+import org.example.AppiumDriverConfig;
+import org.example.GestosEmulador;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -36,8 +38,7 @@ public class PerfilDoUsuario {
 
     public void buscarElementos() {
         WebDriverWait espera = new WebDriverWait(driver, 10);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@text=\"DADOS PESSOAIS\"]")));
-        dadosPessoais = (MobileElement) driver.findElementByAccessibilityId("DADOS PESSOAIS");
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[@name=\"DADOS PESSOAIS\"]")));
         voltarHome = (MobileElement) driver.findElementByXPath("(//XCUIElementTypeOther[@name=\"\uE82F\"])[2]");
     }
 
@@ -80,41 +81,37 @@ public class PerfilDoUsuario {
         confirmarAjuste.click();
     }
 
-    public void verificarFotoPerfil() {
-        WebDriverWait espera = new WebDriverWait(driver, 20);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@text=\"EDITAR\"]")));
+    public boolean verificarFotoPerfil() {
+        WebDriverWait espera = new WebDriverWait(driver, 10);
         System.out.println("ta procurando a foto no perfil");
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.ImageView")));
-
+        try {
+            espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeOther[@name=\"\uF1BB EDITAR\"]")));
+            return true;
+        }catch (RuntimeException exception){
+            System.out.println(exception);
+            System.out.println("nao há foto de perfil");
+            return false;
+        }
     }
 
     public void voltarHome() {
         voltarHome = (MobileElement) driver.findElementByXPath("(//XCUIElementTypeOther[@name=\"\uE82F\"])[2]");
         voltarHome.click();
-//        driver.navigate().back();
     }
 
 
     public void clickBotaoEscolherFoto() {
         WebDriverWait espera = new WebDriverWait(driver, 10);
-        MobileElement botaoEscolherFoto = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.ViewGroup[@content-desc=\"Botão para escolher foto da galeria.\"]/android.view.ViewGroup")));
-        botaoEscolherFoto.click();
+        MobileElement botaoEscolherFoto = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//XCUIElementTypeOther[@name=\"Botão para abrir a câmera. Botão para escolher foto da galeria. Botão para fechar o modal ou remover foto.\"])[1]")));
+//        botaoEscolherFoto.click();
+        GestosEmulador.clickCoordenada(210,713);
     }
 
     public void permitirAcessoGaleria() {
-        takeScreenshot(driver, "ParaAutomacaoFotoPerfil");
-
-        WebDriverWait espera = new WebDriverWait(driver, 10);
-        MobileElement permitirAcessoGaleria = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_button\"]")));
-        permitirAcessoGaleria.click();
-    }
-
-    public static void takeScreenshot(AppiumDriver driver, String filename) {
-        // Captura a tela e salva diretamente no diretório especificado
-        File screenshot = driver.getScreenshotAs(OutputType.FILE);
-
-        // Renomeia e move o arquivo para a pasta de imagens do dispositivo
-        screenshot.renameTo(new File("/sdcard/DCIM/" + filename + ".png"));
+//        WebDriverWait espera = new WebDriverWait(driver, 10);
+//        MobileElement permitirAcessoGaleria = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_button\"]")));
+//        permitirAcessoGaleria.click();
+        GestosEmulador.clickCoordenada(196,711);
     }
 
     public void escolherFotoGaleria() throws InterruptedException {
