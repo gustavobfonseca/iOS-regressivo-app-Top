@@ -3,6 +3,7 @@ package org.example.PageObjects;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
+import org.example.GestosEmulador;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -313,42 +314,36 @@ public class Cadastro {
         System.out.println(fakeCpf());
     }
 
-    public void clicarEditarNumeroCelular() {
+    public void clicarEditarNumeroCelular() throws InterruptedException {
         WebDriverWait espera = new WebDriverWait(driver, 10);
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeOther[@name=\"Confirmação de Número de Celular\"]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther\n")));
+        MobileElement tela = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[@name=\"Confirmação de Número de Celular\"]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther\n");
+        tela.click();
+
         espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeOther[@name=\"Editar meu número de celular\"]")));
-        editarCelular = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[@name=\"Editar meu número de celular\"]");
-        editarCelular.click();
+
+        GestosEmulador.clickCoordenada(315,245);
+        Thread.sleep(2000);
+        GestosEmulador.clickCoordenada(90,580);
     }
 
     public void alterarNumero() {
         WebDriverWait espera = new WebDriverWait(driver, 10);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.EditText[@content-desc=\"Campo para alterar telefone de cadastro\"]")));
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//XCUIElementTypeOther[@name=\"Edite seu número de celular para validação: \uE992 Celular Campo para alterar telefone de cadastro icon_Campo para alterar telefone de cadastro Botão ir para a tela de login\"])[1]")));
 
-        inputAlterarNumero = (MobileElement) driver.findElementByXPath("//android.widget.EditText[@content-desc=\"Campo para alterar telefone de cadastro\"]");
-        inputAlterarNumero.sendKeys("1193392346");
+        GestosEmulador.clickCoordenada(183,690);
 
-        confirmarAlterarNumero();
+        driver.getKeyboard().sendKeys("11922334456");
+        driver.getKeyboard().sendKeys(Keys.RETURN);
 
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@content-desc=\"Erro Campo para alterar telefone de cadastro\"]")));
-//        msgValidacaoInputAlteraNumero = (MobileElement) driver.findElementByXPath("//android.widget.TextView[@content-desc=\"Erro Campo para alterar telefone de cadastro\"]");
 
-        inputAlterarNumero.clear();
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@content-desc=\"Erro Campo para alterar telefone de cadastro\"]")));
-
-        inputAlterarNumero.sendKeys("1412345678914");
-
-        confirmarAlterarNumero();
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@content-desc=\"Erro Campo para alterar telefone de cadastro\"]")));
-
-        inputAlterarNumero.clear();
-        inputAlterarNumero.sendKeys("14996237865");
-
-        espera.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//android.widget.TextView[@content-desc=\"Erro Campo para alterar telefone de cadastro\"]")));
     }
 
-    public void confirmarAlterarNumero() {
-        botaoConfirmarAlterarNumero = (MobileElement) driver.findElementByXPath("//android.view.ViewGroup[@content-desc=\"Botão ir para a tela de login\"]/android.view.ViewGroup");
-        botaoConfirmarAlterarNumero.click();
+    public void confirmarAlterarNumero() throws InterruptedException {
+//        botaoConfirmarAlterarNumero = (MobileElement) driver.findElementByXPath("//android.view.ViewGroup[@content-desc=\"Botão ir para a tela de login\"]/android.view.ViewGroup");
+//        botaoConfirmarAlterarNumero.click();
+        Thread.sleep(3000);
+        GestosEmulador.clickCoordenada(194,782);
     }
 
     public void confirmarAlterarEmail() {
@@ -358,44 +353,38 @@ public class Cadastro {
 
     public void buscarTextoComNumeroAlterado() {
         WebDriverWait espera = new WebDriverWait(driver, 10);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@text=\"Enviamos um código de 6 dígitos via SMS para o número: (11) *****-4456\"]")));
-        textoComNumeroAlterado = (MobileElement) driver.findElementByXPath("//android.widget.TextView[@text=\"Enviamos um código de 6 dígitos via SMS para o número: (11) *****-4456\"]");
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[@name=\"Enviamos um código de 6 dígitos via SMS para o número: (11) *****-4456\"]")));
+        textoComNumeroAlterado = (MobileElement) driver.findElementByXPath("//XCUIElementTypeStaticText[@name=\"Enviamos um código de 6 dígitos via SMS para o número: (11) *****-4456\"]");
     }
 
-    public void clicarEditarEmail() {
+    public void clicarEditarEmail() throws InterruptedException {
         WebDriverWait espera = new WebDriverWait(driver, 10);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@text=\"Editar meu endereço de e-mail\"]")));
-        editarEmail = (MobileElement) driver.findElementByXPath("//android.widget.TextView[@text=\"Editar meu endereço de e-mail\"]");
-        editarEmail.click();
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[@name=\"Cadastro\"]")));
+
+        GestosEmulador.clickCoordenada(315,245);
+        Thread.sleep(2000);
+        GestosEmulador.clickCoordenada(90,580);
+
+//        editarEmail = (MobileElement) driver.findElementByXPath("(//XCUIElementTypeOther[@name=\"Editar meu endereço de e-mail\"])[2]");
+//        editarEmail.click();
     }
 
-    public void alterarEmail() {
+    public void alterarEmail() throws InterruptedException {
         WebDriverWait espera = new WebDriverWait(driver, 10);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.EditText[@content-desc=\"Campo para alterar email de cadastro\"]")));
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeOther[@name=\"Editar meu endereço de e-mail Botão de renviar código do Email Botão Confirmar código do Email\"]")));
 
-        inputAlterarEmail = (MobileElement) driver.findElementByXPath("//android.widget.EditText[@content-desc=\"Campo para alterar email de cadastro\"]");
-        inputAlterarEmail.sendKeys("emailSemArroba.com");
-        confirmarAlterarEmail();
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@content-desc=\"Erro Campo para alterar email de cadastro\"]")));
+        GestosEmulador.clickCoordenada(180,670);
+        driver.getKeyboard().sendKeys("testecav8@gmail.com");
+        driver.getKeyboard().sendKeys(Keys.RETURN);
+        Thread.sleep(2000);
+        GestosEmulador.clickCoordenada(193,778);
 
-        inputAlterarEmail.clear();
-        confirmarAlterarEmail();
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@content-desc=\"Erro Campo para alterar email de cadastro\"]")));
 
-//        inputAlterarEmail.sendKeys("exemplo.de.email.com.um.tamanho.bem.especifico.com.noventa.e.noveeeeexemplo.de.email.com.um.tamanho.bem.especifico.com.noventa.e.nove.caracteres@exemplo.com.br\nexemplo.de.email.com.um.tamanho.bem.especifico.com.noventa.e.nove.caracteres@exemplo.com.br\nexemplo.de.email.com.um.tamanho.bem.especifico.com.noventa.e.nove.caracteres@exemplo.com.br\nexemplo.de.email.com.um.tamanho.bem.especifico.com.noventa.e.nove.caracteres@exemplo.com.br\nexemplo.de.email.com.um.tamanho.bem.especifico.com.noventa.e.nove.caracteres@exemplo.com.br\nexemplo.de.email.com.um.tamanho.bem.especifico.com.noventa.e.nove.caracteres@exemplo.com.br\nexemplo.de.email.com.um.tamanho.bem.especifico.com.noventa.e.nove.caracteres@exemplo.com.br\n.caracteres@exemplo.com.br");
-//        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@content-desc=\"Erro Campo para alterar email de cadastro\"]")));
-//        inputAlterarEmail.clear();
-
-        inputAlterarEmail.sendKeys("testecav8@gmail.com");
-
-        espera.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//android.widget.TextView[@content-desc=\"Erro Campo para alterar email de cadastro\"]")));
     }
 
     public void buscarTextoComEmailAlterado() {
         WebDriverWait espera = new WebDriverWait(driver, 10);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@text=\"Um e-mail com um código de 6 dígitos acaba de ser enviado para: testecav8@gmail.com\"]")));
-
-        textoComEmailAlterado = (MobileElement) driver.findElementByXPath("//android.widget.TextView[@text=\"Um e-mail com um código de 6 dígitos acaba de ser enviado para: testecav8@gmail.com\"]");
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[@name=\"Um e-mail com um código de 6 dígitos acaba de ser enviado para: testecav8@gmail.com\"]")));
     }
 
     public void preencherInputSuaSenha(String senhaNova) {

@@ -48,13 +48,26 @@ public class Home {
     }
 
     public void perfilPelaApresentacao() {
-        MobileElement apresentacao = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[contains(@name, 'Tenha uma boa viagem')]");
-        apresentacao.click();
+//        MobileElement apresentacao = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[contains(@name, 'Tenha uma boa viagem')]");
+//        apresentacao.click();
+        GestosEmulador.clickCoordenada(200,176);
+
+        WebDriverWait espera = new WebDriverWait(driver, 10);
+        WebDriverWait espera2 = new WebDriverWait(driver, 10);
+        try {
+            espera.until(ExpectedConditions.presenceOfElementLocated(By.id("DADOS PESSOAIS")));
+        }catch (Exception e){
+            System.out.println("carregando novamente o perfil");
+            GestosEmulador.clickCoordenada(204,688);
+
+            espera2.until(ExpectedConditions.presenceOfElementLocated(By.id("DADOS PESSOAIS")));
+        }
     }
 
     public void buscarFotoDePerfilAdicionada() {
         WebDriverWait espera = new WebDriverWait(driver, 10);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.widget.ImageView")));
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//XCUIElementTypeOther[@name=\"\uE82F\"])[2]")));
+        Tela.clicarEmElemento("(//XCUIElementTypeOther[@name=\"\uE82F\"])[2]",10);
     }
 
     public void buscarFotoDePerfil() {
@@ -238,11 +251,18 @@ public class Home {
 
     public void clicarIconePerfil() {
         WebDriverWait espera = new WebDriverWait(driver, 10);
+        WebDriverWait espera2 = new WebDriverWait(driver, 10);
         espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//XCUIElementTypeOther[@name=\"\uEA27\"])[2]")));
         iconePerfil = (MobileElement) driver.findElementByXPath("(//XCUIElementTypeOther[@name=\"\uEA27\"])[2]");
         iconePerfil.click();
+try {
+    espera.until(ExpectedConditions.presenceOfElementLocated(By.id("DADOS PESSOAIS")));
+}catch (Exception e){
+    System.out.println("carregando novamente o perfil");
+    GestosEmulador.clickCoordenada(204,688);
 
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.id("DADOS PESSOAIS")));
+    espera2.until(ExpectedConditions.presenceOfElementLocated(By.id("DADOS PESSOAIS")));
+}
     }
 
     public void clicarPerfilSenhaDoAplicativo() {
@@ -290,16 +310,15 @@ public class Home {
     }
 
     public void clicarSair() {
-        WebDriverWait espera = new WebDriverWait(driver, 10);
+        WebDriverWait espera = new WebDriverWait(driver, 20);
 
-        botaoSair = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true))" + ".scrollIntoView(new UiSelector().text(\"Sair do Aplicativo\"));"));
-
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@text=\"Sair do Aplicativo\"]")));
-        botaoSair = (MobileElement) driver.findElementByXPath("//android.widget.TextView[@text=\"Sair do Aplicativo\"]");
+        GestosEmulador.rolarTelaVertical();
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeOther[@name=\"Sair do Aplicativo\"]")));
+        botaoSair = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[@name=\"Sair do Aplicativo\"]");
         botaoSair.click();
 
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.Button[@resource-id=\"android:id/button1\"]")));
-        botaoConfirmarSair = (MobileElement) driver.findElementByXPath("//android.widget.Button[@resource-id=\"android:id/button1\"]");
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"Sair\"]")));
+        botaoConfirmarSair = (MobileElement) driver.findElementByXPath("//XCUIElementTypeButton[@name=\"Sair\"]");
         botaoConfirmarSair.click();
     }
 
@@ -309,7 +328,8 @@ public class Home {
     }
 
     public void desativarBiometria() throws InterruptedException {
-        clicarIconePerfil();
+
+        perfilPelaApresentacao();
         clicarMenuBiometria();
         clicarSair();
     }
@@ -380,7 +400,7 @@ public class Home {
     public void buscarApelidoNomeSocialModificado() {
         String nomeAtualizado = PerfilDoUsuario.getNomeAtualizado();
         WebDriverWait espera = new WebDriverWait(driver, 10);
-        MobileElement apelidoNomeSocial = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@text=\"Olá, " + nomeAtualizado + "!\"]")));
+        MobileElement apelidoNomeSocial = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeOther[contains(@name, 'Olá, " + nomeAtualizado + "!')]")));
 
 
     }

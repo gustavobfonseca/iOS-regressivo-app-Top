@@ -6,6 +6,7 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
+import org.example.AppiumDriverConfig;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Pause;
@@ -22,29 +23,31 @@ public class Tela {
 
     private AppiumDriver driver;
 
-    public Tela(AppiumDriver driver) {
-        this.driver = driver;
-    }
 
-    public MobileElement buscarElementoNaTela(String xPath, int tempoEspera){
+    public static MobileElement buscarElementoNaTela(String xPath, int tempoEspera){
+        AppiumDriver driver = AppiumDriverConfig.Instance().driver;
+
         WebDriverWait espera = new WebDriverWait(driver, tempoEspera);
         espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xPath)));
 
         return (MobileElement) driver.findElementByXPath(xPath);
     }
 
-    public void clicarEmElemento(MobileElement elementoClicavel){
+    public static void clicarEmElemento(MobileElement elementoClicavel){
+
         elementoClicavel.click();
     }
 
-    public void clicarEmElemento(String xpathElemento, int espera){
+    public static void clicarEmElemento(String xpathElemento, int espera){
+
         MobileElement elemento = buscarElementoNaTela(xpathElemento, espera);
         elemento.click();
     }
 
-    public void clicarEmElemento(String xPathElementoClicavel, String xPathElementoVisivel){
+    public static void clicarEmElemento(String xPathElementoClicavel, String xPathElementoVisivel){
         int tentativas = 0;
         int tentativasMaximas = 10;
+        AppiumDriver driver = AppiumDriverConfig.Instance().driver;
 
         while (tentativas <= tentativasMaximas){
             try{
@@ -67,7 +70,9 @@ public class Tela {
 
     }
 
-    public void inputNoElemento(MobileElement elementoInput, String input) {
+    public static void inputNoElemento(MobileElement elementoInput, String input) {
+        AppiumDriver driver = AppiumDriverConfig.Instance().driver;
+
         for (char c : input.toCharArray()) {
             elementoInput.sendKeys(Character.toString(c));
             try {
@@ -81,12 +86,16 @@ public class Tela {
     }
 
 
-    public void inputNoElemento(String xpathElemento, String input){
+    public static void inputNoElemento(String xpathElemento, String input){
+        AppiumDriver driver = AppiumDriverConfig.Instance().driver;
+
         MobileElement elemento = buscarElementoNaTela(xpathElemento, 10);
         inputNoElemento(elemento, input);
     }
 
-    public void scrollAteElemento(String xPathElementoDeEspera, int tempoEspera, String xPathElementoBuscavel){
+    public static void scrollAteElemento(String xPathElementoDeEspera, int tempoEspera, String xPathElementoBuscavel){
+        AppiumDriver driver = AppiumDriverConfig.Instance().driver;
+
         WebDriverWait espera = new WebDriverWait(driver, tempoEspera);
         espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xPathElementoDeEspera)));
 
@@ -96,7 +105,9 @@ public class Tela {
 //        elementoBuscado = (MobileElement) driver.findElementByXPath(xPathElementoBuscavel);
     }
 
-    public void arrastarParaOLado(int startX, int startY, int endX, int endY){
+    public static void arrastarParaOLado(int startX, int startY, int endX, int endY){
+        AppiumDriver driver = AppiumDriverConfig.Instance().driver;
+
         PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
 
         Sequence swipe = new Sequence(finger, 1);
@@ -112,7 +123,9 @@ public class Tela {
         driver.perform(Collections.singletonList(swipe));
     }
 
-    public void limparInput(String s) {
+    public static void limparInput(String s) {
+        AppiumDriver driver = AppiumDriverConfig.Instance().driver;
+
         buscarElementoNaTela(s,10);
         MobileElement input = (MobileElement) driver.findElementByXPath(s);
         input.clear();

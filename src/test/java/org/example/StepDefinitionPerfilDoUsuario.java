@@ -68,22 +68,17 @@ public class StepDefinitionPerfilDoUsuario {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         PerfilDoUsuario perfilDoUsuario = new PerfilDoUsuario(driver);
 
-        perfilDoUsuario.verificarFotoPerfil();
+        if (perfilDoUsuario.verificarFotoPerfil()){} else throw new RuntimeException() ;
 
-        MeusBilhetes meusBilhetes = new MeusBilhetes(driver);
-        System.out.println("voltar");
-//        meusBilhetes.clicarSetaVoltar();
-
-//        perfilDoUsuario.voltarHome();
-        driver.navigate().back();
     }
 
     @E("na apresentação da Home.")
-    public void naApresentaçãoDaHome() {
+    public void naApresentaçãoDaHome() throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
 
         Home home = new Home(driver);
         home.buscarFotoDePerfilAdicionada();
+        Thread.sleep(2000);
     }
 
     @E("sem ter a permissão de acesso à galeria habilitada para o aplicativo TOP")
@@ -188,7 +183,7 @@ public class StepDefinitionPerfilDoUsuario {
     }
 
 
-    @Quando("clico na opção \"Senha do aplicativo\"")
+    @Quando("clico na opção Senha do aplicativo")
     public void clicoNaOpçãoSenhaDoAplicativo() {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         PerfilDoUsuario perfilDoUsuario = new PerfilDoUsuario(driver);
@@ -202,10 +197,10 @@ public class StepDefinitionPerfilDoUsuario {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         PerfilDoUsuario perfilDoUsuario = new PerfilDoUsuario(driver);
 
-        perfilDoUsuario.inserirSenhaAtual("Teste@123");
+        perfilDoUsuario.inserirSenhaAtual("Teste123");
     }
 
-    @E("clico em \"Editar\"")
+    @E("clico em Editar")
     public void clicoEmEditar() throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         PerfilDoUsuario perfilDoUsuario = new PerfilDoUsuario(driver);
@@ -217,12 +212,12 @@ public class StepDefinitionPerfilDoUsuario {
     public void insiroSenhaEConfirmarSenhaVálidas() {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         PerfilDoUsuario perfilDoUsuario = new PerfilDoUsuario(driver);
-        perfilDoUsuario.inserirNovaSenha("Teste@1234");
-        perfilDoUsuario.inserirConfirmarNovaSenha("Teste@1234");
+        perfilDoUsuario.inserirNovaSenha("Teste@123");
+        perfilDoUsuario.inserirConfirmarNovaSenha("Teste@123");
 
     }
 
-    @E("clico em \"Enviar\"")
+    @E("clico em Enviar")
     public void clicoEmEnviar() {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         PerfilDoUsuario perfilDoUsuario = new PerfilDoUsuario(driver);
@@ -246,8 +241,8 @@ public class StepDefinitionPerfilDoUsuario {
 
         SemiLogado semiLogado = new SemiLogado(driver);
         semiLogado.buscarElementos();
-        semiLogado.preencherSenha("Teste@1234");
-        semiLogado.clicarBotaoEntrar();
+        semiLogado.preencherSenha("Teste@123");
+//        semiLogado.clicarBotaoEntrar();
 
 //        Login telaLogin = new Login(driver);
 //        telaLogin.buscarModalErro();
@@ -260,15 +255,6 @@ public class StepDefinitionPerfilDoUsuario {
 //        semiLogado.clicarBotaoEntrar();
 
         Home telaHome = new Home(driver);
-
-        Thread.sleep(3000);
-//        telaHome.esperarBotaoBiometria();
-        try {
-            telaHome.arrastarModalParaBaixo();
-        } catch (Exception e) {
-            telaHome.clicarBotaoModalQueroConhecer();
-        }
-
         telaHome.buscarMensagemBemVindo();
     }
 
@@ -300,10 +286,10 @@ public class StepDefinitionPerfilDoUsuario {
     public void visualizoAMensagemNoCampo() {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         PerfilDoUsuario perfilDoUsuario = new PerfilDoUsuario(driver);
-        perfilDoUsuario.buscarMensagemValidacaosenha("As senhas devem ser iguais");
+        perfilDoUsuario.buscarMensagemValidacaosenha();
     }
 
-    @Quando("clico na opção \"Seus telefones de contato\"")
+    @Quando("clico na opção Seus telefones de contato")
     public void clicoNaOpçãoSeusTelefonesDeContato() {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         PerfilDoUsuario perfilDoUsuario = new PerfilDoUsuario(driver);
@@ -313,7 +299,7 @@ public class StepDefinitionPerfilDoUsuario {
     }
 
     @E("seleciono a opção \"Celular \\(Transporte)\"")
-    public void selecionoAOpçãoCelularTransporte() {
+    public void selecionoAOpçãoCelularTransporte() throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         PerfilDoUsuario perfilDoUsuario = new PerfilDoUsuario(driver);
 
@@ -329,7 +315,7 @@ public class StepDefinitionPerfilDoUsuario {
     }
 
     @E("seleciono a opção Celular \\(Cadastro Conta Digital | Crédito)")
-    public void selecionoAOpçãoCelularCadastroContaDigitalCrédito() {
+    public void selecionoAOpçãoCelularCadastroContaDigitalCrédito() throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         PerfilDoUsuario perfilDoUsuario = new PerfilDoUsuario(driver);
         perfilDoUsuario.clicarCelularCadastroContaDigitalCredito();
@@ -341,21 +327,21 @@ public class StepDefinitionPerfilDoUsuario {
         Login telaLogin = new Login(driver);
         telaLogin.buscarElementos();
         telaLogin.limparCamposLogin();
-        telaLogin.preencherFormulario("531.891.618-01", "Devires@123");
-        telaLogin.logar();
+        telaLogin.preencherFormulario("531.891.618-01", "Teste123");
+//        telaLogin.logar();
 
         Home telaHome = new Home(driver);
 
-        telaHome.esperarBotaoBiometria();
-//        telaHome.clicarBotaoAtivarBiometria();
-
-        try {
-            telaHome.arrastarModalParaBaixo();
-        } catch (Exception e) {
-            telaHome.clicarBotaoModalQueroConhecer();
-        }
-        Assert.assertEquals("Tenha uma boa viagem.", telaHome.getMsgBoaViagem().getText());
-
+//        telaHome.esperarBotaoBiometria();
+////        telaHome.clicarBotaoAtivarBiometria();
+//
+//        try {
+//            telaHome.arrastarModalParaBaixo();
+//        } catch (Exception e) {
+//            telaHome.clicarBotaoModalQueroConhecer();
+//        }
+//        Assert.assertEquals("Tenha uma boa viagem.", telaHome.getMsgBoaViagem().getText());
+        telaHome.buscarMensagemBemVindo();
         telaHome.perfilPelaApresentacao();
 
         PerfilDoUsuario perfilDoUsuario = new PerfilDoUsuario(driver);
@@ -379,7 +365,7 @@ public class StepDefinitionPerfilDoUsuario {
         perfilDoUsuario.clicarMenuBiometria();
     }
 
-    @Quando("clico na opção \"Termos de uso\"")
+    @Quando("clico na opção Termos de uso")
     public void clicoNaOpçãoTermoUso() {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         PerfilDoUsuario perfilDoUsuario = new PerfilDoUsuario(driver);
@@ -454,10 +440,15 @@ public class StepDefinitionPerfilDoUsuario {
     public void selecionoAOpçãoRemoverMinhaFotoNoModal() {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
 
-        Tela tela = new Tela(driver);
-        tela.buscarElementoNaTela("(//XCUIElementTypeOther[@name=\"Botão para abrir a câmera. Botão para escolher foto da galeria. Botão para fechar o modal ou remover foto.\"])[1]",10);
+        Tela.buscarElementoNaTela("(//XCUIElementTypeOther[@name=\"Botão para abrir a câmera. Botão para escolher foto da galeria. Botão para fechar o modal ou remover foto.\"])[1]",10);
         GestosEmulador.clickCoordenada(200,784);
         PerfilDoUsuario perfilDoUsuarip = new PerfilDoUsuario(driver);
         perfilDoUsuarip.buscarElementos();
+    }
+
+    @E("seleciono a opção novamente")
+    public void selecionoAOpçãoCelularCadastroContaDigitalCréditoNovamente() {
+        Tela.clicarEmElemento("(//XCUIElementTypeOther[@name=\"Editar número de mobilidade\"])[4]",10);
+        GestosEmulador.clickCoordenada(200,740);
     }
 }

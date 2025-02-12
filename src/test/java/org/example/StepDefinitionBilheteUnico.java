@@ -21,7 +21,7 @@ import java.util.Map;
 public class StepDefinitionBilheteUnico {
 
     AppiumDriver driver = AppiumDriverConfig.Instance().driver;
-    Tela tela = new Tela(driver);
+    Tela tela = new Tela();
 
     @Quando("navego ate Bilhete Unico")
     public void selecionoOMotivoDoCancelamentoDoCadastro() throws InterruptedException {

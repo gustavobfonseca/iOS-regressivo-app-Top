@@ -4,6 +4,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -24,43 +25,42 @@ public class SemiLogado {
     }
 
     public void buscarElementos() {
-        try {
-            WebDriverWait espera = new WebDriverWait(driver, 20);
-            espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@text=\"Esqueci minha senha.\"]")));
-            inputSenha = (MobileElement) driver.findElementByXPath("//android.widget.EditText[@content-desc=\"Espaço para digitar senha\"]");
-            botaoEntrar = (MobileElement) driver.findElementByXPath("//android.view.ViewGroup[@content-desc=\"Botão para acessar o aplicativo\"]/android.view.ViewGroup");
-            linkEsqueciMinhaSenha = (MobileElement) driver.findElementByXPath("//android.widget.TextView[@text=\"Esqueci minha senha.\"]");
-            mapa = (MobileElement) driver.findElementByXPath("//android.widget.TextView[@content-desc=\"Mapa das ,\n" + ",Estações\"]");
-            bilhete = (MobileElement) driver.findElementByXPath("//android.widget.TextView[@content-desc=\"Bilhetes Offline\"]");
-            centralDeAjuda = (MobileElement) driver.findElementByXPath("//android.widget.TextView[@content-desc=\"Central de,\n" +
+            WebDriverWait espera = new WebDriverWait(driver, 50);
+            espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeSecureTextField[@name=\"password_login_input\"]")));
+            inputSenha = (MobileElement) driver.findElementByXPath("//XCUIElementTypeSecureTextField[@name=\"password_login_input\"]");
+            botaoEntrar = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[@name=\"signin_button\"]");
+//            linkEsqueciMinhaSenha = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[@name=\"Esqueci minha senha.\"]");
+            mapa = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[@name=\"\uE989 Mapa das ,\n" +
+                    ",Estações\"]");
+            bilhete = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[@name=\"\uE9C1 Bilhetes Offline\"]");
+            centralDeAjuda = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[@name=\"Central de,\n" +
                     ",Ajuda\"]");
+            linkTrocarDeConta = (MobileElement) driver.findElementByXPath("(//XCUIElementTypeOther[contains(@name, 'Trocar de conta')])[last()]\n");
 
-            linkTrocarDeConta = (MobileElement) driver.findElementByXPath("//android.widget.TextView[@text=\"Trocar de conta\"]");
-        } catch (Exception e) {
-            botaoEntrar = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true))" +
-                    ".scrollIntoView(new UiSelector().text(\"ENTRAR\"));"));
-            buscarElementos();
-        }
     }
 
     public void preencherSenha(String senha) {
         buscarElementos();
         inputSenha.clear();
         inputSenha.sendKeys(senha);
+        inputSenha.sendKeys(Keys.RETURN);
     }
 
     public void preencherSenhaPadrao() {
-        inputSenha.sendKeys("Devires@123");
+        inputSenha.sendKeys("Teste123");
+        inputSenha.sendKeys(Keys.RETURN);
     }
 
     public void clicarBotaoEntrar() {
-        WebDriverWait espera = new WebDriverWait(driver, 10);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.ViewGroup[@content-desc=\"Botão para acessar o aplicativo\"]/android.view.ViewGroup")));
-        espera.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.view.ViewGroup[@content-desc=\"Botão para acessar o aplicativo\"]/android.view.ViewGroup")));
 
-        botaoEntrar = (MobileElement) driver.findElementByXPath("//android.view.ViewGroup[@content-desc=\"Botão para acessar o aplicativo\"]/android.view.ViewGroup");
         botaoEntrar.click();
-        System.out.println("clicar botão de entrar na área semi logada");
+//        WebDriverWait espera = new WebDriverWait(driver, 10);
+//        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.ViewGroup[@content-desc=\"Botão para acessar o aplicativo\"]/android.view.ViewGroup")));
+//        espera.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.view.ViewGroup[@content-desc=\"Botão para acessar o aplicativo\"]/android.view.ViewGroup")));
+//
+//        botaoEntrar = (MobileElement) driver.findElementByXPath("//android.view.ViewGroup[@content-desc=\"Botão para acessar o aplicativo\"]/android.view.ViewGroup");
+//        botaoEntrar.click();
+//        System.out.println("clicar botão de entrar na área semi logada");
     }
 
 
@@ -81,7 +81,7 @@ public class SemiLogado {
 
     public void buscarMapa() {
         WebDriverWait espera = new WebDriverWait(driver, 10);
-        MobileElement mapaEstacao = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//XCUIElementTypeOther[@name=\"\uE82F Mapa Metrô e Trem \uE8C8\"])[1]")));
+        MobileElement mapaEstacao = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeImage")));
     }
 
     public void clicarBilhetes() {
@@ -91,16 +91,8 @@ public class SemiLogado {
 
     public void buscarBilhetes() {
         WebDriverWait espera = new WebDriverWait(driver, 10);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@text=\"Utilizar Bilhetes\"]")));
-
-        MeusBilhetes meusBilhetes = new MeusBilhetes(driver);
-
-        System.out.println(meusBilhetes.getNumeroDeBilhetes());
-        try {
-            MobileElement txtQtdBilheteOff = (MobileElement) driver.findElementByXPath("//android.widget.TextView[@content-desc=\"1, de ," + meusBilhetes.getNumeroDeBilhetes() + "\"]");
-        } catch (RuntimeException runtimeException) {
-            System.out.println("não encontramos o elemneto");
-        }
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[@name=\"Utilizar Bilhetes\"]")));
+        espera.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//XCUIElementTypeOther[@name=\"buy_tickets_button\"]")));
     }
 
     public void trocarDeConta() {
@@ -109,9 +101,9 @@ public class SemiLogado {
 
     public void confirmarTrocaDeConta() {
         WebDriverWait espera = new WebDriverWait(driver, 10);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.Button[@resource-id=\"android:id/button1\"]")));
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"Confirmar\"]")));
 
-        MobileElement confirmarTroca = (MobileElement) driver.findElementByXPath("//android.widget.Button[@resource-id=\"android:id/button1\"]");
+        MobileElement confirmarTroca = (MobileElement) driver.findElementByXPath("//XCUIElementTypeButton[@name=\"Confirmar\"]");
         confirmarTroca.click();
     }
 
@@ -120,15 +112,16 @@ public class SemiLogado {
     }
 
     public void buscarCentralDeAjuda() {
-        WebDriverWait espera = new WebDriverWait(driver, 10);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.webkit.WebView")));
+        WebDriverWait espera = new WebDriverWait(driver, 30);
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[@name=\"Ajuda\"]")));
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeOther[@name=\"Bora de TOP\"]")));
 
     }
 
     public void buscarApelidoNomeSocialModificado() {
         String nomeAtualizado = PerfilDoUsuario.getNomeAtualizado();
-        WebDriverWait espera = new WebDriverWait(driver, 10);
-        MobileElement apelidoNomeSocial = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@text=\"Olá, " + nomeAtualizado + ".\"]")));
+        WebDriverWait espera = new WebDriverWait(driver, 30);
+        MobileElement apelidoNomeSocial = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[contains(@name, '"+nomeAtualizado+"')]\n")));
 
 
     }

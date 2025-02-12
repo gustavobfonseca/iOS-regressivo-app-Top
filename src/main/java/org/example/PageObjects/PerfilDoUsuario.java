@@ -8,6 +8,7 @@ import io.appium.java_client.touch.offset.PointOption;
 import org.example.AppiumDriverConfig;
 import org.example.GestosEmulador;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -44,10 +45,11 @@ public class PerfilDoUsuario {
 
     public void clickEditarFoto() {
         WebDriverWait espera = new WebDriverWait(driver, 10);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeOther[@name=\"\uE88D \uF1BB EDITAR\"]")));
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeOther[contains(@name, 'EDITAR')]")));
 
-        botaoEditarFoto = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[@name=\"\uE88D \uF1BB EDITAR\"]");
-        botaoEditarFoto.click();
+        GestosEmulador.clickCoordenada(190,295);
+//        botaoEditarFoto = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[contains(@name, 'EDITAR')][last()]");
+//        botaoEditarFoto.click();
     }
 
     public void clickBotaoTirarFoto() {
@@ -115,12 +117,12 @@ public class PerfilDoUsuario {
     }
 
     public void escolherFotoGaleria() throws InterruptedException {
-        WebDriverWait espera = new WebDriverWait(driver, 10);
-        MobileElement primeiraFoto = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//android.widget.ImageView[@resource-id=\"com.google.android.providers.media.module:id/icon_thumbnail\"])[1]")));
+        WebDriverWait espera = new WebDriverWait(driver, 20);
+        MobileElement primeiraFoto = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[@name=\"Recents\"]")));
         primeiraFoto.click();
-        MobileElement confirmarAjuste = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@content-desc=\"Crop\"]")));
+        Tela.clicarEmElemento("//XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther/XCUIElementTypeImage",20);
+        Tela.clicarEmElemento("//XCUIElementTypeStaticText[@name=\"Choose\"]",20);
         Thread.sleep(2000);
-        confirmarAjuste.click();
 
     }
 
@@ -130,16 +132,18 @@ public class PerfilDoUsuario {
 
     public void alterarApelidoOuNomeSocial() {
         WebDriverWait espera = new WebDriverWait(driver, 10);
-        MobileElement inputApelidoNomeSocial = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.EditText[@content-desc=\"Digite o Apelido\"]")));
+        MobileElement inputApelidoNomeSocial = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeTextField[@name=\"lg_nickname_input\"]")));
         String nomeAtual = inputApelidoNomeSocial.getText();
         inputApelidoNomeSocial.clear();
         inputApelidoNomeSocial.click();
 
         if (nomeAtual.equals(apelidoOuNomeSocial[0])) {
             inputApelidoNomeSocial.sendKeys(apelidoOuNomeSocial[1]);
+            inputApelidoNomeSocial.sendKeys(Keys.RETURN);
             nomeAtualizado = apelidoOuNomeSocial[1];
         } else {
             inputApelidoNomeSocial.sendKeys(apelidoOuNomeSocial[0]);
+            inputApelidoNomeSocial.sendKeys(Keys.RETURN);
             nomeAtualizado = apelidoOuNomeSocial[0];
         }
 //        Thread.sleep(2000);
@@ -147,7 +151,7 @@ public class PerfilDoUsuario {
 
     public void salvarAlteracaoApelidoOuNomeSocial() {
         WebDriverWait espera = new WebDriverWait(driver, 10);
-        MobileElement salvarNomeApelido = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@text='\uE915'][@index='3']")));
+        MobileElement salvarNomeApelido = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[@name=\"\uE915\"]")));
         salvarNomeApelido.click();
         System.out.println("cliquei mudar nome");
 
@@ -156,7 +160,7 @@ public class PerfilDoUsuario {
 
     public void buscarMensagemAlteracaoApelidoNomeSocial() throws InterruptedException {
         WebDriverWait espera = new WebDriverWait(driver, 20);
-        String xpath = "//android.widget.TextView[@text=\"Apelido atualizado com sucesso, " + nomeAtualizado + "!\"]";
+        String xpath = "//XCUIElementTypeOther[contains(@name, 'Apelido atualizado com sucesso')] ";
         espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
         Thread.sleep(3000);
     }
@@ -166,50 +170,53 @@ public class PerfilDoUsuario {
     }
 
     public void buscarSenhaDoAplicativo() {
-        senhaDoAplicativo = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true))" +
-                ".scrollIntoView(new UiSelector().text(\"Senha do aplicativo\"));"));
+        GestosEmulador.rolarTelaVertical("//XCUIElementTypeOther[@name=\"Clique para editar a senha\"]");
     }
 
     public void clickSenhaDoAplicativo() {
-        senhaDoAplicativo.click();
+Tela.clicarEmElemento("//XCUIElementTypeOther[@name=\"Clique para editar a senha\"]",20);
     }
 
 
     public void inserirSenhaAtual(String senha) {
         WebDriverWait espera = new WebDriverWait(driver, 10);
-        MobileElement inputSenhaAtual = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.EditText[@content-desc=\"Digite a senha atual\"]")));
+        MobileElement inputSenhaAtual = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeSecureTextField[@name=\"lg_password_input\"]")));
         inputSenhaAtual.clear();
         inputSenhaAtual.sendKeys(senha);
+        inputSenhaAtual.sendKeys(Keys.RETURN);
     }
 
     public void clickEditarSenha() throws InterruptedException {
         Thread.sleep(1000);
         WebDriverWait espera = new WebDriverWait(driver, 10);
-        MobileElement editarSenha = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.ViewGroup[@content-desc=\"Botão EDITAR\"]/android.view.ViewGroup")));
+        MobileElement editarSenha = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeOther[@name=\"Botão EDITAR\"]")));
         editarSenha.click();
     }
 
     public void inserirNovaSenha(String novaSenhaInserida) {
-        novaSenha = (MobileElement) driver.findElement(By.xpath("//android.widget.EditText[@content-desc=\"Digite a nova senha\"]"));
+        novaSenha = (MobileElement) driver.findElement(By.xpath("//XCUIElementTypeSecureTextField[@name=\"lg_new_password_input\"]"));
         novaSenha.clear();
         novaSenha.sendKeys(novaSenhaInserida);
+        novaSenha.sendKeys(Keys.RETURN);
     }
 
     public void inserirConfirmarNovaSenha(String confirmarNovaSenha) {
-        confirmarNovaSenhaInserida = (MobileElement) driver.findElement(By.xpath("//android.widget.EditText[@content-desc=\"Digite a nova senha novamente\"]"));
+        confirmarNovaSenhaInserida = (MobileElement) driver.findElement(By.xpath("//XCUIElementTypeSecureTextField[@name=\"lg_confirm_new_password_input\"]"));
         confirmarNovaSenhaInserida.clear();
         confirmarNovaSenhaInserida.sendKeys(confirmarNovaSenha);
+        confirmarNovaSenhaInserida.sendKeys(Keys.RETURN);
+
     }
 
     public void enviarNovaSenha() {
         WebDriverWait espera = new WebDriverWait(driver, 10);
-        MobileElement enviarNovaSenha = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.ViewGroup[@content-desc=\"Botão ENVIAR\"]/android.view.ViewGroup")));
+        MobileElement enviarNovaSenha = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeOther[@name=\"Botão ENVIAR\"]")));
         enviarNovaSenha.click();
     }
 
     public void buscarConfirmacaoSenhaAlteradaSucesso() {
         WebDriverWait espera = new WebDriverWait(driver, 15);
-        MobileElement confirmarSenhaAlteradaSucesso = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@text=\"Senha alterada com sucesso\"]")));
+        MobileElement confirmarSenhaAlteradaSucesso = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeOther[contains(@name, 'Senha alterada com sucesso')]")));
     }
 
     public void clicarMenuBiometria() throws InterruptedException {
@@ -223,42 +230,52 @@ public class PerfilDoUsuario {
 
     public void clicarSair() {
         WebDriverWait espera = new WebDriverWait(driver, 10);
+        GestosEmulador.rolarTelaVertical();
 
-        botaoSair = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true))" +
-                ".scrollIntoView(new UiSelector().text(\"Sair do Aplicativo\"));"));
-
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@text=\"Sair do Aplicativo\"]")));
-        botaoSair = (MobileElement) driver.findElementByXPath("//android.widget.TextView[@text=\"Sair do Aplicativo\"]");
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeOther[@name=\"Sair do Aplicativo\"]")));
+        botaoSair = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[@name=\"Sair do Aplicativo\"]");
         botaoSair.click();
 
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.Button[@resource-id=\"android:id/button1\"]")));
-        botaoConfirmarSair = (MobileElement) driver.findElementByXPath("//android.widget.Button[@resource-id=\"android:id/button1\"]");
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeButton[@name=\"Sair\"]")));
+        botaoConfirmarSair = (MobileElement) driver.findElementByXPath("//XCUIElementTypeButton[@name=\"Sair\"]");
         botaoConfirmarSair.click();
     }
 
     public void buscarErroSenhaAtualInvalida() {
         WebDriverWait espera = new WebDriverWait(driver, 15);
-        MobileElement confirmarSenhaAlteradaSucesso = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@text=\"Senha atual inválida.\"]")));
+        MobileElement confirmarSenhaAlteradaSucesso = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[contains(@name, 'Senha atual inválida')]\n")));
     }
 
     public void buscarMensagemValidacaosenha(String mensagemValidacao) {
         WebDriverWait espera = new WebDriverWait(driver, 15);
 
-        MobileElement confirmarSenhaAlteradaSucesso = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@text='" + mensagemValidacao + "']")));
+        MobileElement confirmarSenhaAlteradaSucesso = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[contains(@name, " + mensagemValidacao + "]")));
+    }
+    public void buscarMensagemValidacaosenha() {
+        WebDriverWait espera = new WebDriverWait(driver, 15);
+
+Tela.buscarElementoNaTela("//XCUIElementTypeStaticText[@name=\"error_lg_confirm_new_password_input\"]",20);
     }
 
     public void buscarSeusTelefoneContato() {
-        telefonesContato = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true))" + ".scrollIntoView(new UiSelector().resourceId(\"Seus telefones de contato\"));"));
+        GestosEmulador.rolarTelaVertical("//XCUIElementTypeOther[@name=\"Seus telefones de contato\"]");
     }
 
     public void clickSeusTelefonesContato() {
-        telefonesContato.click();
+        Tela.clicarEmElemento("//XCUIElementTypeOther[@name=\"Seus telefones de contato\"]",20);
     }
 
-    public void clicarCelularTransporte() {
+    public void clicarCelularTransporte() throws InterruptedException {
         WebDriverWait espera = new WebDriverWait(driver, 15);
-        MobileElement celularTransporte = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@text='Celular (Transporte)']")));
+        MobileElement celularTransporte = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//XCUIElementTypeOther[@name=\"Editar número de mobilidade\"])[2]")));
+        MobileElement celularTransportej = (MobileElement) espera.until(ExpectedConditions.elementToBeClickable(By.xpath("(//XCUIElementTypeOther[@name=\"Editar número de mobilidade\"])[2]")));
         celularTransporte.click();
+//
+//        Tela.buscarElementoNaTela("//XCUIElementTypeStaticText[@name=\"Seus telefones de contato\"]",20);
+//        Thread.sleep(3000);
+//        GestosEmulador.clickCoordenada(200,640);
+//        GestosEmulador.clickCoordenada(200,640);
+//        GestosEmulador.clickCoordenada(200,640);
     }
 
     public void verificarRedirecionamentoWhatsapAtendimentoAutopass() {
@@ -274,39 +291,40 @@ public class PerfilDoUsuario {
         }
     }
 
-    public void clicarCelularCadastroContaDigitalCredito() {
+    public void clicarCelularCadastroContaDigitalCredito() throws InterruptedException {
         WebDriverWait espera = new WebDriverWait(driver, 15);
-        MobileElement celularCadastroContaDigitalCredito = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@text=\"Celular (Cadastro Conta Digital/Crédito)\"]")));
+        MobileElement celularCadastroContaDigitalCredito = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//XCUIElementTypeOther[@name=\"Editar número de mobilidade\"])[2]")));
+        MobileElement celularCadastroContaDigitalCreditoo = (MobileElement) espera.until(ExpectedConditions.elementToBeClickable(By.xpath("(//XCUIElementTypeOther[@name=\"Editar número de mobilidade\"])[2]")));
         celularCadastroContaDigitalCredito.click();
+
+//        Tela.buscarElementoNaTela("//XCUIElementTypeStaticText[@name=\"Seus telefones de contato\"]",20);
+//        Thread.sleep(3000);
+//        GestosEmulador.clickCoordenada(200,730);
+//        GestosEmulador.clickCoordenada(200,730);
+//        GestosEmulador.clickCoordenada(200,730);
     }
 
     public void verificarRedirecionamentoWhatsapChatbotPefisa() {
         WebDriverWait espera = new WebDriverWait(driver, 15);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@resource-id=\"com.whatsapp:id/conversation_contact_name\"]")));
-
-        MobileElement elemento = (MobileElement) driver.findElementByXPath("//android.widget.TextView[@resource-id=\"com.whatsapp:id/conversation_contact_name\"]");
-
-        if (elemento.getText().equals("chatbot Pefisa TOP")) {
-            System.out.println(elemento.getText());
-        } else {
-            throw new AssertionError("Nome do contato não é chatbot Pefisa TOP.");
-        }
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[@name=\"OK\"]")));
+        Tela.clicarEmElemento("//XCUIElementTypeStaticText[@name=\"OK\"]",20);
+        Tela.buscarElementoNaTela("//XCUIElementTypeStaticText[@name=\"Chatbot Pefisa TOP\"]",20);
     }
 
     public void clicarTermoDeUso() {
-        MobileElement termoDeUso = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true))" + ".scrollIntoView(new UiSelector().resourceId(\"Termos de Uso\"));"));
-        termoDeUso.click();
+        GestosEmulador.rolarTelaVertical("//XCUIElementTypeOther[@name=\"Termos de Uso\"]");
+        Tela.clicarEmElemento("//XCUIElementTypeOther[@name=\"Termos de Uso\"]",10);
     }
 
     public void clicaIconeCentralAjuda() {
-        MobileElement centralAjuda = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true))" + ".scrollIntoView(new UiSelector().resourceId(\"Central de Ajuda\"));"));
-        centralAjuda.click();
+        GestosEmulador.rolarTelaVertical("//XCUIElementTypeOther[@name=\"Central de Ajuda\"]");
+        Tela.clicarEmElemento("//XCUIElementTypeOther[@name=\"Central de Ajuda\"]",10);
     }
 
     public void buscarTelaCentralAtendimento() {
         WebDriverWait espera = new WebDriverWait(driver, 15);
 
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@text=\"Ajuda\"]")));
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.webkit.WebView[@text=\"Bora de TOP\"]/android.view.View[4]/android.view.View")));
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeOther[@name=\"Ajuda\"]")));
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeOther[@name=\"Bora de TOP\"]")));
     }
 }

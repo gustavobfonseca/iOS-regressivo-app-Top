@@ -102,9 +102,9 @@ public class DefinicaoPassosCucumber {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
 
         Home telaHome = new Home(driver);
-
-        telaHome.clicarBotaoModalQueroConhecer();
-        Assert.assertEquals("Tenha uma boa viagem.", telaHome.getMsgBoaViagem().getText());
+        telaHome.buscarMensagemBemVindo();
+//        telaHome.clicarBotaoModalQueroConhecer();
+//        Assert.assertEquals("Tenha uma boa viagem.", telaHome.getMsgBoaViagem().getText());
     }
 
     @Entao("visualizo o modal de codigo invalido")
@@ -917,9 +917,7 @@ public class DefinicaoPassosCucumber {
         telaLogin.buscarElementos();
         telaLogin.limparCamposLogin();
         telaLogin.preencherFormulario(arg0, arg1);
-        MobileElement tela = (MobileElement) driver.findElementByAccessibilityId("Que bom ter você aqui! Confirme seus dados para continuar. \uEA38 CPF Espaço para digitar o cpf  icon_Espaço para digitar o cpf  \uE985 SENHA Espaço para digitar senha \uE91C Esqueci minha senha. env Botão para acessar o aplicativo É novo por aqui?  Crie uma conta.");
-        tela.click();
-        telaLogin.logar();
+//        telaLogin.logar();
     }
 
     @Entao("visualizo a lista de bilhetes disponiveis para uso")
@@ -1098,7 +1096,7 @@ public class DefinicaoPassosCucumber {
     }
 
     @E("clico em \"Editar meu número de celular\"")
-    public void editarNumeroDeCelular() {
+    public void editarNumeroDeCelular() throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         Cadastro cadastro = new Cadastro(driver);
         cadastro.clicarEditarNumeroCelular();
@@ -1114,7 +1112,7 @@ public class DefinicaoPassosCucumber {
     }
 
     @E("clico em \"CONFIRMAR NÚMERO\" após inserir um novo número de celular")
-    public void clicoEmConfirmarNúmeroApósInserirUmNovoNúmeroDeCelular() {
+    public void clicoEmConfirmarNúmeroApósInserirUmNovoNúmeroDeCelular() throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         Cadastro cadastro = new Cadastro(driver);
         cadastro.alterarNumero();
@@ -1130,18 +1128,18 @@ public class DefinicaoPassosCucumber {
     }
 
     @E("clico em \"Editar meu endereço de e-mail\"")
-    public void clicoEmEditarMeuEndereçoDeEMail() {
+    public void clicoEmEditarMeuEndereçoDeEMail() throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         Cadastro cadastro = new Cadastro(driver);
         cadastro.clicarEditarEmail();
     }
 
     @E("clico em \"CONFIRMAR E-MAIL\" após inserir um novo e-mail")
-    public void clicoEmConfirmarEmailApósInserirUmNovoEMail() {
+    public void clicoEmConfirmarEmailApósInserirUmNovoEMail() throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         Cadastro cadastro = new Cadastro(driver);
         cadastro.alterarEmail();
-        cadastro.confirmarAlterarEmail();
+//        cadastro.confirmarAlterarEmail();
     }
 
     @Então("o modal é fechado exibindo a tela de confirmação com o e-mail atualizado")

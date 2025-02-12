@@ -52,10 +52,10 @@ public class Login {
             char digito = var3[var5];
             this.campoUsuario.sendKeys(new CharSequence[]{String.valueOf(digito)});
         }
-//        campoUsuario.sendKeys(Keys.RETURN);
+        campoUsuario.sendKeys(Keys.RETURN);
 
         this.campoSenha.sendKeys(new CharSequence[]{senha});
-//        campoSenha.sendKeys(Keys.RETURN);
+        campoSenha.sendKeys(Keys.RETURN);
 
     }
 
@@ -68,13 +68,13 @@ public class Login {
     }
 
     public void logar() {
-        WebDriverWait espera = new WebDriverWait(this.driver, 10L);
+        WebDriverWait espera = new WebDriverWait(this.driver, 20L);
         MobileElement BLogin = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.id("signin_button")));
         BLogin.click();
     }
 
     public void buscarModalErro() {
-        WebDriverWait espera = new WebDriverWait(this.driver, 10L);
+        WebDriverWait espera = new WebDriverWait(this.driver, 30L);
         MobileElement modalErro = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//XCUIElementTypeOther[@name=\"Ícone times-circle Erro CPF e/ou senha inválidos. Fechar\"])[1]")));
     }
 

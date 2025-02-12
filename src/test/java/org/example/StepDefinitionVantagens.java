@@ -15,7 +15,7 @@ public class StepDefinitionVantagens {
     public void avançoPelasTrêsEtapasDoOnboarding() {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
 
-        Tela tela = new Tela(driver);
+        Tela tela = new Tela();
         for (int i = 0; i < 2; i++) {
             tela.clicarEmElemento("(//XCUIElementTypeOther[@name=\"Botão para próximo passo do onboarding\"])[2]",15);
         }
@@ -27,7 +27,7 @@ public class StepDefinitionVantagens {
     public void souDirecionadoParaAWebviewDaMinu() {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
 
-        Tela tela = new Tela(driver);
+        Tela tela = new Tela();
 
         tela.buscarElementoNaTela("//XCUIElementTypeOther[@name=\"TOP+\"]",20);
     }
@@ -36,7 +36,7 @@ public class StepDefinitionVantagens {
     public void clicoEmNaPrimeiraTelaDoOnboarding(String arg0) {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
 
-        Tela tela = new Tela(driver);
+        Tela tela = new Tela();
 
         tela.clicarEmElemento("//XCUIElementTypeOther[@name=\"PULAR\"]",20);
     }
@@ -45,7 +45,7 @@ public class StepDefinitionVantagens {
     public void clicoEmEmAlgumaDasTelasDoOnboarding(String arg0) {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
 
-        Tela tela = new Tela(driver);
+        Tela tela = new Tela();
 
         tela.clicarEmElemento("//XCUIElementTypeOther[@name=\"NÃO MOSTRAR MAIS\"]\n",20);
     }
@@ -54,7 +54,7 @@ public class StepDefinitionVantagens {
     public void fechoAWebviewDaMinu() {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
 
-        Tela tela = new Tela(driver);
+        Tela tela = new Tela();
 
         tela.buscarElementoNaTela("//XCUIElementTypeOther[@name=\"TOP+\"]",20);
         tela.clicarEmElemento("(//XCUIElementTypeOther[@name=\"\uE8CF\"])[4]",10);
@@ -102,7 +102,7 @@ public class StepDefinitionVantagens {
     @Quando("clico na opção {string}")
     public void clicoNaOpção(String arg0) {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
-        Tela tela = new Tela(driver);
+        Tela tela = new Tela();
         tela.buscarElementoNaTela("//XCUIElementTypeStaticText[@name=\"TOP Saúde\"]",20);
 
         if (arg0.equals("Ver guia de serviços")) {
@@ -119,7 +119,7 @@ public class StepDefinitionVantagens {
     @Entao("sou direcionado para a página {string}")
     public void souDirecionadoParaAPágina(String arg0) {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
-        Tela tela = new Tela(driver);
+        Tela tela = new Tela();
 
         tela.clicarEmElemento("//XCUIElementTypeTextField[@name=\"TabBarItemTitle\"]\n",30);
         tela.buscarElementoNaTela("//XCUIElementTypeTextField[@name=\"URL\"]",30);
@@ -152,7 +152,7 @@ public class StepDefinitionVantagens {
     @Quando("clico no botão {string}")
     public void clicoNoBotão(String arg0) {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
-        Tela tela = new Tela(driver);
+        Tela tela = new Tela();
 
 //        tela.clicarEmElemento("//XCUIElementTypeTextField[@name=\"TabBarItemTitle\"]\n",30);
         if (arg0.equals("Quero Contratar")){
@@ -180,7 +180,7 @@ public class StepDefinitionVantagens {
     @Entao("sou direcionado para a webview da Avus")
     public void souDirecionadoParaAWebviewDaAvus() {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
-        Tela tela = new Tela(driver);
+        Tela tela = new Tela();
         tela.buscarElementoNaTela("//XCUIElementTypeStaticText[@name=\"Escolha seu Plano:\"]",20);
 
     }
@@ -189,7 +189,7 @@ public class StepDefinitionVantagens {
     public void acessoAAba(String arg0) {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
 
-        Tela tela = new Tela(driver);
+        Tela tela = new Tela();
         tela.clicarEmElemento("//XCUIElementTypeOther[@name=\"DESCONTO ,\n" +
                 ", PELO SITE\"]",20);
     }
@@ -199,7 +199,7 @@ public class StepDefinitionVantagens {
 
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
 
-        Tela tela = new Tela(driver);
+        Tela tela = new Tela();
         tela.clicarEmElemento("//XCUIElementTypeOther[@name=\"CONFIRMAR\"]",20);
     }
 
@@ -207,7 +207,7 @@ public class StepDefinitionVantagens {
     public void retornoÀHomeComAExibiçãoDosMenusDeVantagensReordenadosDeAcordoComAMinhaEscolha() {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         Home home = new Home(driver);
-        Tela tela = new Tela(driver);
+        Tela tela = new Tela();
 
         home.buscarMensagemBemVindo();
 
@@ -223,7 +223,7 @@ tela.clicarEmElemento("(//XCUIElementTypeOther[@name=\"\uE82F\"])[2]",20);
     @E("com a opção {string} ao final da lista")
     public void comAOpçãoAoFinalDaLista(String arg0) throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
-        Tela tela = new Tela(driver);
+        Tela tela = new Tela();
 
         GestosEmulador.rolarTelaVertical();
 
