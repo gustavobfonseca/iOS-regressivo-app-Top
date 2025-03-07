@@ -147,6 +147,21 @@ public class StepDefinitionVantagens {
                 throw new RuntimeException("Redirecionado pra URL incorreta");
             }
         }
+        if (arg0.equalsIgnoreCase("https://www.emtu.sp.gov.br/passe/indexregiao.htm")){
+            if (URL.getText().equals(arg0)){
+                System.out.println("URL certa");
+            }else {
+                throw new RuntimeException("Redirecionado pra URL incorreta");
+            }
+        }
+        if (arg0.equalsIgnoreCase("https://www.emtu.sp.gov.br/passe/indexregiao.htm")){
+            if (URL.getText().equals(arg0)){
+                System.out.println("URL certa");
+            }else {
+                throw new RuntimeException("Redirecionado pra URL incorreta");
+            }
+        }
+
     }
 
     @Quando("clico no botão {string}")

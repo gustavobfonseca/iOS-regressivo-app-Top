@@ -61,7 +61,7 @@ public class Hooks {
 
     }
 
-    @Before
+//    @Before
     public void beforeScenario(Scenario scenario) {
         System.out.println("Preparando o app para o próximo cenário: " + scenario.getName());
         try {

@@ -105,6 +105,6 @@ public class PostUser {
     }
 
     public static void main(String[] args) throws Exception {
-        System.out.println(criarUser("Teste@123",19));
+        System.out.println(criarUser("Teste123",69));
     }
 }

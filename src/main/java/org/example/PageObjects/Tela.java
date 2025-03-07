@@ -33,6 +33,36 @@ public class Tela {
         return (MobileElement) driver.findElementByXPath(xPath);
     }
 
+    public static void espera (int tempo, String msg){
+        System.out.println(msg);
+        System.out.println("espera de "+tempo+"miliseg iniciada");
+        try {
+            Thread.sleep(tempo);
+        }catch (Exception e){
+
+        }
+        System.out.println("finalizou espera");
+    }
+
+    public static void espera (int tempo){
+        System.out.println("espera de "+tempo+"miliseg iniciada");
+        try {
+            Thread.sleep(tempo);
+        }catch (Exception e){
+
+        }
+        System.out.println("finalizou espera");
+    }
+
+    public static MobileElement buscarElementoNaTela(String xPath){
+        AppiumDriver driver = AppiumDriverConfig.Instance().driver;
+
+        WebDriverWait espera = new WebDriverWait(driver, 20);
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xPath)));
+
+        return (MobileElement) driver.findElementByXPath(xPath);
+    }
+
     public static void clicarEmElemento(MobileElement elementoClicavel){
 
         elementoClicavel.click();
@@ -41,6 +71,18 @@ public class Tela {
     public static void clicarEmElemento(String xpathElemento, int espera){
 
         MobileElement elemento = buscarElementoNaTela(xpathElemento, espera);
+        elemento.click();
+    }
+
+    public static String getTexto(String xpathElemento){
+        AppiumDriver driver = AppiumDriverConfig.Instance().driver;
+        MobileElement element =(MobileElement) driver.findElementByXPath(xpathElemento);
+         return element.getText();
+    }
+
+    public static void clicarEmElemento(String xpathElemento){
+
+        MobileElement elemento = buscarElementoNaTela(xpathElemento,20);
         elemento.click();
     }
 
