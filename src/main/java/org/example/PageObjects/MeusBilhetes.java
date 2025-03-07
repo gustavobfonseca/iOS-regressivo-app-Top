@@ -54,9 +54,11 @@ public class MeusBilhetes {
 
     public void buscarUltimaCompraDeBilhete() {
         WebDriverWait espera = new WebDriverWait(driver, 10);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//XCUIElementTypeOther[@name=\"Compra de Bilhetes  1 Un. CPTM / Metrô no valor de 5 reais\"])[2]")));
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//XCUIElementTypeOther[contains(@name, 'Compra de Bilhete') and contains(@name, 'CPTM / Metrô')])[last()-10]\n" +
+                "\n")));
 
-        ultimaCompraDeBilhete = (MobileElement) driver.findElementByXPath("(//XCUIElementTypeOther[@name=\"Compra de Bilhetes  1 Un. CPTM / Metrô no valor de 5 reais\"])[2]");
+        ultimaCompraDeBilhete = (MobileElement) driver.findElementByXPath("(//XCUIElementTypeOther[contains(@name, 'Compra de Bilhete') and contains(@name, 'CPTM / Metrô')])[last()-10]\n" +
+                "\n");
 
     }
 
@@ -201,9 +203,9 @@ public class MeusBilhetes {
         botaoExcluirCartaoDeCredito = (MobileElement) driver.findElementByXPath("(//android.widget.TextView[@text=\"\uE87A\"])[1]");
     }
 
-    public void clicarLixeiraExcluirCartao(String tipo) {
-        WebDriverWait espera = new WebDriverWait(driver, 120);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[@name=\"Outras\"]")));
+    public void clicarLixeiraExcluirCartao(String tipo) throws InterruptedException {
+//        WebDriverWait espera = new WebDriverWait(driver, 120);
+//        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[@name=\"Outras\"]")));
 
         WebDriverWait espera2 = new WebDriverWait(driver, 10);
 
@@ -214,6 +216,7 @@ public class MeusBilhetes {
             System.out.println(
                     cartao.getLocation()
             );
+            GestosEmulador.clickCoordenada(337,187);
         }
 
         else {
@@ -224,9 +227,9 @@ public class MeusBilhetes {
             System.out.println(
                     cartao.getLocation()
             );
-
+            GestosEmulador.clickCoordenada(337,187);
         }
-
+        Thread.sleep(2000);
         GestosEmulador.clickCoordenada(350,350);
 //        botaoExcluirCartaoDeCredito.click();
     }
@@ -239,7 +242,8 @@ public class MeusBilhetes {
     }
 
     public void clicarBotaoConfirmarExclusaoCartao() throws InterruptedException {
-        Thread.sleep(3000);
+//        Thread.sleep(3000);
+        Tela.buscarElementoNaTela("(//XCUIElementTypeOther[contains(@name, \"Deseja excluir o Cartão\")])[1]\n");
         GestosEmulador.clickCoordenada(200,700);
 //        botaoConfirmarExclusaoCartao.click();
     }
@@ -327,6 +331,7 @@ public class MeusBilhetes {
 
     public void buscarOpcaoPix() {
         WebDriverWait espera = new WebDriverWait(driver, 30);
+        GestosEmulador.rolarTelaVertical("(//XCUIElementTypeOther[@name=\"Pix Copie e cole o código para pagamento\"])[2]");
         espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//XCUIElementTypeOther[@name=\"Pix Copie e cole o código para pagamento\"])[2]")));
 
         opcaoPix = (MobileElement) driver.findElementByXPath("(//XCUIElementTypeOther[@name=\"Pix Copie e cole o código para pagamento\"])[2]");
@@ -363,8 +368,11 @@ public class MeusBilhetes {
     }
 
     public void inserirCvv(String cvv) {
-        inputCvv.sendKeys(cvv);
-        inputCvv.sendKeys(Keys.RETURN);
+        driver.getKeyboard().sendKeys(cvv);
+        driver.getKeyboard().sendKeys(Keys.RETURN);
+        try {
+            Thread.sleep(2000);
+        }catch (Exception e){}
     }
 
     public void clicarBotaoConfirmarCompra() {
@@ -436,7 +444,7 @@ public class MeusBilhetes {
         espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[@name=\"Cadastro realizado com sucesso!\"]")));
 
         msgCadastroCartaoSucesso = (MobileElement) driver.findElementByXPath("//XCUIElementTypeStaticText[@name=\"Cadastro realizado com sucesso!\"]");
-        botaoVoltarParaInicio = (MobileElement) driver.findElementByXPath("(//XCUIElementTypeOther[@name=\"Voltar para o Início\"])[2]");
+//        botaoVoltarParaInicio = (MobileElement) driver.findElementByXPath("(//XCUIElementTypeOther[@name=\"Voltar para o Início\"])[2]");
 
     }
 

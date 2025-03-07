@@ -28,6 +28,17 @@ public class GestosEmulador {
         driver.executeScript("mobile: tap", params);
     }
 
+    public static void clickCoordenada(int x, int y,String mensagem) {
+        AppiumDriver driver = AppiumDriverConfig.Instance().driver;
+
+        System.out.println("Clicar no ponto: (" + x + ", " + y + ")");
+        Map<String, Object> params = new HashMap<>();
+        params.put("x", x);
+        params.put("y", y);
+        driver.executeScript("mobile: tap", params);
+        System.out.println(mensagem);
+    }
+
     public static void rolarScrollViewHorizontalmente(String xpathScrollView) throws InterruptedException {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
 
@@ -46,7 +57,7 @@ public class GestosEmulador {
 
         HashMap<String, Object> scrollObject = new HashMap<>();
         scrollObject.put("direction", "down");  // Direção do scroll (down ou up)
-        scrollObject.put("percent", 0.05);      // Percentual da distância
+        scrollObject.put("percent", 0.02);      // Percentual da distância
 
         driver.executeScript("mobile: scroll", scrollObject);
     }

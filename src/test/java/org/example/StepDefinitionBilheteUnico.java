@@ -3,11 +3,10 @@ package org.example;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.pt.E;
-import io.cucumber.java.pt.Entao;
-import io.cucumber.java.pt.Então;
-import io.cucumber.java.pt.Quando;
+import io.cucumber.java.pt.*;
+import org.example.PageObjects.Home;
 import org.example.PageObjects.InserirDadosCartao;
+import org.example.PageObjects.Login;
 import org.example.PageObjects.Tela;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
@@ -339,5 +338,52 @@ public class StepDefinitionBilheteUnico {
         String dataFormatada = formatador.format(dataAtual);
 
         tela.clicarEmElemento("//XCUIElementTypeOther[@name=\"APELIDO DO CARTÃO: "+arg1+" NÚMERO: "+arg0+" Adicionado em "+dataFormatada+" \"]",10);
+    }
+
+    @E("clico na opção {string} na vitrine de Puro Transporte")
+    public void clicoNaOpçãoNaVitrineDePuroTransporte(String arg0) throws InterruptedException {
+    GestosEmulador.rolarTelaVertical();
+    Thread.sleep(2000);
+    GestosEmulador.clickCoordenada(197,773,"eu quero");
+    }
+
+    @Dado("que acesso o app com uma conta nova")
+    public void queAcessoOAppComUmaContaNova() throws Exception {
+        String senha = "Teste123";
+        String cpf = PostUser.criarUser(senha,19);
+
+        AppiumDriver driver = AppiumDriverConfig.Instance().driver;
+        Login telaLogin = new Login(driver);
+
+
+        telaLogin.buscarElementos();
+        telaLogin.preencherFormulario(cpf, senha);
+
+        Home telaHome = new Home(driver);
+        telaHome.buscarMensagemBemVindo();
+
+    }
+
+    @Quando("clico no botão Comunicar Perda Roubo")
+    public void clicoNoBotãoComunicarPerdaRoubo() {
+//        Tela.buscarElementoNaTela("//XCUIElementTypeButton[@name=\"\uE884 Transporte\"]");
+//        GestosEmulador.clickCoordenada(360,580);
+        Tela.espera(3000);
+        GestosEmulador.clickCoordenada(291,494);
+    }
+
+    @E("clico em Prosseguir com o cancelamento")
+    public void clicoEmProsseguirComOCancelamento() {
+        GestosEmulador.rolarTelaVertical();
+        Tela.clicarEmElemento("//XCUIElementTypeOther[@name=\"Prosseguir com o cancelamento\"]");
+    }
+
+    @Então("sou direcionado para o chatbot da Pefisa via WhatsApp")
+    public void souDirecionadoParaOChatbotDaPefisaViaWhatsApp() {
+        Tela.buscarElementoNaTela("//XCUIElementTypeTextField[@name=\"TabBarItemTitle\"]");
+        Tela.buscarElementoNaTela("//XCUIElementTypeStaticText[@name=\"Chatbot Pefisa TOP\"]");
+        Tela.buscarElementoNaTela("//XCUIElementTypeStaticText[@name=\"Iniciar conversa\"]");
+
+
     }
 }
