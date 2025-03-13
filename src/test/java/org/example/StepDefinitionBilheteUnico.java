@@ -369,6 +369,7 @@ public class StepDefinitionBilheteUnico {
 //        Tela.buscarElementoNaTela("//XCUIElementTypeButton[@name=\"\uE884 Transporte\"]");
 //        GestosEmulador.clickCoordenada(360,580);
         Tela.espera(3000);
+        GestosEmulador.arrastar(200,54,200,500);
         GestosEmulador.clickCoordenada(291,494);
     }
 

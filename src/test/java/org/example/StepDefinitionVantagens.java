@@ -4,6 +4,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.cucumber.java.pt.*;
 import org.example.PageObjects.Home;
+import org.example.PageObjects.Login;
 import org.example.PageObjects.Tela;
 
 import java.util.HashMap;
@@ -95,6 +96,11 @@ public class StepDefinitionVantagens {
             System.out.println(arg0);
 
             GestosEmulador.clickCoordenada(80, 415);
+        }
+        if (arg0.equals("SuperTOP")) {
+            System.out.println(arg0);
+
+            GestosEmulador.clickCoordenada(222, 415);
         }
 
     }
@@ -258,5 +264,121 @@ tela.clicarEmElemento("(//XCUIElementTypeOther[@name=\"\uE82F\"])[2]",20);
     @Quando("reordeno a posição dos meus benefícios")
     public void reordenoAPosiçãoDosMeusBenefícios() {
         GestosEmulador.segurarEArrastar("(//XCUIElementTypeOther[@name=\"\uE90C TOP + RECOMPENSAS 2\"])[3]","(//XCUIElementTypeOther[@name=\"\uE90C SUPERTOP 1\"])[3]");
+    }
+
+    @E("seleciono a opção Rotas e Trajetos no modal")
+    public void selecionoAOpçãoRotasETrajetosNoModal() {
+        Tela.clicarEmElemento("//XCUIElementTypeOther[@name=\"Rotas e trajetos\"]");
+    }
+
+    @E("pulo erro")
+    public void puloErro() {
+        Tela.clicarEmElemento("//XCUIElementTypeStaticText[@name=\"Dismiss (ESC)\"]");
+    }
+
+    @Quando("navego até o final da tela")
+    public void navegoAtéOFinalDaTela() {
+        GestosEmulador.rolarTelaVertical();
+        GestosEmulador.rolarTelaVertical();
+    }
+
+    @Então("visualizo o botão Comprar Pontos")
+    public void visualizoOBotãoComprarPontos() {
+        Tela.clicarEmElemento("(//XCUIElementTypeOther[@name=\"COMPRAR PONTOS\"])[4]");
+    }
+
+    @E("clico em {string} no modal do SuperTOP")
+    public void clicoEmNoModalDoSuperTOP(String arg0) {
+        Tela.buscarElementoNaTela("(//XCUIElementTypeOther[@name=\"Escolha quantos pontos supertroco deseja comprar e troque por produtos, serviços, doações ou descontos em lojas, restaurantes e streamings, além de concorrer a prêmios em dinheiro semanalmente. É simples: comprando R$ 1,00, você\n" +
+                " recebe 100 pontos. A cada compra,\n" +
+                " concorra a prêmios de até R$ 500 mil*. *Conheça os benefícios, programa e regulamento VAMOS LÁ!\"])[3]");
+        GestosEmulador.clickCoordenada(200,804);
+    }
+
+    @E("clico em comprar pontos")
+    public void clicoEmComprarPontos() {
+        GestosEmulador.rolarTelaVertical("(//XCUIElementTypeOther[@name=\"COMPRAR PONTOS\"])[2]");
+//        Tela.clicarEmElemento("(//XCUIElementTypeOther[@name=\"COMPRAR PONTOS\"])[2]");
+    }
+
+    @Quando("seleciono a compra de {int} pontos arrastando a barra até o máximo")
+    public void selecionoACompraDePontosArrastandoABarraAtéOMáximo(int arg0) {
+        Tela.buscarElementoNaTela("//XCUIElementTypeStaticText[@name=\"Comprar pontos\"]");
+        Tela.buscarElementoNaTela("//XCUIElementTypeStaticText[@name=\"Deslize para escolher quantos pontos supertroco deseja comprar\"]");
+
+        GestosEmulador.arrastar(62,330,374,330);
+
+        Tela.buscarElementoNaTela("//XCUIElementTypeOther[@name=\"PONTOS 1.000\"]");
+        Tela.clicarEmElemento("//XCUIElementTypeOther[@name=\"CONTINUAR\"]");
+    }
+
+    @E("seleciono a opção {int} chance de ganhar até R$ {int} mil")
+    public void selecionoAOpçãoChanceDeGanharAtéR$Mil(int arg0, int arg1) {
+        Tela.clicarEmElemento("//XCUIElementTypeOther[@name=\"1 chance de ganhar até\n" +
+                "R$ 500 mil* Concorra a um prêmio maior, com menos chances.\"]");
+
+        Tela.clicarEmElemento("//XCUIElementTypeOther[@name=\"CONTINUAR PARA PAGAMENTO\"]");
+    }
+
+    @Dado("que eu acesso a tela home do aplicativo cpf {string} senha {string}")
+    public void queEuAcessoATelaHomeDoAplicativoCpfSenha(String arg0, String arg1) throws InterruptedException {
+        AppiumDriver driver = AppiumDriverConfig.Instance().driver;
+        Login telaLogin = new Login(driver);
+        telaLogin.buscarElementos();
+        telaLogin.buscarElementos();
+        telaLogin.limparCamposLogin();
+        telaLogin.preencherFormulario(arg0, arg1);
+        Home telaHome = new Home(driver);
+        telaHome.buscarMensagemBemVindo();
+    }
+
+    @Quando("clico em Minhas Transações")
+    public void clicoEmMinhasTransações() {
+        Tela.buscarElementoNaTela("//XCUIElementTypeStaticText[@name=\"SuperTOP\"]");
+        GestosEmulador.clickCoordenada(290,600);
+    }
+
+    @Então("visualizo a tela {string} com o botão {string}")
+    public void visualizoATelaComOBotão(String arg0, String arg1) {
+        Tela.buscarElementoNaTela("//XCUIElementTypeStaticText[@name=\"Minhas Transações\"]");
+        Tela.buscarElementoNaTela("//XCUIElementTypeOther[@name=\"COMPRAR PONTOS\"]");
+        GestosEmulador.clickCoordenada(180,330);
+        Tela.buscarElementoNaTela("//XCUIElementTypeStaticText[@name=\"DETALHES DA TRANSAÇÃO\"]");
+
+    }
+
+    @Quando("clico em Sorteios")
+    public void clicoEmSorteios() {
+        Tela.buscarElementoNaTela("//XCUIElementTypeStaticText[@name=\"SuperTOP\"]");
+        GestosEmulador.clickCoordenada(100,700);
+    }
+
+    @Então("visualizo o botão Comprar Pontos pelo sorteio")
+    public void visualizoOBotãoComprarPontosPeloSorteio() {
+        Tela.buscarElementoNaTela("//XCUIElementTypeOther[@name=\"COMPRAR PONTOS\"]");
+    }
+
+    @Quando("clico em Vencedores")
+    public void clicoEmVencedores() {
+        Tela.buscarElementoNaTela("//XCUIElementTypeStaticText[@name=\"SuperTOP\"]");
+        GestosEmulador.clickCoordenada(280,720);
+    }
+
+    @Então("visualizo a opção Quero saber mais")
+    public void visualizoAOpçãoQueroSaberMais() {
+        Tela.buscarElementoNaTela("//XCUIElementTypeStaticText[@name=\"QUERO SABER MAIS\"]");
+//        Tela.buscarElementoNaTela("//XCUIElementTypeStaticText[@name=\"Vencedores\"]");
+
+    }
+
+    @Quando("seleciono uma das rotas listadas")
+    public void selecionoUmaDasRotasListadas() {
+        GestosEmulador.clickCoordenada(200,350);
+
+    }
+
+    @E("arrasto o modal para cima")
+    public void arrastoOModalParaCima() {
+GestosEmulador.arrastar(200,605,200,52);
     }
 }

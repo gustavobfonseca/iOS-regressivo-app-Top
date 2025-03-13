@@ -66,3 +66,54 @@ Cenário: Personalizar Favoritos
   E clico em "Confirmar"
   Entao retorno à Home com a exibição dos menus de Vantagens reordenados de acordo com a minha escolha
   E com a opção "Personalizar Favoritos" ao final da lista
+
+  Cenário: SuperTOP
+    Dado que eu acesso a tela home do aplicativo
+    E que acesso o menu "SuperTOP"
+    E clico em "Vamos lá" no modal do SuperTOP
+    E pulo erro
+    Quando navego até o final da tela
+    Então visualizo o botão Comprar Pontos
+
+  Cenário: Comprar Pontos - SuperTOP
+    Dado que eu acesso a tela home do aplicativo
+    E que acesso o menu "SuperTOP"
+    E clico em "Vamos lá" no modal do SuperTOP
+    E pulo erro
+    E clico em comprar pontos
+    Quando seleciono a compra de 10 pontos arrastando a barra até o máximo
+    E seleciono a opção 1 chance de ganhar até R$ 500 mil
+    E confirmo pix como forma de pagamento
+    Então visualizo a tela de confirmação de pagamento via pix
+
+  Cenário: Minhas Transações - SuperTOP
+    Dado que eu acesso a tela home do aplicativo cpf "408.305.648-70 " senha "Teste123"
+#    E informo as credenciais:
+#      | CPF              | SENHA     |
+#      | 408.305.648-70   | Teste123  |
+    E que acesso o menu "SuperTOP"
+    E clico em "Vamos lá" no modal do SuperTOP
+    E pulo erro
+    Quando clico em Minhas Transações
+    E pulo erro
+    Então visualizo a tela "Minhas Transações" com o botão "Comprar Pontos"
+
+  Cenário: Sorteios - SuperTOP
+    Dado que eu acesso a tela home do aplicativo
+    E que acesso o menu "SuperTOP"
+    E clico em "Vamos lá" no modal do SuperTOP
+    E pulo erro
+    Quando clico em Sorteios
+    E pulo erro
+    E navego até o final da tela
+    Então visualizo o botão Comprar Pontos pelo sorteio
+
+  Cenário: Vencedores - SuperTOP
+    Dado que eu acesso a tela home do aplicativo
+    E que acesso o menu "SuperTOP"
+    E clico em "Vamos lá" no modal do SuperTOP
+    E pulo erro
+    Quando clico em Vencedores
+    E pulo erro
+    E navego até o final da tela
+    Então visualizo a opção Quero saber mais

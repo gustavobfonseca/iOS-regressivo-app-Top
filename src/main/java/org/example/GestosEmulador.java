@@ -3,16 +3,17 @@ package org.example;
 import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.TouchAction;
-import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.ElementOption;
+import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
+
+import java.util.Collections;
 
 import java.io.IOException;
-import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,7 +58,7 @@ public class GestosEmulador {
 
         HashMap<String, Object> scrollObject = new HashMap<>();
         scrollObject.put("direction", "down");  // Direção do scroll (down ou up)
-        scrollObject.put("percent", 0.02);      // Percentual da distância
+        scrollObject.put("percent", 0.05);      // Percentual da distância
 
         driver.executeScript("mobile: scroll", scrollObject);
     }
@@ -151,6 +152,32 @@ public class GestosEmulador {
 
         // Executar o gesto
         driver.executeScript("mobile: dragFromToForDuration", dragParams);
+    }
+
+
+    public static void arrastar(int startX, int startY, int endX, int endY) {
+        AppiumDriver<MobileElement> driver = AppiumDriverConfig.Instance().driver;
+
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence sequence = new Sequence(finger, 0);
+
+        // Toque e segure na posição inicial
+        sequence.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
+        sequence.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+
+        try {
+            Thread.sleep(1000); // 1 segundo
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Arrasta para a posição final
+        sequence.addAction(finger.createPointerMove(Duration.ofMillis(1000), PointerInput.Origin.viewport(), endX, endY));
+
+        // Solta o toque
+        sequence.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+        driver.perform(Collections.singletonList(sequence));
     }
 
 

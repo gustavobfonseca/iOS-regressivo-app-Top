@@ -355,6 +355,17 @@ try {
 
         Thread.sleep(500);
     }
+    public void rolarScrollViewHorizontalmente(String xpath) throws InterruptedException {
+        MobileElement scrollView =(MobileElement) driver.findElementByXPath(xpath);
+
+        // Rolar da direita para a esquerda
+        driver.executeScript("mobile: swipe", ImmutableMap.of(
+                "element", ((RemoteWebElement) scrollView).getId(),
+                "direction", "left"
+        ));
+
+        Thread.sleep(500);
+    }
 
 
     public void clickCoordenada(int x, int y) {
