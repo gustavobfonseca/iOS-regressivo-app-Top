@@ -1164,7 +1164,7 @@ public class DefinicaoPassosCucumber {
     public void confirmoPixComoFormaDePagamento() {
         Tela.buscarElementoNaTela("//XCUIElementTypeOther[@name=\"Pix Copia e cola TROCAR\"]");
     GestosEmulador.rolarTelaVertical("(//XCUIElementTypeOther[@name=\"CONFIRMAR PAGAMENTO\"])[2]");
-    Tela.clicarEmElemento("(//XCUIElementTypeOther[@name=\"CONFIRMAR PAGAMENTO\"])[2]");
+//    Tela.clicarEmElemento("(//XCUIElementTypeOther[@name=\"CONFIRMAR PAGAMENTO\"])[2]");
 //        AppiumDriver driver = AppiumDriverConfig.Instance().driver;
 //        MeusBilhetes telaMeusBilhetes = new MeusBilhetes(driver);
 

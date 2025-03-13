@@ -4,6 +4,9 @@ Funcionalidade: BilhetesQrCode
   #DÉBITO - 37667124035
   # CRÉDITO - 16656110061
 
+  #massa escolar 054.540.810-51
+  # 365.369.350-04
+  #massa escolar saldo conta nao tem
 #  ajustar massas geral
 
   Cenario:01 Compra bilhete CPTM ou Metro com pagamento via pix

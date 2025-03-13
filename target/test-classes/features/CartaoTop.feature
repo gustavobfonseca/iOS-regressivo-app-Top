@@ -168,7 +168,7 @@ Cenário: 18 - Comunicar Perda Roubo de Cartão Híbrido
 #  | CPF           | SENHA    |
 #  | 519.197.408-56| Teste123 |
   Quando clico no botão Comunicar Perda Roubo
-#  E cancelo e retorno
+  E cancelo e retorno
   E clico em Prosseguir com o cancelamento
   Então sou direcionado para o chatbot da Pefisa via WhatsApp
 
