@@ -19,6 +19,16 @@ import java.util.Map;
 
 public class StepDefinitionBilheteUnico {
 
+    private String cpf;
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
     AppiumDriver driver = AppiumDriverConfig.Instance().driver;
     Tela tela = new Tela();
 
@@ -351,6 +361,7 @@ public class StepDefinitionBilheteUnico {
     public void queAcessoOAppComUmaContaNova() throws Exception {
         String senha = "Teste123";
         String cpf = PostUser.criarUser(senha,19);
+        setCpf(cpf);
 
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
         Login telaLogin = new Login(driver);
