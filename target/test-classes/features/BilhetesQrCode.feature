@@ -4,6 +4,9 @@ Funcionalidade: BilhetesQrCode
   #DÉBITO - 37667124035
   # CRÉDITO - 16656110061
 
+  #massa escolar 054.540.810-51
+  # 365.369.350-04
+  #massa escolar saldo conta nao tem
 #  ajustar massas geral
 
   Cenario:01 Compra bilhete CPTM ou Metro com pagamento via pix
@@ -146,7 +149,7 @@ Funcionalidade: BilhetesQrCode
 
   Cenario:12 Cadastro de cartão de débito
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "730.889.410-03", senha "Teste123"
+    E submeto as seguintes credenciais validas para login, cpf "37667124035", senha "Teste123"
     E acesso a home do aplicativo
     Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo
     E clico na opção Formas de Pagamento

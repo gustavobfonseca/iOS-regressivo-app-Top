@@ -915,6 +915,7 @@ public class DefinicaoPassosCucumber {
 //        telaLogin.logar();
     }
 
+
     @Entao("visualizo a lista de bilhetes disponiveis para uso")
     public void visualizoAListaDeBilhetesDisponiveisParaUso() {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
