@@ -216,7 +216,7 @@ public class StepDefinitionCartaoTop {
     @Quando("submeto a recarga comum informando valor entre {string} e {string}")
     public void submetoARecargaComumInformandoValorEntreE(String arg0, String arg1) throws InterruptedException {
         Tela.buscarElementoNaTela("//XCUIElementTypeOther[contains(@name, \"Cartão Transporte\")]");
-        Thread.sleep(3000);
+        Thread.sleep(4000);
         GestosEmulador.clickCoordenada(100,500);
 
         Tela.inputNoElemento("//XCUIElementTypeTextField[@name=\"lg_credit_value_input\"]","500");
@@ -564,6 +564,22 @@ home.buscarMensagemBemVindo();
         Tela.buscarElementoNaTela("(//XCUIElementTypeOther[contains(@name,\"Benefício Senior\")])");
         Tela.buscarElementoNaTela("(//XCUIElementTypeOther[contains(@name,\"Senior\")])");
 
+    }
+
+    @E("clico em Outro valor")
+    public void clicoEmOutroValor() throws InterruptedException {
+        GestosEmulador.rolarScrollViewHorizontalmente("(//XCUIElementTypeOther[@name=\"R$ 0,00 AGORA NÃO R$ 0,50 50 PONTOS R$ 1,00 100 PONTOS R$ 1,50 150 PONTOS OUTRO VALOR Barra de rolagem vertical, 2 páginas\"])[2]/XCUIElementTypeScrollView");
+        Tela.clicarEmElemento("(//XCUIElementTypeOther[@name=\"OUTRO VALOR\"])[3]");
+    }
+
+    @E("submeto o valor de R${int}")
+    public void submetoOValorDeR$(int arg1) {
+        Tela.buscarElementoNaTela("(//XCUIElementTypeOther[@name=\"Qual valor deseja converter em\n" +
+                " pontos supertroco? Adicione valores entre R$ 0,10 e R$ 10,00 Valor Informe o valor desejado CONFIRMAR\"])[3]");
+        GestosEmulador.inserirNumero(arg1);
+        Tela.espera(200);
+        GestosEmulador.clickCoordenada(200,735);
+        GestosEmulador.rolarTelaVertical();
     }
 }
 

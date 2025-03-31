@@ -44,4 +44,16 @@ public class StepDefinitionBilhetesQrCode {
     Tela.buscarElementoNaTela("(//XCUIElementTypeOther[contains(@name, \"Escolha quantos pontos supertroco deseja comprar\")])[3]\n");
     GestosEmulador.clickCoordenada(195,805);
     }
+
+    @E("seleciono Continuar compra com pontos no modal do Super TOP")
+    public void selecionoContinuarCompraComPontosNoModalDoSuperTOP() {
+        Tela.buscarElementoNaTela("(//XCUIElementTypeOther[contains(@name, \"Escolha quantos pontos supertroco deseja comprar\")])[3]\n");
+        GestosEmulador.clickCoordenada(195,743);
+        GestosEmulador.rolarTelaVertical();
+    }
+
+    @E("seleciono {string} pontos do SuperTop")
+    public void selecionoPontos(String arg0) {
+        Tela.clicarEmElemento("(//XCUIElementTypeOther[contains(@name, \""+arg0+" PONTOS\")])[last()]");
+    }
 }

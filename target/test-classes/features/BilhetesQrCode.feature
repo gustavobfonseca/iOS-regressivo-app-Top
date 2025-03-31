@@ -34,6 +34,34 @@ Funcionalidade: BilhetesQrCode
     E confirmo o pagamento informando o CVV "001"
     Então visualizo a tela de Erro no pagamento
 
+  Cenário: Compra combo de bilhetes + 50 pontos via Débito
+    Dado que estou na área não logada do app
+    E submeto as seguintes credenciais validas para login, cpf "37667124035", senha "Teste123"
+    E acesso a home do aplicativo
+    Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo
+    E clico na opçao Comprar Bilhetes
+    E adiciono "1" com a opção Metro e Trem pré selecionada
+    E confirmo as seleções
+    E seleciono Continuar compra com pontos no modal do Super TOP
+    E confirmo Cartão de débito como forma de pagamento
+    E confirmo o pagamento informando o CVV "123"
+    Então visualizo a tela de Pagamento efetuado com sucesso
+
+  Cenário: Compra combo de bilhetes + 100 pontos via Débito
+    Dado que estou na área não logada do app
+    E submeto as seguintes credenciais validas para login, cpf "37667124035", senha "Teste123"
+    E acesso a home do aplicativo
+    Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo
+    E clico na opçao Comprar Bilhetes
+    E adiciono "1" com a opção Metro e Trem pré selecionada
+    E confirmo as seleções
+    E seleciono Continuar compra com pontos no modal do Super TOP
+    E seleciono "100" pontos do SuperTop
+    E confirmo Cartão de débito como forma de pagamento
+    E confirmo o pagamento informando o CVV "123"
+    Então visualizo a tela de Pagamento efetuado com sucesso
+
+
   Cenario:03 Compra bilhete CPTM ou Metro com pagamento via cartão de crédito com o cvv preenchido corretamente
     Dado que estou na área não logada do app
     E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste123"

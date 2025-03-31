@@ -48,8 +48,8 @@ public class DefinicaoPassosCucumber {
         telaLogin.buscarElementos();
         telaLogin.limparCamposLogin();
         telaLogin.preencherFormulario("32772147886", "SenhaIncorreta");
-        MobileElement tela = (MobileElement) driver.findElementByAccessibilityId("Que bom ter você aqui! Confirme seus dados para continuar. \uEA38 CPF Espaço para digitar o cpf  icon_Espaço para digitar o cpf  \uE985 SENHA Espaço para digitar senha \uE91C Esqueci minha senha. env Botão para acessar o aplicativo É novo por aqui?  Crie uma conta.");
-        tela.click();
+//        MobileElement tela = (MobileElement) driver.findElementByAccessibilityId("Que bom ter você aqui! Confirme seus dados para continuar. \uEA38 CPF Espaço para digitar o cpf  icon_Espaço para digitar o cpf  \uE985 SENHA Espaço para digitar senha \uE91C Esqueci minha senha. env Botão para acessar o aplicativo É novo por aqui?  Crie uma conta.");
+//        tela.click();
         telaLogin.logar();
     }
 
@@ -162,8 +162,8 @@ public class DefinicaoPassosCucumber {
         telaLogin.buscarElementos();
         telaLogin.limparCamposLogin();
         telaLogin.preencherFormulario("73040542559", "Teste123");
-        MobileElement tela = (MobileElement) driver.findElementByAccessibilityId("Que bom ter você aqui! Confirme seus dados para continuar. \uEA38 CPF Espaço para digitar o cpf  icon_Espaço para digitar o cpf  \uE985 SENHA Espaço para digitar senha \uE91C Esqueci minha senha. env Botão para acessar o aplicativo É novo por aqui?  Crie uma conta.");
-        tela.click();
+//        MobileElement tela = (MobileElement) driver.findElementByAccessibilityId("Que bom ter você aqui! Confirme seus dados para continuar. \uEA38 CPF Espaço para digitar o cpf  icon_Espaço para digitar o cpf  \uE985 SENHA Espaço para digitar senha \uE91C Esqueci minha senha. env Botão para acessar o aplicativo É novo por aqui?  Crie uma conta.");
+//        tela.click();
         telaLogin.logar();
     }
 
@@ -751,7 +751,7 @@ public class DefinicaoPassosCucumber {
     @E("confirmo Cartão de débito como forma de pagamento")
     public void confirmoCartãoDeDébitoComoFormaDePagamento() throws InterruptedException {
         Tela.clicarEmElemento("//XCUIElementTypeOther[@name=\"TROCAR\"]");
-        Thread.sleep(3000);
+        Tela.buscarElementoNaTela("//XCUIElementTypeOther[contains(@name, \"FORMAS DE PAGAMENTO Pix Copia\")]");
         GestosEmulador.clickCoordenada(180,711);
 //        GestosEmulador.clickCoordenada(185,620);
 //        GestosEmulador.clickCoordenada(200,683);
@@ -1165,7 +1165,7 @@ public class DefinicaoPassosCucumber {
     public void confirmoPixComoFormaDePagamento() {
         Tela.buscarElementoNaTela("//XCUIElementTypeOther[@name=\"Pix Copia e cola TROCAR\"]");
     GestosEmulador.rolarTelaVertical("(//XCUIElementTypeOther[@name=\"CONFIRMAR PAGAMENTO\"])[2]");
-//    Tela.clicarEmElemento("(//XCUIElementTypeOther[@name=\"CONFIRMAR PAGAMENTO\"])[2]");
+    Tela.clicarEmElemento("(//XCUIElementTypeOther[@name=\"CONFIRMAR PAGAMENTO\"])[2]");
 //        AppiumDriver driver = AppiumDriverConfig.Instance().driver;
 //        MeusBilhetes telaMeusBilhetes = new MeusBilhetes(driver);
 

@@ -16,7 +16,38 @@ Cenário: 02 - Onboarding Puro Transporte Sênior
   E clico em "Continuar" na tela sobre direito à gratuidade
   Então visualizo apenas a opção de "Retirar em loja" como forma de recebimento do cartão
 
-Cenário: 03 - Compra de Crédito Comum - Pagamento via PIX
+Cenario: Compra de combo de Crédito Comum + 1.000 pontos - Pagamento via PIX
+  Dado que acesso o menu "Cartão TOP" tendo o produto "Transporte" ativo
+  Quando submeto a recarga comum informando valor entre "R$4,00" e "R$100,00"
+  E seleciono Continuar compra com pontos no modal do Super TOP
+  E clico em Outro valor
+  E submeto o valor de R$1000
+  #10 reais
+  E confirmo pix como forma de pagamento
+  Então visualizo a tela de confirmação de pagamento via pix
+
+  Cenario: Compra de combo de Crédito Comum + 150 pontos - Pagamento via Cartão de Débito
+    Dado que acesso o menu "Cartão TOP" tendo o produto "Transporte" ativo com Cartão de Débito cadastrado
+#    | CPF | SENHA |
+#    | 016.276.920-29 | Teste123 |
+    Quando submeto a recarga comum informando valor entre "R$4,00" e "R$100,00"
+    E seleciono Continuar compra com pontos no modal do Super TOP
+    E seleciono "150" pontos do SuperTop
+    E confirmo Cartão de débito como forma de pagamento
+    E confirmo o pagamento informando o CVV "123"
+    Então visualizo a tela de Pagamento efetuado com sucesso
+
+  Cenário: Compra de combo de Crédito Escolar - Pagamento via Cartão de Débito - 50 pontos
+    Dado que acesso o menu "Cartão TOP" tendo o produto "Transporte Escolar" ativo e Cartão de Débito válido cadastrado
+#  | CPF           | SENHA    |
+#  | 365.369.350-04| Teste123 |
+    Quando submeto a recarga escolar informando valor entre "R$10,00" e "R$250,00"
+    E seleciono Continuar compra com pontos no modal do Super TOP
+    E confirmo Cartão de débito como forma de pagamento
+    E confirmo o pagamento informando o CVV "123"
+    Então visualizo a tela de Pagamento efetuado com sucesso
+
+  Cenário: 03 - Compra de Crédito Comum - Pagamento via PIX
   Dado que acesso o menu "Cartão TOP" tendo o produto "Transporte" ativo
 #  | CPF           | SENHA    |
 #  | 519.197.408-56| Teste123 |
