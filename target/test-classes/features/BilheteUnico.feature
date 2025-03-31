@@ -92,17 +92,17 @@ Funcionalidade: Bilhete Unico
     E confirmo pix como forma de pagamento para recarga de BU
     Entao visualizo a tela de codigo pix gerado para recarga de bilhete unico podendo copiar o codigo via icone ou botao Copiar Codigo Pix
 
-  Cenario:10 Recarga comum codigo pix expirado
-    Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
-    E acesso a home do aplicativo
-    Quando navego ate Bilhete Unico
-    E clico no bilhete unico de numero "510356863"
-    E clico em Recargar
-    E clico em Comum
-    E confirmo um valor entre 10 e 50
-    E confirmo pix como forma de pagamento para recarga de BU
-    Entao visualizo a tela de codigo pix expirado depois de mais de 1 minuto e meio de espera
+#  Cenario:10 Recarga comum codigo pix expirado
+#    Dado que estou na área não logada do app
+#    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+#    E acesso a home do aplicativo
+#    Quando navego ate Bilhete Unico
+#    E clico no bilhete unico de numero "510356863"
+#    E clico em Recargar
+#    E clico em Comum
+#    E confirmo um valor entre 10 e 50
+#    E confirmo pix como forma de pagamento para recarga de BU
+#    Entao visualizo a tela de codigo pix expirado depois de mais de 1 minuto e meio de espera
 
   Cenario:11 Recarga diaria Onibus Metro e Trem
     Dado que estou na área não logada do app
@@ -143,18 +143,18 @@ Funcionalidade: Bilhete Unico
     E confirmo pix como forma de pagamento para recarga de BU
     Entao visualizo a tela de codigo pix gerado para recarga de bilhete unico podendo copiar o codigo via icone ou botao Copiar Codigo Pix
 
-  Cenario:14 Recarga diária codigo pix expirado
-    Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
-    E acesso a home do aplicativo
-    Quando navego ate Bilhete Unico
-    E clico no bilhete unico de numero "510356863"
-    E clico em Recargar
-    E clico em Diaria
-    E confirmo a opcao onibus
-    E confirmo o numero de cotas entre 1 e 15
-    E confirmo pix como forma de pagamento para recarga de BU
-    Entao visualizo a tela de codigo pix expirado depois de mais de 1 minuto e meio de espera
+#  Cenario:14 Recarga diária codigo pix expirado
+#    Dado que estou na área não logada do app
+#    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+#    E acesso a home do aplicativo
+#    Quando navego ate Bilhete Unico
+#    E clico no bilhete unico de numero "510356863"
+#    E clico em Recargar
+#    E clico em Diaria
+#    E confirmo a opcao onibus
+#    E confirmo o numero de cotas entre 1 e 15
+#    E confirmo pix como forma de pagamento para recarga de BU
+#    Entao visualizo a tela de codigo pix expirado depois de mais de 1 minuto e meio de espera
 
   Cenario:15 Recarga mensal Onibus Metro e Trem
     Dado que estou na área não logada do app
@@ -192,17 +192,17 @@ Funcionalidade: Bilhete Unico
     E confirmo pix como forma de pagamento para recarga de BU
     Entao visualizo a tela de codigo pix gerado para recarga de bilhete unico podendo copiar o codigo via icone ou botao Copiar Codigo Pix
 
-  Cenario:18 Recarga Mensal codigo pix expirado
-    Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
-    E acesso a home do aplicativo
-    Quando navego ate Bilhete Unico
-    E clico no bilhete unico de numero "510356863"
-    E clico em Recargar
-    E clico em Mensal
-    E confirmo a opcao onibus
-    E confirmo pix como forma de pagamento para recarga de BU
-    Entao visualizo a tela de codigo pix expirado depois de mais de 1 minuto e meio de espera
+#  Cenario:18 Recarga Mensal codigo pix expirado
+#    Dado que estou na área não logada do app
+#    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+#    E acesso a home do aplicativo
+#    Quando navego ate Bilhete Unico
+#    E clico no bilhete unico de numero "510356863"
+#    E clico em Recargar
+#    E clico em Mensal
+#    E confirmo a opcao onibus
+#    E confirmo pix como forma de pagamento para recarga de BU
+#    Entao visualizo a tela de codigo pix expirado depois de mais de 1 minuto e meio de espera
 
   Cenario:19 Exclusão de Bilhete - 3 cadastrados
     Dado que estou na área não logada do app

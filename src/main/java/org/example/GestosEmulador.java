@@ -5,6 +5,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import java.time.Duration;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -181,4 +182,11 @@ public class GestosEmulador {
     }
 
 
+    public static void inserirNumero(Integer numero) {
+        AppiumDriver<MobileElement> driver = AppiumDriverConfig.Instance().driver;
+
+        String texto = numero.toString();
+        driver.getKeyboard().sendKeys(texto);
+        driver.getKeyboard().sendKeys(Keys.RETURN);
+    }
 }
