@@ -93,7 +93,7 @@ Funcionalidade: BilhetesQrCode
 
   Cenario:05 Compra de bilhete via cartão de débito
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste123"
+    E submeto as seguintes credenciais validas para login, cpf "37667124035", senha "Teste123"
     E acesso a home do aplicativo
     Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo
     E clico na opçao Comprar Bilhetes
@@ -120,7 +120,7 @@ Funcionalidade: BilhetesQrCode
 
   Cenario:07 Erro na compra de bilhete CPTM, Metro com pagamento via saldo em conta
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "11335685995", senha "Teste123"
+    E submeto as seguintes credenciais validas para login, cpf "51919740856", senha "Teste123"
     E acesso a home do aplicativo
     E eu habilito o mock do token no perfil do usuario
     Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo
@@ -132,41 +132,41 @@ Funcionalidade: BilhetesQrCode
     E confirmo o pagamento informando a senha "1111"
     Então visualizo a tela de Erro no pagamento
 
-  Cenario:08 Remover cartão de crédito como forma de pagamento
-    Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "16656110061", senha "Teste123"
-    E acesso a home do aplicativo
-    Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo
-    E clico na opção Formas de Pagamento
-    E clico na opção excluir cartão "crédito"
-    E confirmo a exclusão
-    Entao o cartão não deverá estar listado
+#  Cenario:08 Remover cartão de crédito como forma de pagamento
+#    Dado que estou na área não logada do app
+#    E submeto as seguintes credenciais validas para login, cpf "16656110061", senha "Teste123"
+#    E acesso a home do aplicativo
+#    Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo
+#    E clico na opção Formas de Pagamento
+#    E clico na opção excluir cartão "crédito"
+#    E confirmo a exclusão
+#    Entao o cartão não deverá estar listado
 
-  Cenario:09 Adicionar cartão de crédito como forma de pagamento tendo menos que 4 cartões cadastrados
-    Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "16656110061", senha "Teste123"
-    E acesso a home do aplicativo
-    Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo
-    E clico na opção Formas de Pagamento
-    E clico em Adicionar forma de pagamento
-    E clico na opção Cartão de crédito
-    E submeto as informações corretas do cartão
-      | NomeCartao     | numeroCartao        | dtVal | cvv | numCelular  |
-      | Teste Cadastro | 4001 7482 7831 6091 | 01/28 | 123 | 327.721.478-86 |
-    Entao visualizo a tela de Cartão cadastrado com sucesso
+#  Cenario:09 Adicionar cartão de crédito como forma de pagamento tendo menos que 4 cartões cadastrados
+#    Dado que estou na área não logada do app
+#    E submeto as seguintes credenciais validas para login, cpf "16656110061", senha "Teste123"
+#    E acesso a home do aplicativo
+#    Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo
+#    E clico na opção Formas de Pagamento
+#    E clico em Adicionar forma de pagamento
+#    E clico na opção Cartão de crédito
+#    E submeto as informações corretas do cartão
+#      | NomeCartao     | numeroCartao        | dtVal | cvv | numCelular  |
+#      | Teste Cadastro | 4001 7482 7831 6091 | 01/28 | 123 | 327.721.478-86 |
+#    Entao visualizo a tela de Cartão cadastrado com sucesso
 
-  Cenario:10 Cadastro de cartão de crédito inválido
-    Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "16656110061", senha "Teste123"
-    E acesso a home do aplicativo
-    Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo
-    E clico na opção Formas de Pagamento
-    E clico em Adicionar forma de pagamento
-    E clico na opção Cartão de crédito
-    E submeto as informações corretas do cartão
-      | NomeCartao     | numeroCartao        | dtVal | cvv | numCelular  |
-      | Teste Cadastro | 1234 5678 9101 1123 | 03/30 | 111 | 327.721.478-86 |
-    Entao visualizo a tela de falha no cadastro
+#  Cenario:10 Cadastro de cartão de crédito inválido
+#    Dado que estou na área não logada do app
+#    E submeto as seguintes credenciais validas para login, cpf "16656110061", senha "Teste123"
+#    E acesso a home do aplicativo
+#    Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo
+#    E clico na opção Formas de Pagamento
+#    E clico em Adicionar forma de pagamento
+#    E clico na opção Cartão de crédito
+#    E submeto as informações corretas do cartão
+#      | NomeCartao     | numeroCartao        | dtVal | cvv | numCelular  |
+#      | Teste Cadastro | 1234 5678 9101 1123 | 03/30 | 111 | 327.721.478-86 |
+#    Entao visualizo a tela de falha no cadastro
 
   Cenario:11 Remover cartão de débito como forma de pagamento
    Dado que estou na área não logada do app

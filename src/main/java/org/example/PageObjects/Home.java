@@ -246,7 +246,7 @@ public class Home {
     }
 
     public void clicarBotaoBilhetes() {
-        GestosEmulador.clickCoordenada(40,540);
+        GestosEmulador.clickCoordenada(78,370);
     }
 
     public void clicarIconePerfil() {
