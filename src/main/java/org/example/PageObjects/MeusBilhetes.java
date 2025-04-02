@@ -54,10 +54,10 @@ public class MeusBilhetes {
 
     public void buscarUltimaCompraDeBilhete() {
         WebDriverWait espera = new WebDriverWait(driver, 10);
-        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//XCUIElementTypeOther[contains(@name, 'Compra de Bilhete') and contains(@name, 'CPTM / Metrô')])[last()-10]\n" +
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//XCUIElementTypeOther[contains(@name, 'Compra de Bilhete') and contains(@name, 'CPTM / Metrô')])\n" +
                 "\n")));
 
-        ultimaCompraDeBilhete = (MobileElement) driver.findElementByXPath("(//XCUIElementTypeOther[contains(@name, 'Compra de Bilhete') and contains(@name, 'CPTM / Metrô')])[last()-10]\n" +
+        ultimaCompraDeBilhete = (MobileElement) driver.findElementByXPath("(//XCUIElementTypeOther[contains(@name, 'Compra de Bilhete') and contains(@name, 'CPTM / Metrô')])\n" +
                 "\n");
 
     }
