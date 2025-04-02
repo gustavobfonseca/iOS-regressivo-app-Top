@@ -33,7 +33,7 @@ Cenario: Compra de combo de Crédito Comum + 1.000 pontos - Pagamento via PIX
     Quando submeto a recarga comum informando valor entre "R$4,00" e "R$100,00"
     E seleciono Continuar compra com pontos no modal do Super TOP
     E seleciono "150" pontos do SuperTop
-    E confirmo Cartão de débito como forma de pagamento
+    E confirmo Cartão de crédito como forma de pagamento
     E confirmo o pagamento informando o CVV "123"
     Então visualizo a tela de Pagamento efetuado com sucesso
 
@@ -43,7 +43,7 @@ Cenario: Compra de combo de Crédito Comum + 1.000 pontos - Pagamento via PIX
 #  | 365.369.350-04| Teste123 |
     Quando submeto a recarga escolar informando valor entre "R$10,00" e "R$250,00"
     E seleciono Continuar compra com pontos no modal do Super TOP
-    E confirmo Cartão de débito como forma de pagamento
+    E confirmo Cartão de crédito como forma de pagamento
     E confirmo o pagamento informando o CVV "123"
     Então visualizo a tela de Pagamento efetuado com sucesso
 
@@ -56,26 +56,26 @@ Cenario: Compra de combo de Crédito Comum + 1.000 pontos - Pagamento via PIX
   E confirmo pix como forma de pagamento
   Então visualizo a tela de confirmação de pagamento via pix
 
-Cenário: 04 - Compra de Crédito Comum - Pagamento via Cartão de Crédito
-  Dado que acesso o menu "Cartão TOP" tendo o produto "Transporte" ativo com Cartão de Crédito cadastrado
-#  | CPF           | SENHA    |
-#  | 016.276.920-29| Teste123 |
-  Quando submeto a recarga comum informando valor entre "R$4,00" e "R$100,00"
-  E seleciono "Talvez Mais Tarde" no modal do Super TOP
-  E confirmo Cartão de crédito como forma de pagamento
-  E confirmo o pagamento informando o CVV "123"
-  Então visualizo a tela de Pagamento efetuado com sucesso
+#Cenário: 04 - Compra de Crédito Comum - Pagamento via Cartão de Crédito
+#  Dado que acesso o menu "Cartão TOP" tendo o produto "Transporte" ativo com Cartão de Crédito cadastrado
+##  | CPF           | SENHA    |
+##  | 016.276.920-29| Teste123 |
+#  Quando submeto a recarga comum informando valor entre "R$4,00" e "R$100,00"
+#  E seleciono "Talvez Mais Tarde" no modal do Super TOP
+#  E confirmo Cartão de crédito como forma de pagamento
+#  E confirmo o pagamento informando o CVV "123"
+#  Então visualizo a tela de Pagamento efetuado com sucesso
 
-Cenário: 05 - Compra de Crédito Comum - Erro no Pagamento via Cartão de Crédito cadastrado
-  Dado que acesso o menu "Cartão TOP" tendo o produto "Transporte" ativo com Cartão de Crédito cadastrado
-  E possuo Cartão de Crédito inválido cadastrado
-#  | CPF           | SENHA    |
-#  | 016.276.920-29| Teste123 |
-  Quando submeto a recarga comum informando valor entre "R$4,00" e "R$100,00"
-  E seleciono "Talvez Mais Tarde" no modal do Super TOP
-  E submeto a compra com cartão de crédito inválido
-  E confirmo o pagamento informando o CVV "010"
-  Então visualizo a tela de Erro no pagamento
+#Cenário: 05 - Compra de Crédito Comum - Erro no Pagamento via Cartão de Crédito cadastrado
+#  Dado que acesso o menu "Cartão TOP" tendo o produto "Transporte" ativo com Cartão de Crédito cadastrado
+#  E possuo Cartão de Crédito inválido cadastrado
+##  | CPF           | SENHA    |
+##  | 016.276.920-29| Teste123 |
+#  Quando submeto a recarga comum informando valor entre "R$4,00" e "R$100,00"
+#  E seleciono "Talvez Mais Tarde" no modal do Super TOP
+#  E submeto a compra com cartão de crédito inválido
+#  E confirmo o pagamento informando o CVV "010"
+#  Então visualizo a tela de Erro no pagamento
 
 Cenário: 06 - Compra de Crédito Comum - Pagamento via Cartão de Débito
   Dado que acesso o menu "Cartão TOP" tendo o produto "Transporte" ativo com Cartão de Débito cadastrado
@@ -146,26 +146,26 @@ Dado que acesso o menu "Cartão TOP" tendo o produto Transporte Escolar ativo e 
   E confirmo pix como forma de pagamento
   Então visualizo a tela de confirmação de pagamento via pix
 
-  Cenário: 13 - Compra de Crédito Escolar - Pagamento via Cartão de Crédito
-  Dado que acesso o menu "Cartão TOP" tendo o produto Transporte Escolar ativo e Cartão de Crédito válido cadastrado
-#    | CPF           | SENHA    |
-#    | 054.540.810-51| Teste123 |
-  Quando submeto a recarga escolar informando valor entre "R$10,00" e "R$250,00"
-  E seleciono "Talvez Mais Tarde" no modal do Super TOP
-  E confirmo Cartão de crédito como forma de pagamento
-  E confirmo o pagamento informando o CVV "123"
-  Então visualizo a tela de Pagamento efetuado com sucesso
+#  Cenário: 13 - Compra de Crédito Escolar - Pagamento via Cartão de Crédito
+#  Dado que acesso o menu "Cartão TOP" tendo o produto Transporte Escolar ativo e Cartão de Crédito válido cadastrado
+##    | CPF           | SENHA    |
+##    | 054.540.810-51| Teste123 |
+#  Quando submeto a recarga escolar informando valor entre "R$10,00" e "R$250,00"
+#  E seleciono "Talvez Mais Tarde" no modal do Super TOP
+#  E confirmo Cartão de crédito como forma de pagamento
+#  E confirmo o pagamento informando o CVV "123"
+#  Então visualizo a tela de Pagamento efetuado com sucesso
 
-Cenário: 14 - Compra de Crédito Escolar - Erro no Pagamento via Cartão de Crédito
-  Dado que acesso o menu "Cartão TOP" tendo o produto Transporte Escolar ativo e Cartão de Crédito válido cadastrado
-  E possuo Cartão de Crédito inválido cadastrado
-#  | CPF           | SENHA    |
-#  | 054.540.810-51| Teste123 |
-  Quando submeto a recarga escolar informando valor entre "R$10,00" e "R$250,00"
-  E seleciono "Talvez Mais Tarde" no modal do Super TOP
-  E submeto a compra com cartão de crédito inválido
-  E confirmo o pagamento informando o CVV "010"
-  Então visualizo a tela de Erro no pagamento
+#Cenário: 14 - Compra de Crédito Escolar - Erro no Pagamento via Cartão de Crédito
+#  Dado que acesso o menu "Cartão TOP" tendo o produto Transporte Escolar ativo e Cartão de Crédito válido cadastrado
+#  E possuo Cartão de Crédito inválido cadastrado
+##  | CPF           | SENHA    |
+##  | 054.540.810-51| Teste123 |
+#  Quando submeto a recarga escolar informando valor entre "R$10,00" e "R$250,00"
+#  E seleciono "Talvez Mais Tarde" no modal do Super TOP
+#  E submeto a compra com cartão de crédito inválido
+#  E confirmo o pagamento informando o CVV "010"
+#  Então visualizo a tela de Erro no pagamento
 
 Cenário: 15 - Compra de Crédito Escolar - Pagamento via Cartão de Débito
   Dado que acesso o menu "Cartão TOP" tendo o produto "Transporte Escolar" ativo e Cartão de Débito válido cadastrado

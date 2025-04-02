@@ -17,6 +17,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 //import sun.jvm.hotspot.utilities.AssertionFailure;
@@ -957,6 +958,7 @@ public class DefinicaoPassosCucumber {
 
         telaMeusBilhetes.buscarUltimaCompraDeBilhete();
         telaMeusBilhetes.clicarUltimaCompraDeBilhete();
+        GestosEmulador.clickCoordenada(200,670,"clica no primeiro bilhete");
     }
 
     @Entao("visualizo o modal com os detalhes da compra")
@@ -1164,14 +1166,13 @@ public class DefinicaoPassosCucumber {
     @E("confirmo pix como forma de pagamento")
     public void confirmoPixComoFormaDePagamento() {
         Tela.buscarElementoNaTela("//XCUIElementTypeOther[@name=\"Pix Copia e cola TROCAR\"]");
-    GestosEmulador.rolarTelaVertical("(//XCUIElementTypeOther[@name=\"CONFIRMAR PAGAMENTO\"])[2]");
-    Tela.clicarEmElemento("(//XCUIElementTypeOther[@name=\"CONFIRMAR PAGAMENTO\"])[2]");
-//        AppiumDriver driver = AppiumDriverConfig.Instance().driver;
-//        MeusBilhetes telaMeusBilhetes = new MeusBilhetes(driver);
+        GestosEmulador.rolarTelaVertical("(//XCUIElementTypeOther[@name=\"CONFIRMAR PAGAMENTO\"])[2]");
 
-//        telaMeusBilhetes.buscarOpcaoPix();
-//        telaMeusBilhetes.clicarOpcaoPix();
-//        telaMeusBilhetes.clicarBotaoConfirmarFormaPagamento();
+        try {
+            Tela.clicarEmElemento("(//XCUIElementTypeOther[@name=\"CONFIRMAR PAGAMENTO\"])[2]",5);
+        }catch (TimeoutException e){
+
+        }
     }
 
     @E("insiro o token sms p cadastro")

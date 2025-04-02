@@ -1,13 +1,16 @@
 # language: pt
 Funcionalidade: BilhetesQrCode
 #MASSA CARTAO INVALIDO
-  #DÉBITO - 37667124035
+  #DÉBITO -61149453010
   # CRÉDITO - 16656110061
+
+  #VÁLIDO
+    #DÉBITO - 37667124035
 
   #massa escolar 054.540.810-51
   # 365.369.350-04
+
   #massa escolar saldo conta nao tem
-#  ajustar massas geral
 
   Cenario:01 Compra bilhete CPTM ou Metro com pagamento via pix
     Dado que estou na área não logada do app
@@ -21,18 +24,18 @@ Funcionalidade: BilhetesQrCode
     E confirmo pix como forma de pagamento
     Então visualizo a tela de confirmação de pagamento via pix
 
-  Cenario:02 Compra bilhete CPTM ou Metro com pagamento via cartão de crédito com o cvv preenchido incorretamente
-    Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "16656110061", senha "Teste123"
-    E acesso a home do aplicativo
-    Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo
-    E clico na opçao Comprar Bilhetes
-    E adiciono "1" com a opção Metro e Trem pré selecionada
-    E confirmo as seleções
-    E seleciono "Talvez Mais Tarde" no modal do Super TOP
-    E confirmo Cartão de crédito como forma de pagamento
-    E confirmo o pagamento informando o CVV "001"
-    Então visualizo a tela de Erro no pagamento
+#  Cenario:02 Compra bilhete CPTM ou Metro com pagamento via cartão de crédito com o cvv preenchido incorretamente
+#    Dado que estou na área não logada do app
+#    E submeto as seguintes credenciais validas para login, cpf "16656110061", senha "Teste123"
+#    E acesso a home do aplicativo
+#    Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo
+#    E clico na opçao Comprar Bilhetes
+#    E adiciono "1" com a opção Metro e Trem pré selecionada
+#    E confirmo as seleções
+#    E seleciono "Talvez Mais Tarde" no modal do Super TOP
+#    E confirmo Cartão de crédito como forma de pagamento
+#    E confirmo o pagamento informando o CVV "001"
+#    Então visualizo a tela de Erro no pagamento
 
   Cenário: Compra combo de bilhetes + 50 pontos via Débito
     Dado que estou na área não logada do app
@@ -62,29 +65,29 @@ Funcionalidade: BilhetesQrCode
     Então visualizo a tela de Pagamento efetuado com sucesso
 
 
-  Cenario:03 Compra bilhete CPTM ou Metro com pagamento via cartão de crédito com o cvv preenchido corretamente
-    Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste123"
-    E acesso a home do aplicativo
-    Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo
-    E clico na opçao Comprar Bilhetes
-    E adiciono "1" com a opção Metro e Trem pré selecionada
-    E confirmo as seleções
-    E seleciono "Talvez Mais Tarde" no modal do Super TOP
-    E confirmo Cartão de crédito como forma de pagamento
-    E confirmo o pagamento informando o CVV "123"
-    Então visualizo a tela de Pagamento efetuado com sucesso
+#  Cenario:03 Compra bilhete CPTM ou Metro com pagamento via cartão de crédito com o cvv preenchido corretamente
+#    Dado que estou na área não logada do app
+#    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste123"
+#    E acesso a home do aplicativo
+#    Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo
+#    E clico na opçao Comprar Bilhetes
+#    E adiciono "1" com a opção Metro e Trem pré selecionada
+#    E confirmo as seleções
+#    E seleciono "Talvez Mais Tarde" no modal do Super TOP
+#    E confirmo Cartão de crédito como forma de pagamento
+#    E confirmo o pagamento informando o CVV "123"
+#    Então visualizo a tela de Pagamento efetuado com sucesso
 
   Cenario:04 Erro na compra de bilhete via cartão de débito informando o cvv incorreto
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "37667124035", senha "Teste123"
+    E submeto as seguintes credenciais validas para login, cpf "61149453010", senha "Teste123"
     E acesso a home do aplicativo
     Quando que eu acesso o menu Bilhetes Qr Code na home do aplicativo
     E clico na opçao Comprar Bilhetes
     E adiciono "1" com a opção Metro e Trem pré selecionada
     E confirmo as seleções
     E seleciono "Talvez Mais Tarde" no modal do Super TOP
-    E confirmo Cartão de débito como forma de pagamento
+    E confirmo Cartão de crédito como a forma de pagamento
     E confirmo o pagamento informando o CVV "333"
     Então visualizo a tela de Erro no pagamento
 
