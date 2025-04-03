@@ -1,0 +1,6 @@
+Cartão top 
+
+Erro pagamento via débito
+Erro escolar via pix
+
+Cenário: 18 - Comunicar Perda Roubo de Cartão Híbrido

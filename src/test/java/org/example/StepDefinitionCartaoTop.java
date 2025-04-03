@@ -152,7 +152,7 @@ public class StepDefinitionCartaoTop {
 
     @Quando("acesso o menu Transporte")
     public void acessoOMenuTransporte() {
-        GestosEmulador.clickCoordenada(200,550,"clicar em cartao top na home");
+        GestosEmulador.clickCoordenada(200,380,"clicar em cartao top na home");
     }
 
     @E("seleciono a opção Receber em casa")
@@ -209,7 +209,7 @@ public class StepDefinitionCartaoTop {
 
         Home telaHome = new Home(driver);
         telaHome.buscarMensagemBemVindo();
-        GestosEmulador.clickCoordenada(200,550,"clicar em cartao top na home");
+        GestosEmulador.clickCoordenada(200,380,"clicar em cartao top na home");
 
     }
 
@@ -259,7 +259,7 @@ public class StepDefinitionCartaoTop {
 
         Home telaHome = new Home(driver);
         telaHome.buscarMensagemBemVindo();
-        GestosEmulador.clickCoordenada(200,550,"clicar em cartao top na home");
+        GestosEmulador.clickCoordenada(200,380,"clicar em cartao top na home");
     }
 
     @E("submeto a compra com cartão de débito inválido")
@@ -281,7 +281,7 @@ public class StepDefinitionCartaoTop {
 
         Home telaHome = new Home(driver);
         telaHome.buscarMensagemBemVindo();
-        GestosEmulador.clickCoordenada(200,550,"clicar em cartao top na home");
+        GestosEmulador.clickCoordenada(200,380,"clicar em cartao top na home");
     }
 
     @Dado("que acesso o menu {string} tendo o produto Transporte Escolar ativo e Cartão de Crédito válido cadastrado")
@@ -294,7 +294,7 @@ public class StepDefinitionCartaoTop {
 
         Home telaHome = new Home(driver);
         telaHome.buscarMensagemBemVindo();
-        GestosEmulador.clickCoordenada(200,550,"clicar em cartao top na home");
+        GestosEmulador.clickCoordenada(200,380,"clicar em cartao top na home");
     }
 
     @Quando("submeto a recarga escolar informando valor entre {string} e {string}")
@@ -321,13 +321,14 @@ public class StepDefinitionCartaoTop {
 
     @E("clico na opção {string} no item {string}")
     public void clicoNaOpçãoNoItem(String arg0, String arg1) {
-        GestosEmulador.clickCoordenada(120,543);
+        GestosEmulador.clickCoordenada(120,607);
     }
 
     @E("clico na opção {string} no item {string} possuindo escolar")
     public void clicoNaOpçãoNoItemEscolar(String arg0, String arg1) {
         Tela.espera(5000,"espera");
-        GestosEmulador.clickCoordenada(200,589);
+//        Tela.clicarEmElemento("(//XCUIElementTypeOther[contains(@name,\"Saiba mais\")])");
+        GestosEmulador.clickCoordenada(120,656);
     }
 
     @Então("visualizo a tela informativa do benefício {string}")
@@ -359,7 +360,7 @@ public class StepDefinitionCartaoTop {
 
         Home telaHome = new Home(driver);
         telaHome.buscarMensagemBemVindo();
-        GestosEmulador.clickCoordenada(200,550,"clicar em cartao top na home");
+        GestosEmulador.clickCoordenada(200,380,"clicar em cartao top na home");
     }
 
     @Dado("que tendo cartão híbrido ativo com saldo em conta eu habilito o mock do token no perfil")
@@ -389,7 +390,7 @@ public class StepDefinitionCartaoTop {
         AppiumDriver driver = AppiumDriverConfig.Instance().driver;
 Home home = new Home(driver);
 home.buscarMensagemBemVindo();
-        GestosEmulador.clickCoordenada(200,550,"clicar em cartao top na home");
+        GestosEmulador.clickCoordenada(200,380,"clicar em cartao top na home");
 
 
     }
@@ -421,7 +422,7 @@ home.buscarMensagemBemVindo();
 
         Home telaHome = new Home(driver);
         telaHome.buscarMensagemBemVindo();
-        GestosEmulador.clickCoordenada(200,550,"clicar em cartao top na home");
+        GestosEmulador.clickCoordenada(200,380,"clicar em cartao top na home");
 
 
     }
@@ -456,7 +457,7 @@ home.buscarMensagemBemVindo();
 
         Home telaHome = new Home(driver);
         telaHome.buscarMensagemBemVindo();
-        GestosEmulador.clickCoordenada(200,550,"clicar em cartao top na home");
+        GestosEmulador.clickCoordenada(200,380,"clicar em cartao top na home");
     }
 
     @Dado("que acesso o menu {string} tendo o produto {string} ativo com Sênior liberado")
@@ -469,7 +470,7 @@ home.buscarMensagemBemVindo();
 
         Home telaHome = new Home(driver);
         telaHome.buscarMensagemBemVindo();
-        GestosEmulador.clickCoordenada(200,550,"clicar em cartao top na home");
+        GestosEmulador.clickCoordenada(200,380,"clicar em cartao top na home");
     }
 
     @E("cancelo e retorno")
@@ -478,7 +479,7 @@ home.buscarMensagemBemVindo();
         Tela.espera(2000);
         GestosEmulador.clickCoordenada(190,790);
         Tela.espera(5000);
-        GestosEmulador.clickCoordenada(200,550,"clicar em cartao top na home");
+        GestosEmulador.clickCoordenada(200,380,"clicar em cartao top na home");
         Tela.espera(5000);
         GestosEmulador.clickCoordenada(291,494);
     }
@@ -540,7 +541,7 @@ home.buscarMensagemBemVindo();
 
         Home telaHome = new Home(driver);
         telaHome.buscarMensagemBemVindo();
-        GestosEmulador.clickCoordenada(200,550,"clicar em cartao top na home");
+        GestosEmulador.clickCoordenada(200,380,"clicar em cartao top na home");
 
 
     }
@@ -568,7 +569,8 @@ home.buscarMensagemBemVindo();
 
     @E("clico em Outro valor")
     public void clicoEmOutroValor() throws InterruptedException {
-        GestosEmulador.rolarScrollViewHorizontalmente("(//XCUIElementTypeOther[@name=\"R$ 0,00 AGORA NÃO R$ 0,50 50 PONTOS R$ 1,00 100 PONTOS R$ 1,50 150 PONTOS OUTRO VALOR Barra de rolagem vertical, 2 páginas\"])[2]/XCUIElementTypeScrollView");
+        Tela.buscarElementoNaTela("(//XCUIElementTypeOther[@name=\"R$ 0,00 AGORA NÃO R$ 0,60 60 PONTOS R$ 1,00 100 PONTOS R$ 1,50 150 PONTOS OUTRO VALOR Barra de rolagem vertical, 2 páginas\"])[2]/XCUIElementTypeScrollView");
+        GestosEmulador.rolarScrollViewHorizontalmente("(//XCUIElementTypeOther[@name=\"R$ 0,00 AGORA NÃO R$ 0,60 60 PONTOS R$ 1,00 100 PONTOS R$ 1,50 150 PONTOS OUTRO VALOR Barra de rolagem vertical, 2 páginas\"])[2]/XCUIElementTypeScrollView");
         Tela.clicarEmElemento("(//XCUIElementTypeOther[@name=\"OUTRO VALOR\"])[3]");
     }
 
