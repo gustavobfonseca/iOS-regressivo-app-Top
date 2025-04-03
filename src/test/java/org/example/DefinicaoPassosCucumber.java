@@ -891,6 +891,7 @@ public class DefinicaoPassosCucumber {
     }
     @E("eu desligo a conexão de internet do dispositivo")
     public void euDesligoAConexãoDeInternetDoDispositivo() {
+        Tela.espera(5000);
     GestosEmulador.desligarWifi();
     }
 
@@ -991,7 +992,7 @@ public class DefinicaoPassosCucumber {
         Tela.clicarEmElemento("//XCUIElementTypeOther[@name=\"TROCAR\"]");
 //        Tela.buscarElementoNaTela("//XCUIElementTypeOther[contains(@label, 'Saldo Disponível')]");
         Thread.sleep(3000);
-        GestosEmulador.clickCoordenada(181,346);
+        GestosEmulador.clickCoordenada(181,450);
         GestosEmulador.rolarTelaVertical("(//XCUIElementTypeOther[@name=\"CONFIRMAR PAGAMENTO\"])[2]");
         Tela.clicarEmElemento("(//XCUIElementTypeOther[@name=\"CONFIRMAR PAGAMENTO\"])[2]");
     }
