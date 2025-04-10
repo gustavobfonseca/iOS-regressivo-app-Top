@@ -3,6 +3,7 @@ package org.example.PageObjects;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
+import org.openqa.selenium.interactions.Coordinates;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -138,6 +139,17 @@ public class CartaoTop {
         espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@text=\"Copie o código Pix:\"]")));
 
         textoCopiarCodigoPix = (MobileElement) driver.findElementByXPath("//android.widget.TextView[@text=\"Copie o código Pix:\"]");
+    }
+
+    public int cartaoTopPelaHome(){
+        WebDriverWait espera = new WebDriverWait(driver, 20);
+        espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeStaticText[@name=\"Transporte\"]")));
+
+         MobileElement transporteTxt = (MobileElement) driver.findElementByXPath("//XCUIElementTypeStaticText[@name=\"Transporte\"]");
+         int cordenada = transporteTxt.getLocation().getY();
+
+        System.out.println(cordenada);
+        return cordenada+119;
     }
 
     //Açoes de Clique

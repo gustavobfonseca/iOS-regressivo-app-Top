@@ -25,7 +25,7 @@ Funcionalidade: Login
     Entao visualizo a mensagem de Documento inválido
     E clico em cancelar
 
-  Cenario:05 Login através da recuperação de senha
+  Cenario:05 Login através da recuperação dez senha
     Dado que acesso a opção esqueci minha senha na área não logada
     Quando informo o seguinte CPF "13715099054" que possui o email 'testecav8@gmail.com' e o telefone '+5511922334456'
     E insiro o token sms
@@ -75,7 +75,7 @@ Funcionalidade: Login
 
   Cenario:11 Login com as credenciais validas
     Dado que estou na área não logada do app
-    Quando submeto minhas credenciais válidas para login, cpf '13715099054' e senha 'Teste1234'
+    Quando submeto minhas credenciais válidas para login, cpf '13715099054' e senha 'Teste123'
     Entao acesso a home do aplicativo
 
   Cenario: Atendimento usuário bloqueado

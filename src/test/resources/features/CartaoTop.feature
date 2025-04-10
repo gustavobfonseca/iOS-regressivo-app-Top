@@ -33,7 +33,7 @@ Cenario: Compra de combo de Crédito Comum + 1.000 pontos - Pagamento via PIX
     Quando submeto a recarga comum informando valor entre "R$4,00" e "R$100,00"
     E seleciono Continuar compra com pontos no modal do Super TOP
     E seleciono "150" pontos do SuperTop
-    E confirmo Cartão de crédito como forma de pagamento
+    E confirmo Cartão de débito como forma de pagamento
     E confirmo o pagamento informando o CVV "123"
     Então visualizo a tela de Pagamento efetuado com sucesso
 
@@ -227,7 +227,7 @@ Cenário: 21 - Direcionamento para as dúvidas sobre o benefício passe escolar
   E  clico na opção "Saiba mais" no item Passe Livre possuindo escolar
   E visualizo a tela informativa do benefício "Passe Livre"
   Quando clico na label de Dúvidas sobre seu Benefício Escolar?
-  Então sou direcionado para a página "emtu.sp.gov.br/passe/indexregiao.htm"
+  Então sou direcionado para a página "https://www.emtu.sp.gov.br/passe/indexregiao.htm"
 
 Cenário: 22 - Informativo Sênior
   Dado que acesso o menu "Cartão TOP" tendo o produto "Transporte" ativo com Sênior liberado

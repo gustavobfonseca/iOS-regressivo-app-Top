@@ -317,9 +317,7 @@ public class Cadastro {
     public void clicarEditarNumeroCelular() throws InterruptedException {
         WebDriverWait espera = new WebDriverWait(driver, 10);
         espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeOther[@name=\"Confirmação de Número de Celular\"]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther\n")));
-        MobileElement tela = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[@name=\"Confirmação de Número de Celular\"]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther\n");
-        tela.click();
-
+        GestosEmulador.clickCoordenada(187,293);
         espera.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeOther[@name=\"Editar meu número de celular\"]")));
 
         GestosEmulador.clickCoordenada(315,245);
