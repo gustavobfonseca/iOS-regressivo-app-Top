@@ -19,7 +19,7 @@ Funcionalidade: Bilhete Unico
 
   Cenario:03 Cadastro de Bilhete Unico
     Dado que estou na área não logada do app
-    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+    E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste123"
     E acesso a home do aplicativo
     Quando navego ate Bilhete Unico
     E clico em Cadasrar Bilhete Unico

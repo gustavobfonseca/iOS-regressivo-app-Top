@@ -345,16 +345,30 @@ try {
     }
 
     public void rolarScrollViewHorizontalmente() throws InterruptedException {
-        MobileElement scrollView =(MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[@name=\" Bilhetes\nQR Code  Cartão\nTOP  Bilhete\nÚnico  Mapa das\nEstações  Mobilidade Barra de rolagem vertical, 2 páginas\"]/XCUIElementTypeScrollView");
+        MobileElement scrollView = null; // Declarando fora do try-catch
 
-        // Rolar da direita para a esquerda
-        driver.executeScript("mobile: swipe", ImmutableMap.of(
-                "element", ((RemoteWebElement) scrollView).getId(),
-                "direction", "left"
-        ));
+        try {
+            scrollView = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[@name=\" Bilhetes\nQR Code  Cartão\nTOP  Bilhete\nÚnico  Mapa das\nEstações  Mobilidade Barra de rolagem vertical, 2 páginas\"]/XCUIElementTypeScrollView");
+        } catch (Exception e) {
+            scrollView = (MobileElement) driver.findElementByXPath("//XCUIElementTypeOther[@name=\"\uE9C1 Bilhetes\n" +
+                    "QR Code \uE884 Cartão\n" +
+                    "TOP \uE989 Mapa das\n" +
+                    "Estações \uE906 Mobilidade Barra de rolagem vertical, 2 páginas\"]/XCUIElementTypeScrollView");
+        }
 
-        Thread.sleep(500);
+        if (scrollView != null) {
+            // Rolar da direita para a esquerda
+            driver.executeScript("mobile: swipe", ImmutableMap.of(
+                    "element", ((RemoteWebElement) scrollView).getId(),
+                    "direction", "left"
+            ));
+
+            Thread.sleep(500);
+        } else {
+            throw new RuntimeException("ScrollView não encontrado.");
+        }
     }
+
     public void rolarScrollViewHorizontalmente(String xpath) throws InterruptedException {
         MobileElement scrollView =(MobileElement) driver.findElementByXPath(xpath);
 

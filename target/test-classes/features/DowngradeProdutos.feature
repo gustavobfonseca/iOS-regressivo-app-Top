@@ -63,6 +63,7 @@ Funcionalidade: Downgrade de Produtos
     E clico em cancelar a cartao perdido ou danificado
     Entao sou direcionado para o chatbot da Pefisa via WhatsApp
 
+    #------------------Recuperar cartao-------------------------------------
   Cenário:06 Comunicar Perda Roubo de cartão Puro transporte
     Dado que estou na área não logada do app
     E submeto as seguintes credenciais validas para login, cpf "32505664544", senha "Teste123"
@@ -81,6 +82,7 @@ Funcionalidade: Downgrade de Produtos
     E submeto as seguintes credenciais validas para login, cpf "53189161801", senha "Teste123"
     E acesso a home do aplicativo
     E navego ate cartao de credito
+#    E arrasto modal super TOP pra baixo
     E vou ate conta digital
     E vou ate cartao TOP
     E vou ate a home

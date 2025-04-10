@@ -1,18 +1,5 @@
 # language: pt
 Funcionalidade: Perfil do usuário
-  #----------------------------BLOQUEADA---------------------------------------------
-#  Cenário:01 Inclusão de foto de perfil via câmera
-#    Dado que eu acesso a tela home do aplicativo
-##    Quando clico em minha apresentação na Home
-##    E não possua foto de perfil
-###    E sem ter a permissão de acesso à câmera habilitada para o aplicativo TOP
-##    E clico na opção "Editar" em "Foto de Perfil"
-##    E seleciono a opção "Tirar Foto" no modal
-##    E habilito a permissão de acesso à câmera
-##    E seleciono a opção "Tirar Foto" no modal
-##    E submeto o envio de uma foto através da câmera do dispositivo,
-##    Então visualizo a foto enviada na tela de perfil de usuário
-##    E na apresentação da Home.
 
   Cenário: 02 Remoção de foto de perfil
     Dado que eu acesso a tela home do aplicativo
@@ -84,7 +71,7 @@ Funcionalidade: Perfil do usuário
 #    E seleciono a opção "Celular (Transporte)"
 #    E seleciono a opção "Celular (Transporte)"
 #    Então sou direcionado para o atendimento Autopass via WhatsApp
-#
+
 
   #----------------------------BLOQUEADA---------------------------------------------
 ##  Cenário: Autenticação biométrica ativa
@@ -139,7 +126,9 @@ Funcionalidade: Perfil do usuário
     E ao fazer um novo login, apenas a nova senha deve estar válida como credencial de acesso ao aplicativo
 
     Cenário:15 voltar senha padrao
-      Dado que eu acesso a tela home do aplicativo
+      Dado que estou na área não logada do app
+      E submeto as seguintes credenciais validas para login, cpf "54926406829", senha "Teste@123"
+      E acesso a home do aplicativo
       E que acesso o perfil de usuário
       Quando clico na opção Senha do aplicativo
       E insiro a senha atual alterada "Teste@123"

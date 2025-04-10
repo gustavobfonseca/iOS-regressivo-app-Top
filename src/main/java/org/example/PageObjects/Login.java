@@ -68,7 +68,7 @@ public class Login {
     }
 
     public void logar() {
-        WebDriverWait espera = new WebDriverWait(this.driver, 20L);
+        WebDriverWait espera = new WebDriverWait(this.driver, 10L);
         MobileElement BLogin = (MobileElement) espera.until(ExpectedConditions.presenceOfElementLocated(By.id("signin_button")));
         BLogin.click();
     }

@@ -314,6 +314,8 @@ Tela.buscarElementoNaTela("//XCUIElementTypeStaticText[@name=\"error_lg_confirm_
     public void clicarTermoDeUso() {
         GestosEmulador.rolarTelaVertical("//XCUIElementTypeOther[@name=\"Termos de Uso\"]");
         Tela.clicarEmElemento("//XCUIElementTypeOther[@name=\"Termos de Uso\"]",10);
+        Tela.espera(3000);
+        GestosEmulador.clickCoordenada(360,791,"termo de uso");
     }
 
     public void clicaIconeCentralAjuda() {
